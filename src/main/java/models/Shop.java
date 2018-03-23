@@ -59,6 +59,7 @@ public class Shop {
         this.stock = stock;
     }
 
+<<<<<<< HEAD
     @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     public Set<User> getUsers() {
         return users;
@@ -67,4 +68,26 @@ public class Shop {
     public void setUsers(Set<User> users) {
         this.users = users;
     }
+=======
+    public void addProductToStock(Product product) {
+        this.stock.add(product);
+    }
+
+    public void addPreviousOrderToAllOrders(PreviousOrder previousOrder) {
+        this.allOrders.add(previousOrder);
+    }
+
+    public int checkStockSize() {
+        return this.stock.size();
+    }
+
+    public int checkAllOrdersSize() {
+        return this.allOrders.size();
+    }
+
+    public void removeProductFromStock(Product product) {
+        this.stock.remove(product);
+    }
+
+>>>>>>> ff432449f9a87ab8fb73e697547dac77633424a0
 }
