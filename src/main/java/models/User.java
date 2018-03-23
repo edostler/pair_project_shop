@@ -15,7 +15,7 @@ public class User {
     public User() {
     }
 
-    public User(String name, int distance, String username) {
+    public User(String name, String username, int distance) {
         this.name = name;
         this.distance = distance;
         this.username = username;
