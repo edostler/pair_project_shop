@@ -17,6 +17,8 @@
         <mapping class="models.Product"/>
         <mapping class="models.Shop"/>
         <mapping class="models.User"/>
+        <mapping class="models.Health"/>
+        <mapping class="models.Food"/>
 
     </session-factory>
 </hibernate-configuration>
