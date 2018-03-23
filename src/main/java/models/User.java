@@ -80,4 +80,12 @@ public class User {
     public void setBasket(CurrentOrder basket) {
         this.basket = basket;
     }
+
+    public void addPreviousOrderToPreviousOrders(PreviousOrder previousOrder) {
+        this.previousOrders.add(previousOrder);
+    }
+
+    public int checkPreviousOrdersSize() {
+        return this.previousOrders.size();
+    }
 }

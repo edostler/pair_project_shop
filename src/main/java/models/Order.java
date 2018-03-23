@@ -47,4 +47,16 @@ public abstract class Order {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public void addProductToContents(Product product) {
+        this.contents.add(product);
+    }
+
+    public int checkContentsSize() {
+        return this.contents.size();
+    }
+
+    public void removeProductFromContents(Product product) {
+        this.contents.remove(product);
+    }
 }
