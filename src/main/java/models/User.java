@@ -1,6 +1,8 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class User {
 
@@ -8,7 +10,7 @@ public class User {
     private String name;
     private int distance;
     private String username;
-    private ArrayList<PreviousOrder> previousOrders;
+    private Set<PreviousOrder> previousOrders;
     private double lifetimeSpend;
     private CurrentOrder basket;
 
@@ -20,6 +22,7 @@ public class User {
         this.distance = distance;
         this.username = username;
         this.lifetimeSpend = 0;
+        this.previousOrders = new HashSet<>();
     }
 
     public int getId() {
@@ -54,11 +57,11 @@ public class User {
         this.username = username;
     }
 
-    public ArrayList<PreviousOrder> getPreviousOrders() {
+    public Set<PreviousOrder> getPreviousOrders() {
         return previousOrders;
     }
 
-    public void setPreviousOrders(ArrayList<PreviousOrder> previousOrders) {
+    public void setPreviousOrders(Set<PreviousOrder> previousOrders) {
         this.previousOrders = previousOrders;
     }
 
