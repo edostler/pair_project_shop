@@ -1,9 +1,6 @@
 package ClassTests;
 
-import models.CurrentOrder;
-import models.Food;
-import models.FoodCategory;
-import models.User;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,14 +13,16 @@ public class OrderTest {
     private CurrentOrder currentOrder;
     private User user;
     private Food foodProduct;
+    private Shop shop;
 
 
 
     @Before
     public void setUp() throws Exception {
-        user = new User("Ed", "edostler", 25);
-        currentOrder = new CurrentOrder(user);
-        foodProduct  = new Food("stawberry milk", FoodCategory.FRUIT_AND_VEG, 3.99, 10, "Yazoo 500ml", new GregorianCalendar(2018, 3, 23));
+        shop = new Shop("PPS Groceries");
+        user = new User("Ed", "edostler", 25, shop);
+        currentOrder = new CurrentOrder(0, user);
+        foodProduct  = new Food("stawberry milk", FoodCategory.FRUIT_AND_VEG, 3.99, 10, "Yazoo 500ml", new GregorianCalendar(2018, 3, 23), shop);
     }
 
     @Test

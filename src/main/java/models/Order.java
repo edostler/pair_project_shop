@@ -48,16 +48,6 @@ public abstract class Order {
         this.contents = contents;
     }
 
-<<<<<<< HEAD
-=======
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public void addProductToContents(Product product) {
         this.contents.add(product);
     }
@@ -69,5 +59,5 @@ public abstract class Order {
     public void removeProductFromContents(Product product) {
         this.contents.remove(product);
     }
->>>>>>> ff432449f9a87ab8fb73e697547dac77633424a0
+
 }

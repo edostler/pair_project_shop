@@ -94,7 +94,6 @@ public class User {
         this.basket = basket;
     }
 
-<<<<<<< HEAD
     @ManyToOne
     @JoinColumn(name="shop_id", nullable = false)
     public Shop getShop() {
@@ -103,13 +102,13 @@ public class User {
 
     public void setShop(Shop shop) {
         this.shop = shop;
-=======
+    }
+
     public void addPreviousOrderToPreviousOrders(PreviousOrder previousOrder) {
         this.previousOrders.add(previousOrder);
     }
 
     public int checkPreviousOrdersSize() {
         return this.previousOrders.size();
->>>>>>> ff432449f9a87ab8fb73e697547dac77633424a0
     }
 }

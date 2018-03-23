@@ -1,6 +1,7 @@
 package ClassTests;
 
 import models.PreviousOrder;
+import models.Shop;
 import models.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,13 +18,15 @@ public class PreviousOrderTest {
     private User user;
     private GregorianCalendar orderDate;
     private GregorianCalendar deliveryDate;
+    private Shop shop;
 
     @Before
     public void setUp() throws Exception {
-        user = new User("Ed", "edostler", 25);
+        shop = new Shop("PPS Groceries");
+        user = new User("Ed", "edostler", 25, shop);
         orderDate = new GregorianCalendar(2020, 5, 10);
         deliveryDate = new GregorianCalendar(2020, 5, 28);
-        previousOrder = new PreviousOrder(user, orderDate, deliveryDate);
+        previousOrder = new PreviousOrder(0, user, orderDate, deliveryDate, shop);
     }
 
     @Test

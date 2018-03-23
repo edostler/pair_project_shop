@@ -14,6 +14,9 @@ public class Shop {
     private Set<Product> stock;
     private Set<User> users;
 
+    public Shop() {
+    }
+
     public Shop(String name) {
         this.name = name;
         this.allOrders = new HashSet<>();
@@ -59,7 +62,6 @@ public class Shop {
         this.stock = stock;
     }
 
-<<<<<<< HEAD
     @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     public Set<User> getUsers() {
         return users;
@@ -68,7 +70,7 @@ public class Shop {
     public void setUsers(Set<User> users) {
         this.users = users;
     }
-=======
+
     public void addProductToStock(Product product) {
         this.stock.add(product);
     }
@@ -89,5 +91,5 @@ public class Shop {
         this.stock.remove(product);
     }
 
->>>>>>> ff432449f9a87ab8fb73e697547dac77633424a0
+
 }

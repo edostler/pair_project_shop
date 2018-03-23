@@ -11,16 +11,18 @@ public class PreviousOrder extends Order{
     private User user;
     private GregorianCalendar orderDate;
     private GregorianCalendar deliveryDate;
+    private Shop shop;
 
     public PreviousOrder() {
     }
 
 
-    public PreviousOrder(double total, User user, GregorianCalendar orderDate, GregorianCalendar deliveryDate) {
+    public PreviousOrder(double total, User user, GregorianCalendar orderDate, GregorianCalendar deliveryDate, Shop shop) {
         super(total);
         this.user = user;
         this.orderDate = orderDate;
         this.deliveryDate = deliveryDate;
+        this.shop = shop;
     }
 
     @Column(name="order_date")
@@ -49,5 +51,15 @@ public class PreviousOrder extends Order{
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="shop_id", nullable = false)
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 }
