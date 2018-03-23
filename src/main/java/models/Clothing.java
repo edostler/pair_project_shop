@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import java.util.GregorianCalendar;
 
 @Entity
-@Table(name="clothing-products")
+@Table(name="clothing_products")
 public class Clothing extends Product {
 
     private ClothingCategory category;

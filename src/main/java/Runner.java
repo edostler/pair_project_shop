@@ -2,6 +2,8 @@ import db.DBHelper;
 import models.*;
 
 import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Set;
 
 public class Runner {
 
@@ -59,5 +61,9 @@ public class Runner {
         DBHelper.saveOrUpdate(previousOrder1);
         DBHelper.saveOrUpdate(previousOrder2);
         DBHelper.saveOrUpdate(previousOrder3);
+
+//        User foundUser = DBHelper.find(User.class, user1.getId());
+
+//        List<PreviousOrder> foundPreviousOrders = DBHelper.getAll(PreviousOrder.class);
     }
 }

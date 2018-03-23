@@ -30,6 +30,8 @@ public class User {
         this.shop = shop;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     public int getId() {
         return id;
