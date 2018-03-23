@@ -7,11 +7,13 @@ public class Shop {
 
     private int id;
     private String name;
-    private Set<Order> allOrders;
+    private Set<PreviousOrder> allOrders;
+    private Set<Product> stock;
 
     public Shop(String name) {
         this.name = name;
         this.allOrders = new HashSet<>();
+        this.stock = new HashSet<>();
     }
 
     public int getId() {
@@ -30,12 +32,20 @@ public class Shop {
         this.name = name;
     }
 
-    public Set<Order> getAllOrders() {
+    public Set<PreviousOrder> getAllOrders() {
         return allOrders;
     }
 
-    public void setAllOrders(Set<Order> allOrders) {
+    public void setAllOrders(Set<PreviousOrder> allOrders) {
         this.allOrders = allOrders;
+    }
+
+    public Set<Product> getStock() {
+        return stock;
+    }
+
+    public void setStock(Set<Product> stock) {
+        this.stock = stock;
     }
 
 }
