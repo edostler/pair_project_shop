@@ -48,4 +48,24 @@ public class Shop {
         this.stock = stock;
     }
 
+    public void addProductToStock(Product product) {
+        this.stock.add(product);
+    }
+
+    public void addPreviousOrderToAllOrders(PreviousOrder previousOrder) {
+        this.allOrders.add(previousOrder);
+    }
+
+    public int checkStockSize() {
+        return this.stock.size();
+    }
+
+    public int checkAllOrdersSize() {
+        return this.allOrders.size();
+    }
+
+    public void removeProductFromStock(Product product) {
+        this.stock.remove(product);
+    }
+
 }
