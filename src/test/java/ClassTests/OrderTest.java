@@ -2,9 +2,12 @@ package ClassTests;
 
 import models.CurrentOrder;
 import models.Food;
+import models.FoodCategory;
 import models.User;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.GregorianCalendar;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,7 +23,7 @@ public class OrderTest {
     public void setUp() throws Exception {
         user = new User("Ed", "edostler", 25);
         currentOrder = new CurrentOrder(user);
-        foodProduct = new Food();
+        foodProduct  = new Food("stawberry milk", FoodCategory.FRUIT_AND_VEG, 3.99, 10, "Yazoo 500ml", new GregorianCalendar(2018, 3, 23));
     }
 
     @Test

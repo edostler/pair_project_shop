@@ -20,7 +20,7 @@ public class ShopTest {
     @Before
     public void setUp() throws Exception {
         shop = new Shop("PPS Groceries");
-        foodProduct = new Food();
+        foodProduct  = new Food("stawberry milk", FoodCategory.FRUIT_AND_VEG, 3.99, 10, "Yazoo 500ml", new GregorianCalendar(2018, 3, 23));
         user = new User("Ed", "edostler", 25);
         orderDate = new GregorianCalendar(2020, 5, 10);
         deliveryDate = new GregorianCalendar(2020, 5, 28);
