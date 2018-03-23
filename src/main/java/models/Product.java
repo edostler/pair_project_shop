@@ -1,7 +1,10 @@
 package models;
 
+import javax.persistence.*;
 import java.util.GregorianCalendar;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Product {
 
     private int id;
@@ -11,20 +14,27 @@ public abstract class Product {
     private int quantity;
     private String description;
     private GregorianCalendar stockDate;
+    private Shop shop;
+    private Order order;
 
 
     public Product() {
     }
 
-    public Product(String name, double price, int quantity, String description, GregorianCalendar stockDate) {
+    public Product(String name, double price, int quantity, String description, GregorianCalendar stockDate, Shop shop) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.description = description;
         this.stockDate = stockDate;
+        this.shop = shop;
+        this.order = null;
         getAvailability();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -33,6 +43,7 @@ public abstract class Product {
         this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -41,6 +52,7 @@ public abstract class Product {
         this.name = name;
     }
 
+    @Column(name="price")
     public double getPrice() {
         return price;
     }
@@ -49,6 +61,7 @@ public abstract class Product {
         this.price = price;
     }
 
+    @Column(name="availability")
     public boolean isAvailability() {
         return availability;
     }
@@ -57,6 +70,7 @@ public abstract class Product {
         this.availability = availability;
     }
 
+    @Column(name="quantity")
     public int getQuantity() {
         return quantity;
     }
@@ -65,6 +79,7 @@ public abstract class Product {
         this.quantity = quantity;
     }
 
+    @Column(name="description")
     public String getDescription() {
         return description;
     }
@@ -73,12 +88,33 @@ public abstract class Product {
         this.description = description;
     }
 
+    @Column(name="stock_date")
     public GregorianCalendar getStockDate() {
         return stockDate;
     }
 
     public void setStockDate(GregorianCalendar stockDate) {
         this.stockDate = stockDate;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="shop_id", nullable = false)
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="order_id", nullable = false)
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public boolean getAvailability() {

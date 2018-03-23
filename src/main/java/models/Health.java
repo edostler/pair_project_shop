@@ -1,7 +1,12 @@
 package models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.GregorianCalendar;
 
+@Entity
+@Table(name="health_products")
 public class Health extends Product {
 
     private HealthCategory category;
@@ -9,11 +14,12 @@ public class Health extends Product {
     public Health() {
     }
 
-    public Health(String name, HealthCategory category, double price, int quantity, String description, GregorianCalendar stockDate) {
-        super(name, price, quantity, description, stockDate);
+    public Health(String name, HealthCategory category, double price, int quantity, String description, GregorianCalendar stockDate, Shop shop) {
+        super(name, price, quantity, description, stockDate, shop);
         this.category = category;
     }
 
+    @Column(name="category")
     public HealthCategory getCategory() {
         return category;
     }

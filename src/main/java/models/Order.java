@@ -1,21 +1,27 @@
 package models;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Order {
 
     private int id;
     private double total;
     private Set<Product> contents;
-    private User user;
 
-    public Order(User user) {
-        this.total = 0;
-        this.user = user;
+    public Order() {
+    }
+
+    public Order(double total) {
+        this.total = total;
         this.contents = new HashSet<>();
     }
 
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -24,6 +30,7 @@ public abstract class Order {
         this.id = id;
     }
 
+    @Column(name="total")
     public double getTotal() {
         return total;
     }
@@ -32,6 +39,7 @@ public abstract class Order {
         this.total = total;
     }
 
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     public Set<Product> getContents() {
         return contents;
     }
@@ -40,11 +48,4 @@ public abstract class Order {
         this.contents = contents;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

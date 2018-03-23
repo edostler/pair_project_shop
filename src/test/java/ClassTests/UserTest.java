@@ -1,5 +1,6 @@
 package ClassTests;
 
+import models.Shop;
 import models.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,10 +10,12 @@ import static org.junit.Assert.assertEquals;
 public class UserTest {
 
     User user;
+    Shop shop;
 
     @Before
     public void setUp() throws Exception {
-        user = new User("James Bond", "Bond007", 20);
+        shop = new Shop("PPS Groceries");
+        user = new User("James Bond", "Bond007", 20, shop);
     }
 
     @Test

@@ -3,6 +3,7 @@ package ClassTests;
 import models.Food;
 import models.FoodCategory;
 import models.Product;
+import models.Shop;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,11 +17,14 @@ public class ProductTest {
 
     Food product;
     Food product2;
+    Shop shop;
 
     @Before
     public void setUp() throws Exception {
-        product = new Food("milk", FoodCategory.DAIRY, 1.99, 1, "2l Semi-Skimmed", new GregorianCalendar(2018,3,30));
-        product2 = new Food("bread", FoodCategory.BREAD, 1.99, 0, "Warbutons wholemeal", new GregorianCalendar(2018,3,23));
+        shop = new Shop("PPS Groceries");
+
+        product = new Food("milk", FoodCategory.DAIRY, 1.99, 1, "2l Semi-Skimmed", new GregorianCalendar(2018,3,30), shop);
+        product2 = new Food("bread", FoodCategory.BREAD, 1.99, 0, "Warbutons wholemeal", new GregorianCalendar(2018,3,23), shop);
     }
 
     @Test

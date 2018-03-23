@@ -1,9 +1,6 @@
 package ClassTests;
 
-import models.Clothing;
-import models.ClothingCategory;
-import models.Health;
-import models.HealthCategory;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,10 +11,12 @@ import static org.junit.Assert.assertEquals;
 public class ClothingTest {
 
     Clothing jeans;
+    Shop shop;
 
     @Before
     public void setUp() throws Exception {
-        jeans = new Clothing("jeans", ClothingCategory.TROUSERS, 34.99, 10, "Blue Jeans, 34L", new GregorianCalendar(2018, 3, 23));
+        shop = new Shop("PPS Groceries");
+        jeans = new Clothing("jeans", ClothingCategory.TROUSERS, 34.99, 10, "Blue Jeans, 34L", new GregorianCalendar(2018, 3, 23), shop);
     }
 
     @Test

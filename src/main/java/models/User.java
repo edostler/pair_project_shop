@@ -1,9 +1,12 @@
 package models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name="users")
 public class User {
 
     private int id;
@@ -13,18 +16,21 @@ public class User {
     private Set<PreviousOrder> previousOrders;
     private double lifetimeSpend;
     private CurrentOrder basket;
+    private Shop shop;
 
     public User() {
     }
 
-    public User(String name, String username, int distance) {
+    public User(String name, String username, int distance, Shop shop) {
         this.name = name;
         this.distance = distance;
         this.username = username;
         this.lifetimeSpend = 0;
         this.previousOrders = new HashSet<>();
+        this.shop = shop;
     }
 
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -33,6 +39,8 @@ public class User {
         this.id = id;
     }
 
+
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -41,6 +49,7 @@ public class User {
         this.name = name;
     }
 
+    @Column(name="distance")
     public int getDistance() {
         return distance;
     }
@@ -49,6 +58,7 @@ public class User {
         this.distance = distance;
     }
 
+    @Column(name="username")
     public String getUsername() {
         return username;
     }
@@ -57,6 +67,7 @@ public class User {
         this.username = username;
     }
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     public Set<PreviousOrder> getPreviousOrders() {
         return previousOrders;
     }
@@ -65,6 +76,7 @@ public class User {
         this.previousOrders = previousOrders;
     }
 
+    @Column(name="lifetime_spend")
     public double getLifetimeSpend() {
         return lifetimeSpend;
     }
@@ -73,11 +85,22 @@ public class User {
         this.lifetimeSpend = lifetimeSpend;
     }
 
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     public CurrentOrder getBasket() {
         return basket;
     }
 
     public void setBasket(CurrentOrder basket) {
         this.basket = basket;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="shop_id", nullable = false)
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 }
