@@ -2,7 +2,7 @@ package models;
 
 import java.util.GregorianCalendar;
 
-public class Product {
+public abstract class Product {
 
     private int id;
     private String name;
