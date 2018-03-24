@@ -7,23 +7,23 @@
             <th>Name</th>
             <th>Description</th>
             <th>Availability</th>
-            <th>Quantity</th>
+            <th>In Stock</th>
             <th>Stock Date</th>
             <th>Price</th>
         </tr>
         #foreach($product in $products)
         <tr>
-            <td>$product.getName()</td>
+            <td><a href="/products/$product.getId()">$product.getName()</a></td>
             <td>$product.getDescription()</td>
-            <td>$product.isAvailable()</td>
+            <td>$product.availability</td>
             <td>$product.getQuantity()</td>
-            <td>$product.getStockDate()</td>
+            <td>$product.formatDateToString($product.getStockDate())</td>
             <td>$product.getPrice()</td>
-            <form action="/currentPurchase" method="post">
-                <td><input class="inputbox" type="text" name="quantity" required="true">
+            <form action="/products/add" method="post">
+                <td>Qty:<input class="inputbox" type="text" name="quantity" required="true">
                 </td>
-            <td><input type="submit" value="Add to basket" class="button">
-            </td>
+                <td><input type="submit" value="Add to basket" class="button">
+                </td>
             </form>
         </tr>
         #end
