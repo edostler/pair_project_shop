@@ -2,7 +2,6 @@ package controllers;
 
 import db.DBHelper;
 import models.Clothing;
-import models.Food;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -13,6 +12,10 @@ import java.util.Map;
 import static spark.Spark.get;
 
 public class ClothingProductsController {
+
+    public ClothingProductsController() {
+        this.setupEndPoints();
+    }
 
     private void setupEndPoints() {
         get("/clothing-products", (req, res) -> {
@@ -29,11 +32,11 @@ public class ClothingProductsController {
         get("/clothing-products/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
-            Clothing clothingProducts = DBHelper.find(Clothing.class, intId);
+            Clothing clothingProduct = DBHelper.find(Clothing.class, intId);
 
             Map<String, Object> model = new HashMap<>();
 
-            model.put("clothingProducts", clothingProducts);
+            model.put("clothingProduct", clothingProduct);
             model.put("template", "templates/clothingProducts/show.vtl");
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
