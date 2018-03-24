@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 
 @Entity
-@Table(name="previous_orders")
+@Table(name="previous_purchases")
 public class PreviousPurchase extends Purchase {
 
     private User user;

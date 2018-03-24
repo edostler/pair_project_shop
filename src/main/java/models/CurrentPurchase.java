@@ -7,7 +7,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="current_orders")
+@Table(name="current_purchases")
 public class CurrentPurchase extends Purchase {
 
     private User user;
