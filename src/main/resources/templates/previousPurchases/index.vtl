@@ -15,8 +15,8 @@
         #foreach($previousPurchase in $previousPurchases)
         <tr>
             <td>$previousPurchase.getUser().getName()</td>
-            <td>$previousPurchase.getOrderDate().formatDateToString()</td>
-            <td>$previousPurchase.getDeliveryDate().formatDateToString()</td>
+            <td>$previousPurchase.formatDateToString($previousPurchase.getOrderDate())</td>
+            <td>$previousPurchase.formatDateToString($previousPurchase.getDeliveryDate())</td>
             <td>$previousPurchase.getTotal()</td>
             <td><a href="/previous-purchases/$previousPurchase.getId()">Details</a></td>
         <tr>

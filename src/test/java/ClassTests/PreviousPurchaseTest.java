@@ -57,4 +57,9 @@ public class PreviousPurchaseTest {
         assertEquals(2020, previousOrder.getDeliveryDate().get(GregorianCalendar.YEAR));
     }
 
+    @Test
+    public void testFormatDateToString() {
+        assertEquals("28/5/2020", previousOrder.formatDateToString(deliveryDate));
+    }
+
 }

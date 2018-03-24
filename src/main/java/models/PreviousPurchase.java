@@ -62,4 +62,12 @@ public class PreviousPurchase extends Purchase {
     public void setShop(Shop shop) {
         this.shop = shop;
     }
+
+    public String formatDateToString(GregorianCalendar date) {
+        String day = Integer.toString(date.get(GregorianCalendar.DAY_OF_MONTH));
+        String month = Integer.toString(date.get(GregorianCalendar.MONTH));
+        String year = Integer.toString(date.get(GregorianCalendar.YEAR));
+        String result = day + "/" + month + "/" +year;
+        return result;
+    }
 }
