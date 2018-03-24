@@ -1,0 +1,20 @@
+<div class="container">
+
+    <ul>
+        <li>Name: $healthProduct.getName()</li>
+        <li>Description: $healthProduct.getDescription()</li>
+        <li>Availability: $healthProduct.availability</li>
+        <li>In Stock: $healthProduct.getQuantity()</li>
+        <li>Stock Date: $healthProduct.formatDateToString($healthProduct.getStockDate())</li>
+        <li>Price: $healthProduct.getPrice()</li>
+    </ul>
+
+
+    <form action="/products/add" method="post">
+        <td>Qty:<input class="inputbox" type="text" name="quantity" required="true">
+        </td>
+        <td><input type="submit" value="Add to basket" class="button">
+        </td>
+    </form>
+
+</div>
