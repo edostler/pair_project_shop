@@ -12,7 +12,7 @@ public class ShopTest {
 
     private Shop shop;
     private Food foodProduct;
-    private PreviousOrder previousOrder;
+    private PreviousPurchase previousOrder;
     private User user;
     private GregorianCalendar orderDate;
     private GregorianCalendar deliveryDate;
@@ -24,7 +24,7 @@ public class ShopTest {
         user = new User("Ed", "edostler", 25, shop);
         orderDate = new GregorianCalendar(2020, 5, 10);
         deliveryDate = new GregorianCalendar(2020, 5, 28);
-        previousOrder = new PreviousOrder(0, user, orderDate, deliveryDate, shop);
+        previousOrder = new PreviousPurchase(0, user, orderDate, deliveryDate, shop);
     }
 
     @Test

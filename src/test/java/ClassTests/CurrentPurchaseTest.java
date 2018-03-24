@@ -1,13 +1,13 @@
 package ClassTests;
 
-import models.CurrentOrder;
+import models.CurrentPurchase;
 import models.Shop;
 import models.User;
 import org.junit.Before;
 
-public class CurrentOrderTest {
+public class CurrentPurchaseTest {
 
-    private CurrentOrder currentOrder;
+    private CurrentPurchase currentOrder;
     private User user;
     private Shop shop;
 
@@ -15,7 +15,7 @@ public class CurrentOrderTest {
     public void setUp() throws Exception {
         shop = new Shop("PPS Groceries");
         user = new User("Ed", "edostler", 25, shop);
-        currentOrder = new CurrentOrder(0, user);
+        currentOrder = new CurrentPurchase(0, user);
     }
 
 }

@@ -10,7 +10,7 @@ public class Shop {
 
     private int id;
     private String name;
-    private Set<PreviousOrder> allOrders;
+    private Set<PreviousPurchase> allOrders;
     private Set<Product> stock;
     private Set<User> users;
 
@@ -45,11 +45,11 @@ public class Shop {
     }
 
     @OneToMany(mappedBy="shop", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    public Set<PreviousOrder> getAllOrders() {
+    public Set<PreviousPurchase> getAllOrders() {
         return allOrders;
     }
 
-    public void setAllOrders(Set<PreviousOrder> allOrders) {
+    public void setAllOrders(Set<PreviousPurchase> allOrders) {
         this.allOrders = allOrders;
     }
 
@@ -75,7 +75,7 @@ public class Shop {
         this.stock.add(product);
     }
 
-    public void addPreviousOrderToAllOrders(PreviousOrder previousOrder) {
+    public void addPreviousOrderToAllOrders(PreviousPurchase previousOrder) {
         this.allOrders.add(previousOrder);
     }
 

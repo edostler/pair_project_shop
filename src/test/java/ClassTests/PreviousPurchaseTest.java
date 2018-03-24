@@ -1,20 +1,18 @@
 package ClassTests;
 
-import models.PreviousOrder;
+import models.PreviousPurchase;
 import models.Shop;
 import models.User;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.Month;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import static org.junit.Assert.assertEquals;
 
-public class PreviousOrderTest {
+public class PreviousPurchaseTest {
 
-    private PreviousOrder previousOrder;
+    private PreviousPurchase previousOrder;
     private User user;
     private GregorianCalendar orderDate;
     private GregorianCalendar deliveryDate;
@@ -26,7 +24,7 @@ public class PreviousOrderTest {
         user = new User("Ed", "edostler", 25, shop);
         orderDate = new GregorianCalendar(2020, 5, 10);
         deliveryDate = new GregorianCalendar(2020, 5, 28);
-        previousOrder = new PreviousOrder(0, user, orderDate, deliveryDate, shop);
+        previousOrder = new PreviousPurchase(0, user, orderDate, deliveryDate, shop);
     }
 
     @Test

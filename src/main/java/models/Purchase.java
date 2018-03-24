@@ -7,16 +7,16 @@ import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Order {
+public abstract class Purchase {
 
     private int id;
     private double total;
     private Set<Product> contents;
 
-    public Order() {
+    public Purchase() {
     }
 
-    public Order(double total) {
+    public Purchase(double total) {
         this.total = total;
         this.contents = new HashSet<>();
     }
@@ -41,7 +41,7 @@ public abstract class Order {
         this.total = total;
     }
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "purchase", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     public Set<Product> getContents() {
         return contents;
     }

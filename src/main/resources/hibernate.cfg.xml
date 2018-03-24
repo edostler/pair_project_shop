@@ -11,9 +11,9 @@
         <property name="connection_pool_size">1</property>
         <property name="hbm2ddl.auto">create-drop</property>
         <property name="show_sql">true</property>
-        <mapping class="models.CurrentOrder"/>
-        <mapping class="models.Order"/>
-        <mapping class="models.PreviousOrder"/>
+        <mapping class="models.CurrentPurchase"/>
+        <mapping class="models.Purchase"/>
+        <mapping class="models.PreviousPurchase"/>
         <mapping class="models.Product"/>
         <mapping class="models.Shop"/>
         <mapping class="models.User"/>

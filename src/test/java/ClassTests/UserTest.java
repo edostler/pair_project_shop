@@ -1,7 +1,7 @@
 package ClassTests;
 
 import models.Shop;
-import models.PreviousOrder;
+import models.PreviousPurchase;
 import models.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ public class UserTest {
     Shop shop;
 
 
-    private PreviousOrder previousOrder;
+    private PreviousPurchase previousOrder;
     private GregorianCalendar orderDate;
     private GregorianCalendar deliveryDate;
 
@@ -26,7 +26,7 @@ public class UserTest {
         user = new User("James Bond", "Bond007", 20, shop);
         orderDate = new GregorianCalendar(2020, 5, 10);
         deliveryDate = new GregorianCalendar(2020, 5, 28);
-        previousOrder = new PreviousOrder(0, user, orderDate, deliveryDate, shop);
+        previousOrder = new PreviousPurchase(0, user, orderDate, deliveryDate, shop);
     }
 
     @Test

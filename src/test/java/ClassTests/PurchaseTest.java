@@ -8,9 +8,9 @@ import java.util.GregorianCalendar;
 
 import static org.junit.Assert.assertEquals;
 
-public class OrderTest {
+public class PurchaseTest {
 
-    private CurrentOrder currentOrder;
+    private CurrentPurchase currentOrder;
     private User user;
     private Food foodProduct;
     private Shop shop;
@@ -21,7 +21,7 @@ public class OrderTest {
     public void setUp() throws Exception {
         shop = new Shop("PPS Groceries");
         user = new User("Ed", "edostler", 25, shop);
-        currentOrder = new CurrentOrder(0, user);
+        currentOrder = new CurrentPurchase(0, user);
         foodProduct  = new Food("stawberry milk", FoodCategory.FRUIT_AND_VEG, 3.99, 10, "Yazoo 500ml", new GregorianCalendar(2018, 3, 23), shop);
     }
 

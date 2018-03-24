@@ -6,18 +6,18 @@ import java.util.GregorianCalendar;
 
 @Entity
 @Table(name="previous_orders")
-public class PreviousOrder extends Order{
+public class PreviousPurchase extends Purchase {
 
     private User user;
     private GregorianCalendar orderDate;
     private GregorianCalendar deliveryDate;
     private Shop shop;
 
-    public PreviousOrder() {
+    public PreviousPurchase() {
     }
 
 
-    public PreviousOrder(double total, User user, GregorianCalendar orderDate, GregorianCalendar deliveryDate, Shop shop) {
+    public PreviousPurchase(double total, User user, GregorianCalendar orderDate, GregorianCalendar deliveryDate, Shop shop) {
         super(total);
         this.user = user;
         this.orderDate = orderDate;

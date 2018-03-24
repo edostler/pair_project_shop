@@ -8,14 +8,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="current_orders")
-public class CurrentOrder extends Order{
+public class CurrentPurchase extends Purchase {
 
     private User user;
 
-    public CurrentOrder() {
+    public CurrentPurchase() {
     }
 
-    public CurrentOrder(double total, User user) {
+    public CurrentPurchase(double total, User user) {
         super(total);
         this.user = user;
     }

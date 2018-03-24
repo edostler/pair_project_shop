@@ -15,7 +15,7 @@ public abstract class Product {
     private String description;
     private GregorianCalendar stockDate;
     private Shop shop;
-    private Order order;
+    private Purchase purchase;
 
 
     public Product() {
@@ -28,7 +28,7 @@ public abstract class Product {
         this.description = description;
         this.stockDate = stockDate;
         this.shop = shop;
-        this.order = null;
+        this.purchase = null;
         getAvailability();
     }
 
@@ -108,13 +108,13 @@ public abstract class Product {
     }
 
     @ManyToOne
-    @JoinColumn(name="order_id", nullable = false)
-    public Order getOrder() {
-        return order;
+    @JoinColumn(name="purchase_id", nullable = true)
+    public Purchase getPurchase() {
+        return purchase;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
     }
 
     public boolean getAvailability() {

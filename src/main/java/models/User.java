@@ -1,7 +1,6 @@
 package models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,9 +12,9 @@ public class User {
     private String name;
     private int distance;
     private String username;
-    private Set<PreviousOrder> previousOrders;
+    private Set<PreviousPurchase> previousOrders;
     private double lifetimeSpend;
-    private CurrentOrder basket;
+    private CurrentPurchase basket;
     private Shop shop;
 
     public User() {
@@ -70,11 +69,11 @@ public class User {
     }
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    public Set<PreviousOrder> getPreviousOrders() {
+    public Set<PreviousPurchase> getPreviousOrders() {
         return previousOrders;
     }
 
-    public void setPreviousOrders(Set<PreviousOrder> previousOrders) {
+    public void setPreviousOrders(Set<PreviousPurchase> previousOrders) {
         this.previousOrders = previousOrders;
     }
 
@@ -88,11 +87,11 @@ public class User {
     }
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
-    public CurrentOrder getBasket() {
+    public CurrentPurchase getBasket() {
         return basket;
     }
 
-    public void setBasket(CurrentOrder basket) {
+    public void setBasket(CurrentPurchase basket) {
         this.basket = basket;
     }
 
@@ -106,7 +105,7 @@ public class User {
         this.shop = shop;
     }
 
-    public void addPreviousOrderToPreviousOrders(PreviousOrder previousOrder) {
+    public void addPreviousOrderToPreviousOrders(PreviousPurchase previousOrder) {
         this.previousOrders.add(previousOrder);
     }
 
