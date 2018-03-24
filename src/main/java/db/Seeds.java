@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Seeds {
 
-    public static void seedData(String[] args) {
+    public static void seedData() {
 
         DBHelper.deleteAll(Food.class);
         DBHelper.deleteAll(Clothing.class);
