@@ -8,6 +8,16 @@ public class Runner {
 
     public static void main(String[] args) {
 
+        DBHelper.deleteAll(Food.class);
+        DBHelper.deleteAll(Clothing.class);
+        DBHelper.deleteAll(Health.class);
+        DBHelper.deleteAll(Product.class);
+        DBHelper.deleteAll(User.class);
+        DBHelper.deleteAll(CurrentPurchase.class);
+        DBHelper.deleteAll(PreviousPurchase.class);
+        DBHelper.deleteAll(Purchase.class);
+        DBHelper.deleteAll(Shop.class);
+
         Shop shop = new Shop("PPS Groceries");
         DBHelper.saveOrUpdate(shop);
 

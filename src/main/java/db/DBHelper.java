@@ -41,6 +41,23 @@ public class DBHelper {
         }
     }
 
+    public static <T> void deleteAll(Class classType){
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            Criteria cr = session.createCriteria(classType);
+            List<T> results = cr.list();
+            for (T result : results){
+                session.delete(result);
+            }
+        } catch (HibernateException e){
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
     public static <T> T getUnique(Criteria criteria) {
         T result = null;
         try {
