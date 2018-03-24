@@ -1,0 +1,31 @@
+<p>All Foods</p>
+
+<div class="container">
+
+    <table class="products-list">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Availability</th>
+            <th>In Stock</th>
+            <th>Stock Date</th>
+            <th>Price</th>
+        </tr>
+        #foreach($food in $foods)
+        <tr>
+            <td><a href="/food-products/$food.getId()">$food.getName()</a></td>
+            <td>$food.getDescription()</td>
+            <td>$food.availability</td>
+            <td>$food.getQuantity()</td>
+            <td>$food.formatDateToString($food.getStockDate())</td>
+            <td>$food.getPrice()</td>
+            <form action="/products/add" method="post">
+                <td>Qty:<input class="inputbox" type="text" name="quantity" required="true">
+                </td>
+                <td><input type="submit" value="Add to basket" class="button">
+                </td>
+            </form>
+        </tr>
+        #end
+    </table>
+</div>
