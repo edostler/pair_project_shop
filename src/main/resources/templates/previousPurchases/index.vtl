@@ -1,0 +1,25 @@
+<p class="pageHeader">All Previous Purchases</p>
+
+<div>
+    <a href="/previous-purchases/new" class="button center">New Previous Purchase</a>
+</div>
+<div class="container">
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Order Date</th>
+            <th>Delivery Date</th>
+            <th>Total (£)</th>
+            <th>View Order</th>
+        </tr>
+        #foreach($previousPurchase in $previousPurchases)
+        <tr>
+            <td>$previousPurchase.getUser().getName()</td>
+            <td>$previousPurchase.getOrderDate().formatDateToString()</td>
+            <td>$previousPurchase.getDeliveryDate().formatDateToString()</td>
+            <td>$previousPurchase.getTotal()</td>
+            <td><a href="/previous-purchases/$previousPurchase.getId()">Details</a></td>
+        <tr>
+        #end
+    </table>
+</div>

@@ -11,7 +11,7 @@
     <h1 class="title">PPS Groceries</h1>
     <p class="login">Logged in as: <a href="/account">$user</a></p>
     <p class="logout"><a href="/logout"/>Logout</a></p>
-    <a class="basket" href="/currentPurchase">Basket</a>
+    <a class="basket" href="/current-purchases/$currentPurchase.getId()">Basket</a>
 
     <div class="nav">
         <a class="nav_links" href="/">Home</a>
@@ -21,15 +21,14 @@
     <p>-----</p>
     <p>Temp Nav Bar</p>
     <div class="nav">
-        <a href="/users">Users</a>
-        <a href="/previous-purchases">Previous Purchases</a>
-        <a href="/current-purchases">Current Purchases</a>
-        <a href="/products">Products</a>
-        <a href="/food-products">Food Products</a>
-        <a href="/clothing-products">Clothing Products</a>
-        <a href="/health-products">Health Products</a>
+        <ul>
+            <li><a href="/users">Users</a></li>
+            <li><a href="/previous-purchases">Previous Purchases</a></li>
+            <li><a href="/products">Products</a></li>
+        </ul>
     </div>
     <p>-----</p>
+
 </div>
 
 <div class="container">
