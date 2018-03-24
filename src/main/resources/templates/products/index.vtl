@@ -19,6 +19,12 @@
             <td>$product.getQuantity()</td>
             <td>$product.getStockDate()</td>
             <td>$product.getPrice()</td>
+            <form action="/currentPurchase" method="post">
+                <td><input class="inputbox" type="text" name="quantity" required="true">
+                </td>
+            <td><input type="submit" value="Add to basket" class="button">
+            </td>
+            </form>
         </tr>
         #end
     </table>
