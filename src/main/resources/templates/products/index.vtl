@@ -1,0 +1,26 @@
+<p>All Products</p>
+
+<div class="container">
+
+    <table class="products-list">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Availability</th>
+            <th>Quantity</th>
+            <th>Stock Date</th>
+            <th>Price</th>
+        </tr>
+        #foreach($product in $products)
+        <tr>
+            <td>$product.getName()</td>
+            <td>$product.getDescription()</td>
+            <td>$product.isAvailable()</td>
+            <td>$product.getQuantity()</td>
+            <td>$product.getStockDate()</td>
+            <td>$product.getPrice()</td>
+        </tr>
+        #end
+    </table>
+</div>
+
