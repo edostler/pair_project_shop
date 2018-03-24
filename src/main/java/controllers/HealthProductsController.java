@@ -33,7 +33,7 @@ public class HealthProductsController {
         get("/health-products/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
-            Clothing healthProduct = DBHelper.find(Health.class, intId);
+            Health healthProduct = DBHelper.find(Health.class, intId);
 
             Map<String, Object> model = new HashMap<>();
 
