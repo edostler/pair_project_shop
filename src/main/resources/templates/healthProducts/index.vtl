@@ -1,4 +1,4 @@
-<p>All Clothing Products</p>
+<p>All Health Products</p>
 
 <div class="container">
 
@@ -11,14 +11,14 @@
             <th>Stock Date</th>
             <th>Price</th>
         </tr>
-        #foreach($clothingProduct in $clothingProducts)
+        #foreach($healthProduct in $healthProducts)
         <tr>
-            <td><a href="/clothing-products/$clothingProduct.getId()">$clothingProduct.getName()</a></td>
-            <td>$clothingProduct.getDescription()</td>
-            <td>$clothingProduct.availability</td>
-            <td>$clothingProduct.getQuantity()</td>
-            <td>$clothingProduct.formatDateToString($clothingProduct.getStockDate())</td>
-            <td>$clothingProduct.getPrice()</td>
+            <td><a href="/health-products/$healthProduct.getId()">$healthProduct.getName()</a></td>
+            <td>$healthProduct.getDescription()</td>
+            <td>$healthProduct.availability</td>
+            <td>$healthProduct.getQuantity()</td>
+            <td>$healthProduct.formatDateToString($healthProduct.getStockDate())</td>
+            <td>$healthProduct.getPrice()</td>
             <form action="/products/add" method="post">
                 <td>Qty:<input class="inputbox" type="text" name="quantity" required="true">
                 </td>
