@@ -29,5 +29,21 @@ public class UsersController {
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+        get("/users/:id/edit", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            User user = DBHelper.find(User.class, intId);
+
+            Map<String, Object> model = new HashMap<>();
+            model.put("user", user);
+            model.put("template", "templates/departments/edit.vtl");
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
     }
 }
