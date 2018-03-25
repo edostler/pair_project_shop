@@ -1,6 +1,6 @@
 <p>Edit Product</p>
 
-<form action="/foods/$food.getId()" method="post">
+<form action="/food-products/$food.getId()" method="post">
     <label for="name">Name:</label>
     <input id="name" class="inputbox" type="text" name="name" required="true" value="$food.getName()">
 
@@ -21,4 +21,4 @@
 
 </form>
 
-<a href="/customers/food.getId()" class="button center">Cancel</a>
+<a href="/food-products/food.getId()" class="button center">Cancel</a>
