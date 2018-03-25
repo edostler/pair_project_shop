@@ -22,6 +22,7 @@ public class MainController {
         staticFileLocation("/public");
 
         LoginController loginController = new LoginController();
+        HomepageController homepageController = new HomepageController();
         ShopsController shopsController = new ShopsController();
         UsersController usersController = new UsersController();
         PurchasesController purchasesController = new PurchasesController();
