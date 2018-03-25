@@ -27,20 +27,35 @@ public class LoginController {
             List<Shop> shops = DBHelper.getAll(Shop.class);
             Map<String, Object> model = new HashMap<>();
             model.put("shops", shops);
-            return new ModelAndView(model, "templates/login.vtl");
+            return new ModelAndView(model, "templates/login/login.vtl");
         }, new VelocityTemplateEngine());
 
 
         post("/login", (req, res) -> {
+            List<Customer> customers = DBHelper.getAll(Customer.class);
             String username = req.queryParams("username");
-            req.session().attribute("username", username);
             if (username.equals("admin")) {
+                req.session().attribute("username", username);
                 res.redirect("/login/password");
             }
             else {
-                res.redirect("/home");
+                for (Customer customer : customers) {
+                    if (username.equals(customer.getUsername())) {
+                        req.session().attribute("username", username);
+                        res.redirect("/home");
+                    }
+                }
+                res.redirect("/login/no-account");
             }
             return null;
+        }, new VelocityTemplateEngine());
+
+
+        get("login/no-account", (req, res) -> {
+            List<Shop> shops = DBHelper.getAll(Shop.class);
+            Map<String, Object> model = new HashMap<>();
+            model.put("shops", shops);
+            return new ModelAndView(model, "templates/login/noAccount.vtl");
         }, new VelocityTemplateEngine());
 
 
@@ -48,8 +63,9 @@ public class LoginController {
             Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
-            return new ModelAndView(model, "templates/adminPassword.vtl");
+            return new ModelAndView(model, "templates/login/adminPassword.vtl");
         }, new VelocityTemplateEngine());
+
 
         post("/login/password", (req, res) -> {
             String password = req.queryParams("password");
@@ -64,21 +80,14 @@ public class LoginController {
 
 
         post("/login-new", (req, res) -> {
-
             String name = req.queryParams("name");
             String username = req.queryParams("username");
             int distance = Integer.parseInt(req.queryParams("distance"));
             int shopId = Integer.parseInt(req.queryParams("shop"));
             Shop shop = DBHelper.find(Shop.class, shopId);
-
             Customer customer = new Customer(name, username, distance, shop);
             DBHelper.saveOrUpdate(customer);
-
-//            int customerId = customer.getId();
-
-//            req.session().attribute("customerId", customerId);
             req.session().attribute("username", username);
-
             res.redirect("/welcome");
             return null;
         }, new VelocityTemplateEngine());
