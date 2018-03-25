@@ -1,0 +1,24 @@
+<p>Edit Product</p>
+
+<form action="/products/$product.getId()" method="post">
+    <label for="name">Name:</label>
+    <input id="name" class="inputbox" type="text" name="name" required="true" value="$product.getName()">
+
+    <label for="description">Description:</label>
+    <input id="description" class="inputbox" type="text" name="desciption" required="true" value="$product.getDescription()">
+
+    <label id="quantity" for="quantity">Quantity:</label>
+    <input type="number" name="quantity" required="true" class="inputbox" value="$product.getQuantity()">
+
+    <label id="stockDate" for="stockDate">StockDate:</label>
+    <input type="text" name="stockDate" required="true" class="inputbox" value="$product.formatDateToString($product.getStockDate())">
+
+    <label id="price" for="price">Price:</label>
+    <input type="number" name="price" required="true" class="inputbox" value="$product.getPrice()">
+
+
+    <input type="submit" value="Save" class="button">
+
+</form>
+
+<a href="/customers/$product.getId()" class="button center">Cancel</a>

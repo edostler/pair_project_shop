@@ -1,0 +1,24 @@
+<p>Edit Product</p>
+
+<form action="/foods/$food.getId()" method="post">
+    <label for="name">Name:</label>
+    <input id="name" class="inputbox" type="text" name="name" required="true" value="$food.getName()">
+
+    <label for="description">Description:</label>
+    <input id="description" class="inputbox" type="text" name="desciption" required="true" value="$food.getDescription()">
+
+    <label id="quantity" for="quantity">Quantity:</label>
+    <input type="number" name="quantity" required="true" class="inputbox" value="$food.getQuantity()">
+
+    <label id="stockDate" for="stockDate">StockDate:</label>
+    <input type="text" name="stockDate" required="true" class="inputbox" value="$food.formatDateToString($food.getStockDate())">
+
+    <label id="price" for="price">Price:</label>
+    <input type="number" name="price" required="true" class="inputbox" value="$food.getPrice()">
+
+
+    <input type="submit" value="Save" class="button">
+
+</form>
+
+<a href="/customers/food.getId()" class="button center">Cancel</a>
