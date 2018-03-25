@@ -1,7 +1,24 @@
-<h1>Account Details</h1>
+<p>All Users</p>
 
-<p>Click on a category</p>
-
-<a href="/users/:id/edit" class="button center">Edit Details</a>
-
-<a href="/users/:id/previous-orders" class="button center">Previous Orders</a>
+<div>
+    <a href="/users/new" class="button center">New User</a>
+</div>
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Distance</th>
+            <th>Shop</th>
+        </tr>
+        #foreach($user in $users)
+        <tr>
+            <td>$user.getFirstName()</td>
+            <td>$user.getLastName()</td>
+            <td>$user.getDepartment().getTitle()</td>
+            <td>$user.getSalary()</td>
+            <td><a href="/user/$user.getId()" class="button center">Details</a></td>
+        <tr>
+            #end
+    </table>
+</div>
