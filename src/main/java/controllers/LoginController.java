@@ -34,12 +34,30 @@ public class LoginController {
         post("/login", (req, res) -> {
             String username = req.queryParams("username");
             req.session().attribute("username", username);
-            String test = req.queryParams("username").toString().toLowerCase();
-            if (test == "admin") {
-                res.redirect("/");
+            if (username.equals("admin")) {
+                res.redirect("/login/password");
             }
             else {
                 res.redirect("/home");
+            }
+            return null;
+        }, new VelocityTemplateEngine());
+
+
+        get("/login/password", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
+            return new ModelAndView(model, "templates/adminPassword.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/login/password", (req, res) -> {
+            String password = req.queryParams("password");
+            if (password.equals("admin1234")) {
+                res.redirect("/");
+            }
+            else {
+                res.redirect("/logout");
             }
             return null;
         }, new VelocityTemplateEngine());
