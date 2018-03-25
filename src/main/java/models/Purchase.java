@@ -62,4 +62,8 @@ public abstract class Purchase {
         this.contents.remove(product);
     }
 
+    public void increaseTotal(double price){
+        total += price;
+    }
+
 }

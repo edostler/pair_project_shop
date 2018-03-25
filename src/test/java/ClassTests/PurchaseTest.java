@@ -54,4 +54,12 @@ public class PurchaseTest {
         currentPurchase.removeProductFromContents(foodProduct);
         assertEquals(0, currentPurchase.checkContentsSize());
     }
+
+    @Test
+    public void testIncreaseTotal(){
+        assertEquals(0, currentPurchase.getTotal(), 0.01);
+        currentPurchase.increaseTotal(3.99);
+        assertEquals(3.99, currentPurchase.getTotal(),0.01);
+
+    }
 }
