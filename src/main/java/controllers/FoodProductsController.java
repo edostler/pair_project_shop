@@ -23,7 +23,7 @@ public class FoodProductsController {
             List<Food> foods = DBHelper.getAll(Food.class);
             model.put("foods", foods);
             model.put("template", "templates/foodProducts/index.vtl");
-            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
 
             return new ModelAndView(model, "templates/layout.vtl");
@@ -38,7 +38,7 @@ public class FoodProductsController {
 
             model.put("food", food);
             model.put("template", "templates/foodProducts/show.vtl");
-            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
 
             return new ModelAndView(model, "templates/layout.vtl");

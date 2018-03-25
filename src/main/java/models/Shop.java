@@ -10,18 +10,18 @@ public class Shop {
 
     private int id;
     private String name;
-    private Set<PreviousPurchase> allOrders;
+    private Set<PreviousPurchase> allPurchases;
     private Set<Product> stock;
-    private Set<User> users;
+    private Set<Customer> customers;
 
     public Shop() {
     }
 
     public Shop(String name) {
         this.name = name;
-        this.allOrders = new HashSet<>();
+        this.allPurchases = new HashSet<>();
         this.stock = new HashSet<>();
-        this.users = new HashSet<>();
+        this.customers = new HashSet<>();
     }
 
     @Id
@@ -45,12 +45,12 @@ public class Shop {
     }
 
     @OneToMany(mappedBy="shop", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    public Set<PreviousPurchase> getAllOrders() {
-        return allOrders;
+    public Set<PreviousPurchase> getAllPurchases() {
+        return allPurchases;
     }
 
-    public void setAllOrders(Set<PreviousPurchase> allOrders) {
-        this.allOrders = allOrders;
+    public void setAllPurchases(Set<PreviousPurchase> allPurchases) {
+        this.allPurchases = allPurchases;
     }
 
     @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
@@ -63,28 +63,28 @@ public class Shop {
     }
 
     @OneToMany(mappedBy = "shop", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    public Set<User> getUsers() {
-        return users;
+    public Set<Customer> getCustomers() {
+        return customers;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
     }
 
     public void addProductToStock(Product product) {
         this.stock.add(product);
     }
 
-    public void addPreviousOrderToAllOrders(PreviousPurchase previousOrder) {
-        this.allOrders.add(previousOrder);
+    public void addPreviousPurchaseToAllPurchases(PreviousPurchase previousPurchase) {
+        this.allPurchases.add(previousPurchase);
     }
 
     public int checkStockSize() {
         return this.stock.size();
     }
 
-    public int checkAllOrdersSize() {
-        return this.allOrders.size();
+    public int checkAllPurchasesSize() {
+        return this.allPurchases.size();
     }
 
     public void removeProductFromStock(Product product) {

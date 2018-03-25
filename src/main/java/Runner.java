@@ -12,7 +12,7 @@ public class Runner {
         DBHelper.deleteAll(Clothing.class);
         DBHelper.deleteAll(Health.class);
         DBHelper.deleteAll(Product.class);
-        DBHelper.deleteAll(User.class);
+        DBHelper.deleteAll(Customer.class);
         DBHelper.deleteAll(CurrentPurchase.class);
         DBHelper.deleteAll(PreviousPurchase.class);
         DBHelper.deleteAll(Purchase.class);
@@ -21,14 +21,14 @@ public class Runner {
         Shop shop = new Shop("PPS Groceries");
         DBHelper.saveOrUpdate(shop);
 
-        User user1 = new User("James Bond", "Bond007", 20, shop);
-        User user2 = new User("Clark Kent", "Superman01", 30, shop);
-        User user3 = new User("Bruce Wayne", "Batman01", 55, shop);
-        User user4 = new User("Peter Parker", "Spiderman01", 5, shop);
-        DBHelper.saveOrUpdate(user1);
-        DBHelper.saveOrUpdate(user2);
-        DBHelper.saveOrUpdate(user3);
-        DBHelper.saveOrUpdate(user4);
+        Customer customer1 = new Customer("James Bond", "Bond007", 20, shop);
+        Customer customer2 = new Customer("Clark Kent", "Superman01", 30, shop);
+        Customer customer3 = new Customer("Bruce Wayne", "Batman01", 55, shop);
+        Customer customer4 = new Customer("Peter Parker", "Spiderman01", 5, shop);
+        DBHelper.saveOrUpdate(customer1);
+        DBHelper.saveOrUpdate(customer2);
+        DBHelper.saveOrUpdate(customer3);
+        DBHelper.saveOrUpdate(customer4);
 
         Food food1 = new Food("yoghurt", FoodCategory.FRUIT_AND_VEG, 0.50, 10, "Muller Rice, strawberry flavour", new GregorianCalendar(2018, 3, 23), shop);
         Food food2 = new Food("fish fingers", FoodCategory.FROZEN, 0.50, 10, "Birds eye", new GregorianCalendar(2018, 3, 23), shop);
@@ -52,23 +52,23 @@ public class Runner {
         DBHelper.saveOrUpdate(health2);
         DBHelper.saveOrUpdate(health3);
 
-        CurrentPurchase currentOrder1 = new CurrentPurchase(0.00, user1);
-        CurrentPurchase currentOrder2 = new CurrentPurchase(0.00, user2);
-        CurrentPurchase currentOrder3 = new CurrentPurchase(0.00, user3);
-        DBHelper.saveOrUpdate(currentOrder1);
-        DBHelper.saveOrUpdate(currentOrder2);
-        DBHelper.saveOrUpdate(currentOrder3);
+        CurrentPurchase currentPurchase1 = new CurrentPurchase(0.00, customer1);
+        CurrentPurchase currentPurchase2 = new CurrentPurchase(0.00, customer2);
+        CurrentPurchase currentPurchase3 = new CurrentPurchase(0.00, customer3);
+        DBHelper.saveOrUpdate(currentPurchase1);
+        DBHelper.saveOrUpdate(currentPurchase2);
+        DBHelper.saveOrUpdate(currentPurchase3);
 
-        PreviousPurchase previousOrder1 = new PreviousPurchase(0.00, user1, new GregorianCalendar(2018, 2, 22), new GregorianCalendar(2018, 2, 23), shop);
-        PreviousPurchase previousOrder2 = new PreviousPurchase(0.00, user1, new GregorianCalendar(2018, 2, 28), new GregorianCalendar(2018, 3, 01), shop);
-        PreviousPurchase previousOrder3 = new PreviousPurchase(0.00, user1, new GregorianCalendar(2018, 3, 06), new GregorianCalendar(2018, 3, 07), shop);
-        DBHelper.saveOrUpdate(previousOrder1);
-        DBHelper.saveOrUpdate(previousOrder2);
-        DBHelper.saveOrUpdate(previousOrder3);
+        PreviousPurchase previousPurchase1 = new PreviousPurchase(0.00, customer1, new GregorianCalendar(2018, 2, 22), new GregorianCalendar(2018, 2, 23), shop);
+        PreviousPurchase previousPurchase2 = new PreviousPurchase(0.00, customer1, new GregorianCalendar(2018, 2, 28), new GregorianCalendar(2018, 3, 01), shop);
+        PreviousPurchase previousPurchase3 = new PreviousPurchase(0.00, customer1, new GregorianCalendar(2018, 3, 06), new GregorianCalendar(2018, 3, 07), shop);
+        DBHelper.saveOrUpdate(previousPurchase1);
+        DBHelper.saveOrUpdate(previousPurchase2);
+        DBHelper.saveOrUpdate(previousPurchase3);
 
-        User foundUser = DBHelper.find(User.class, user1.getId());
+        Customer foundCustomer = DBHelper.find(Customer.class, customer1.getId());
 
 
-        List<PreviousPurchase> foundPreviousOrders = DBHelper.getAll(PreviousPurchase.class);
+        List<PreviousPurchase> foundPreviousPurchases = DBHelper.getAll(PreviousPurchase.class);
     }
 }

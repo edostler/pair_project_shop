@@ -24,7 +24,7 @@ public class HealthProductsController {
             List<Health> healthProducts = DBHelper.getAll(Health.class);
             model.put("healthProducts", healthProducts);
             model.put("template", "templates/healthProducts/index.vtl");
-            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
 
             return new ModelAndView(model, "templates/layout.vtl");
@@ -39,7 +39,7 @@ public class HealthProductsController {
 
             model.put("healthProduct", healthProduct);
             model.put("template", "templates/healthProducts/show.vtl");
-            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
 
             return new ModelAndView(model, "templates/layout.vtl");

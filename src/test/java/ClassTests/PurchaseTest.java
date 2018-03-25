@@ -10,8 +10,8 @@ import static org.junit.Assert.assertEquals;
 
 public class PurchaseTest {
 
-    private CurrentPurchase currentOrder;
-    private User user;
+    private CurrentPurchase currentPurchase;
+    private Customer customer;
     private Food foodProduct;
     private Shop shop;
 
@@ -20,38 +20,38 @@ public class PurchaseTest {
     @Before
     public void setUp() throws Exception {
         shop = new Shop("PPS Groceries");
-        user = new User("Ed", "edostler", 25, shop);
-        currentOrder = new CurrentPurchase(0, user);
+        customer = new Customer("Ed", "edostler", 25, shop);
+        currentPurchase = new CurrentPurchase(0, customer);
         foodProduct  = new Food("stawberry milk", FoodCategory.FRUIT_AND_VEG, 3.99, 10, "Yazoo 500ml", new GregorianCalendar(2018, 3, 23), shop);
     }
 
     @Test
     public void testTotal() {
-        assertEquals(0, currentOrder.getTotal(), 0.01);
+        assertEquals(0, currentPurchase.getTotal(), 0.01);
     }
 
     @Test
     public void testSetTotal() {
-        currentOrder.setTotal(10.55);
-        assertEquals(10.55, currentOrder.getTotal(), 0.01);
+        currentPurchase.setTotal(10.55);
+        assertEquals(10.55, currentPurchase.getTotal(), 0.01);
     }
 
     @Test
     public void canCheckContentsSize() {
-        assertEquals(0, currentOrder.checkContentsSize());
+        assertEquals(0, currentPurchase.checkContentsSize());
     }
 
     @Test
     public void canAddProductToContents() {
-        currentOrder.addProductToContents(foodProduct);
-        assertEquals(1, currentOrder.checkContentsSize());
+        currentPurchase.addProductToContents(foodProduct);
+        assertEquals(1, currentPurchase.checkContentsSize());
     }
 
     @Test
     public void canRemoveProductFromContents() {
-        currentOrder.addProductToContents(foodProduct);
-        assertEquals(1, currentOrder.checkContentsSize());
-        currentOrder.removeProductFromContents(foodProduct);
-        assertEquals(0, currentOrder.checkContentsSize());
+        currentPurchase.addProductToContents(foodProduct);
+        assertEquals(1, currentPurchase.checkContentsSize());
+        currentPurchase.removeProductFromContents(foodProduct);
+        assertEquals(0, currentPurchase.checkContentsSize());
     }
 }

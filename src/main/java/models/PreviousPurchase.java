@@ -1,21 +1,15 @@
 package models;
 
-import sun.util.calendar.Gregorian;
-
 import javax.persistence.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 
 @Entity
 @Table(name="previous_purchases")
 public class PreviousPurchase extends Purchase {
 
-    private User user;
-    private GregorianCalendar orderDate;
+    private Customer customer;
+    private GregorianCalendar purchaseDate;
     private GregorianCalendar deliveryDate;
     private Shop shop;
 
@@ -23,21 +17,21 @@ public class PreviousPurchase extends Purchase {
     }
 
 
-    public PreviousPurchase(double total, User user, GregorianCalendar orderDate, GregorianCalendar deliveryDate, Shop shop) {
+    public PreviousPurchase(double total, Customer customer, GregorianCalendar purchaseDate, GregorianCalendar deliveryDate, Shop shop) {
         super(total);
-        this.user = user;
-        this.orderDate = orderDate;
+        this.customer = customer;
+        this.purchaseDate = purchaseDate;
         this.deliveryDate = deliveryDate;
         this.shop = shop;
     }
 
-    @Column(name="order_date")
-    public GregorianCalendar getOrderDate() {
-        return orderDate;
+    @Column(name="purchase_date")
+    public GregorianCalendar getPurchaseDate() {
+        return purchaseDate;
     }
 
-    public void setOrderDate(GregorianCalendar orderDate) {
-        this.orderDate = orderDate;
+    public void setPurchaseDate(GregorianCalendar purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
     @Column(name="delivery_date")
@@ -50,13 +44,13 @@ public class PreviousPurchase extends Purchase {
     }
 
     @ManyToOne
-    @JoinColumn(name="user_id", nullable = false)
-    public User getUser() {
-        return user;
+    @JoinColumn(name="customer_id", nullable = false)
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @ManyToOne

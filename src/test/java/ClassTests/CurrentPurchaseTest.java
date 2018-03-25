@@ -1,21 +1,21 @@
 package ClassTests;
 
 import models.CurrentPurchase;
+import models.Customer;
 import models.Shop;
-import models.User;
 import org.junit.Before;
 
 public class CurrentPurchaseTest {
 
-    private CurrentPurchase currentOrder;
-    private User user;
+    private CurrentPurchase currentPurchase;
+    private Customer customer;
     private Shop shop;
 
     @Before
     public void setUp() throws Exception {
         shop = new Shop("PPS Groceries");
-        user = new User("Ed", "edostler", 25, shop);
-        currentOrder = new CurrentPurchase(0, user);
+        customer = new Customer("Ed", "edostler", 25, shop);
+        currentPurchase = new CurrentPurchase(0, customer);
     }
 
 }

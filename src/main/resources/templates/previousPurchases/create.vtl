@@ -1,19 +1,19 @@
-<p class="pageHeader">New Previous Order</p>
+<p class="pageHeader">New Previous Purchase</p>
 
 <form action="/previous-purchases" method="post">
 
     <label for="total">Total(£):</label>
     <input id="total" type="number" name="total" required="true" class="inputbox">
 
-    <label for="user">User:</label>
-    <select id="user" name="user">
-        #foreach( $user in $users )
-        <option value="$user.getId()">$user.getName()</option>
+    <label for="customer">User:</label>
+    <select id="customer" name="customer">
+        #foreach( $customer in $customers )
+        <option value="$customer.getId()">$customer.getName()</option>
         #end
     </select>
 
-    <label for="orderDate">Order Date:</label>
-    <input id="orderDate" class="inputbox" type="date" name="orderDate" required="true">
+    <label for="purchaseDate">Purchase Date:</label>
+    <input id="purchaseDate" class="inputbox" type="date" name="purchaseDate" required="true">
 
     <label for="deliveryDate">Delivery Date:</label>
     <input id="deliveryDate" class="inputbox" type="date" name="deliveryDate" required="true">

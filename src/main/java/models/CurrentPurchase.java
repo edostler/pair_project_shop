@@ -10,22 +10,22 @@ import javax.persistence.Table;
 @Table(name="current_purchases")
 public class CurrentPurchase extends Purchase {
 
-    private User user;
+    private Customer customer;
 
     public CurrentPurchase() {
     }
 
-    public CurrentPurchase(double total, User user) {
+    public CurrentPurchase(double total, Customer customer) {
         super(total);
-        this.user = user;
+        this.customer = customer;
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-    public User getUser() {
-        return user;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

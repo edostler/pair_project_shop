@@ -2,7 +2,7 @@ package controllers;
 
 import db.DBHelper;
 import models.Shop;
-import models.User;
+import models.Customer;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -53,12 +53,12 @@ public class LoginController {
             int shopId = Integer.parseInt(req.queryParams("shop"));
             Shop shop = DBHelper.find(Shop.class, shopId);
 
-            User user = new User(name, username, distance, shop);
-            DBHelper.saveOrUpdate(user);
+            Customer customer = new Customer(name, username, distance, shop);
+            DBHelper.saveOrUpdate(customer);
 
-//            int userId = user.getId();
+//            int customerId = customer.getId();
 
-//            req.session().attribute("userId", userId);
+//            req.session().attribute("customerId", customerId);
             req.session().attribute("username", username);
 
             res.redirect("/welcome");
@@ -73,7 +73,7 @@ public class LoginController {
         }, new VelocityTemplateEngine());
     }
 
-    public static String getLoggedInUserName(Request req, Response res) {
+    public static String getLoggedInUsername(Request req, Response res) {
         String username = req.session().attribute("username");
         if (username == null || username.isEmpty()) {
             res.redirect("/login");

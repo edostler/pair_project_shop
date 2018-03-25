@@ -24,7 +24,7 @@ public class ProductsController {
             model.put("products", products);
             model.put("template","templates/products/index.vtl");
 
-            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
 
             return new ModelAndView(model, "templates/layout.vtl");
@@ -39,7 +39,7 @@ public class ProductsController {
 
             model.put("product", product);
             model.put("template", "templates/products/show.vtl");
-            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
 
             return new ModelAndView(model, "templates/layout.vtl");

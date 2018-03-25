@@ -16,7 +16,7 @@
         <mapping class="models.PreviousPurchase"/>
         <mapping class="models.Product"/>
         <mapping class="models.Shop"/>
-        <mapping class="models.User"/>
+        <mapping class="models.Customer"/>
         <mapping class="models.Health"/>
         <mapping class="models.Food"/>
         <mapping class="models.Clothing"/>

@@ -12,19 +12,19 @@ public class ShopTest {
 
     private Shop shop;
     private Food foodProduct;
-    private PreviousPurchase previousOrder;
-    private User user;
-    private GregorianCalendar orderDate;
+    private PreviousPurchase previousPurchase;
+    private Customer customer;
+    private GregorianCalendar purchaseDate;
     private GregorianCalendar deliveryDate;
 
     @Before
     public void setUp() throws Exception {
         shop = new Shop("PPS Groceries");
         foodProduct  = new Food("stawberry milk", FoodCategory.FRUIT_AND_VEG, 3.99, 10, "Yazoo 500ml", new GregorianCalendar(2018, 3, 23), shop);
-        user = new User("Ed", "edostler", 25, shop);
-        orderDate = new GregorianCalendar(2020, 5, 10);
+        customer = new Customer("Ed", "edostler", 25, shop);
+        purchaseDate = new GregorianCalendar(2020, 5, 10);
         deliveryDate = new GregorianCalendar(2020, 5, 28);
-        previousOrder = new PreviousPurchase(0, user, orderDate, deliveryDate, shop);
+        previousPurchase = new PreviousPurchase(0, customer, purchaseDate, deliveryDate, shop);
     }
 
     @Test
@@ -38,8 +38,8 @@ public class ShopTest {
     }
 
     @Test
-    public void canCheckAllOrdersSize() {
-        assertEquals(0, shop.checkAllOrdersSize());
+    public void canCheckAllPurchasesSize() {
+        assertEquals(0, shop.checkAllPurchasesSize());
     }
 
     @Test
@@ -49,9 +49,9 @@ public class ShopTest {
     }
 
     @Test
-    public void canAddPreviousOrderToAllOrders() {
-        shop.addPreviousOrderToAllOrders(previousOrder);
-        assertEquals(1, shop.checkAllOrdersSize());
+    public void canAddPreviousPurchaseToAllPurchases() {
+        shop.addPreviousPurchaseToAllPurchases(previousPurchase);
+        assertEquals(1, shop.checkAllPurchasesSize());
     }
 
     @Test

@@ -1,13 +1,13 @@
 <p>New Customer</p>
 
-<form action="/users" method="post">
+<form action="/customers" method="post">
     <label for="name">Name:</label>
-    <input class="inputbox" type="text" name="name" required="true">
+    <input id="name" class="inputbox" type="text" name="name" required="true">
 
-    <label for="userName">Username:</label>
-    <input class="inputbox" type="text" name="username" required="true">
+    <label for="username">Username:</label>
+    <input id="username" class="inputbox" type="text" name="username" required="true">
 
-    <label for="distance">Distance(Km):</label>
+    <label id="distance" for="distance">Distance(Km):</label>
     <input type="number" name="distance" required="true" class="inputbox">
 
     <label for="shop">Shop:</label> <!-- NEW -->
@@ -19,7 +19,7 @@
 
     <input type="submit" value="Save" class="button">
 
-    <a href="/users" class="button center">Cancel</a>
+    <a href="/customers" class="button center">Cancel</a>
 </form>
 
 

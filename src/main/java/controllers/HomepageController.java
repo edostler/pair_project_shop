@@ -18,7 +18,7 @@ public class HomepageController {
 
         get("/home", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
             model.put("template", "templates/homepage/homepage.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -27,7 +27,7 @@ public class HomepageController {
 
         get ("/welcome", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
             model.put("template", "templates/homepage/welcome.vtl");
             return new ModelAndView(model, "templates/layout.vtl");

@@ -5,27 +5,27 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="users")
-public class User {
+@Table(name="customers")
+public class Customer {
 
     private int id;
     private String name;
     private int distance;
     private String username;
-    private Set<PreviousPurchase> previousOrders;
+    private Set<PreviousPurchase> previousPurchases;
     private double lifetimeSpend;
     private CurrentPurchase basket;
     private Shop shop;
 
-    public User() {
+    public Customer() {
     }
 
-    public User(String name, String username, int distance, Shop shop) {
+    public Customer(String name, String username, int distance, Shop shop) {
         this.name = name;
         this.distance = distance;
         this.username = username;
         this.lifetimeSpend = 0;
-        this.previousOrders = new HashSet<>();
+        this.previousPurchases = new HashSet<>();
         this.shop = shop;
     }
 
@@ -68,13 +68,13 @@ public class User {
         this.username = username;
     }
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    public Set<PreviousPurchase> getPreviousOrders() {
-        return previousOrders;
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    public Set<PreviousPurchase> getPreviousPurchases() {
+        return previousPurchases;
     }
 
-    public void setPreviousOrders(Set<PreviousPurchase> previousOrders) {
-        this.previousOrders = previousOrders;
+    public void setPreviousPurchases(Set<PreviousPurchase> previousPurchases) {
+        this.previousPurchases = previousPurchases;
     }
 
     @Column(name="lifetime_spend")
@@ -86,7 +86,7 @@ public class User {
         this.lifetimeSpend = lifetimeSpend;
     }
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "customer", fetch = FetchType.LAZY)
     public CurrentPurchase getBasket() {
         return basket;
     }
@@ -105,11 +105,11 @@ public class User {
         this.shop = shop;
     }
 
-    public void addPreviousOrderToPreviousOrders(PreviousPurchase previousOrder) {
-        this.previousOrders.add(previousOrder);
+    public void addPreviousPurchaseToPreviousPurchases(PreviousPurchase previousPurchase) {
+        this.previousPurchases.add(previousPurchase);
     }
 
-    public int checkPreviousOrdersSize() {
-        return this.previousOrders.size();
+    public int checkPreviousPurchasesSize() {
+        return this.previousPurchases.size();
     }
 }

@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static spark.Spark.get;
-import static spark.SparkBase.port;
 import static spark.SparkBase.staticFileLocation;
 
 public class MainController {
@@ -24,7 +23,7 @@ public class MainController {
         LoginController loginController = new LoginController();
         HomepageController homepageController = new HomepageController();
         ShopsController shopsController = new ShopsController();
-        UsersController usersController = new UsersController();
+        CustomersController customersController = new CustomersController();
         PurchasesController purchasesController = new PurchasesController();
         PreviousPurchasesController previousPurchasesController = new PreviousPurchasesController();
         CurrentPurchasesController currentPurchasesController = new CurrentPurchasesController();
@@ -35,7 +34,7 @@ public class MainController {
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
             model.put("template","templates/main.vtl");
 
