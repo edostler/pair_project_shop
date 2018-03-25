@@ -1,0 +1,41 @@
+    <p> Shop: $previousPurchase.getShop().getName()</p>
+
+
+<p class="pageHeader">Edit Previous Order</p>
+
+<form action="/previous-purchases/$previousPurchase.getId()" method="post">
+
+    <label for="total">Total(£):</label>
+    <input id="total" type="number" name="total" required="true" class="inputbox" value="$previousPurchase.getTotal()">
+
+    <label for="user">User:</label>
+    <select id="user" name="user">
+        #foreach( $user in $users )
+        <option value="$user.getId()"
+            #if ($user.getId() == $previousPurchase.getUser().getId())
+                selected="selected"
+            #end>
+            $user.getName()</option>
+        #end
+    </select>
+
+    <label for="orderDate">Order Date:</label>
+    <input id="orderDate" class="inputbox" type="date" name="orderDate" required="true" value="$previousPurchase.formatDateToStringForInput($previousPurchase.getOrderDate())">
+
+    <label for="deliveryDate">Delivery Date:</label>
+    <input id="deliveryDate" class="inputbox" type="date" name="deliveryDate" required="true" value="$previousPurchase.formatDateToStringForInput($previousPurchase.getDeliveryDate())">
+
+    <label for="shop">Shop:</label>
+    <select id="shop" name="shop">
+        #foreach( $shop in $shops )
+        <option value="$shop.getId()"
+            #if ($shop.getId() == $previousPurchase.getShop().getId())
+                selected="selected"
+            #end>
+            $shop.getName()</option>
+        #end
+    </select>
+
+    <input type="submit" value="Save" class="button">
+</form>
+<a href="/previous-purchases/$previousPurchase.getId()" class="button center">Cancel</a>
