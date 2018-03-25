@@ -29,8 +29,8 @@ public class UsersController {
 
             Map<String, Object> model = new HashMap<>();
             model.put("shops", shops);
-            model.put("template", "templates/users/edit.vtl");
             model.put("user", user);
+            model.put("template", "templates/users/edit.vtl");
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
 
@@ -63,7 +63,6 @@ public class UsersController {
             Integer intId = Integer.parseInt(strId);
             User user = DBHelper.find(User.class, intId);
             Map<String, Object> model = new HashMap<>();
-
             model.put("user", user);
             model.put("template", "templates/users/show.vtl");
             String loggedInUser = LoginController.getLoggedInUserName(req, res);

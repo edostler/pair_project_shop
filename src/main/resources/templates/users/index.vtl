@@ -13,11 +13,11 @@
         </tr>
         #foreach($user in $users)
         <tr>
-            <td>$user.getFirstName()</td>
-            <td>$user.getLastName()</td>
-            <td>$user.getDepartment().getTitle()</td>
-            <td>$user.getSalary()</td>
-            <td><a href="/user/$user.getId()" class="button center">Details</a></td>
+            <td>$user.getName()</td>
+            <td>$user.getUsername()</td>
+            <td>$user.getDistance()</td>
+            <td>$user.getShop().getName()</td>
+            <td><a href="/users/$user.getId()" class="button center">Details</a></td>
         <tr>
             #end
     </table>
