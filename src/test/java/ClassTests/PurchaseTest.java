@@ -58,8 +58,18 @@ public class PurchaseTest {
     @Test
     public void testIncreaseTotal(){
         assertEquals(0, currentPurchase.getTotal(), 0.01);
-        currentPurchase.increaseTotal(3.99);
-        assertEquals(3.99, currentPurchase.getTotal(),0.01);
+        currentPurchase.increaseTotal(2.99);
+        assertEquals(2.99, currentPurchase.getTotal(),0.01);
+    }
+
+    @Test
+    public void testAddToBasket(){
+        assertEquals(0, currentPurchase.getTotal(), 0.01);
+        currentPurchase.addToBasket(foodProduct);
+        assertEquals(foodProduct.getPrice(), currentPurchase.getTotal(), 0.01);
+
+
+
 
     }
 }

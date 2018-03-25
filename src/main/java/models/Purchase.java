@@ -66,4 +66,9 @@ public abstract class Purchase {
         total += price;
     }
 
+    public void addToBasket(Product product){
+        addProductToContents(product);
+        increaseTotal(product.getPrice());
+    }
+
 }
