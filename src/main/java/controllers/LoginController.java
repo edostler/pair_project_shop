@@ -43,6 +43,7 @@ public class LoginController {
                     if (username.equals(customer.getUsername())) {
                         req.session().attribute("username", username);
                         res.redirect("/home");
+                        return null;
                     }
                 }
                 res.redirect("/login/no-account");
