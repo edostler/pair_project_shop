@@ -10,6 +10,7 @@
             <th>Order Date</th>
             <th>Delivery Date</th>
             <th>Total (£)</th>
+            <th>Shop</th>
             <th>View Order</th>
         </tr>
         #foreach($previousPurchase in $previousPurchases)
@@ -18,6 +19,7 @@
             <td>$previousPurchase.formatDateToString($previousPurchase.getOrderDate())</td>
             <td>$previousPurchase.formatDateToString($previousPurchase.getDeliveryDate())</td>
             <td>$previousPurchase.getTotal()</td>
+            <td>$previousPurchase.getShop().getName()</td>
             <td><a href="/previous-purchases/$previousPurchase.getId()">Details</a></td>
         <tr>
         #end

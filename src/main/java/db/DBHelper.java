@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class DBHelper {
@@ -104,6 +106,18 @@ public class DBHelper {
         cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         results = getList(cr);
         return results;
+    }
+
+    public static GregorianCalendar formatStringToDate(String strDate) {
+        ArrayList<String> dateParts = new ArrayList<>();
+        for (String datePart: strDate.split("-")) {
+            dateParts.add(datePart);
+        }
+        int day = Integer.parseInt(dateParts.get(0));
+        int month = Integer.parseInt(dateParts.get(1));
+        int year = Integer.parseInt(dateParts.get(2));
+        GregorianCalendar result  = new GregorianCalendar(day, month, year);
+        return result;
     }
 
 }

@@ -1,7 +1,13 @@
 package models;
 
+import sun.util.calendar.Gregorian;
+
 import javax.persistence.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 
 @Entity
@@ -70,4 +76,33 @@ public class PreviousPurchase extends Purchase {
         String result = day + "/" + month + "/" +year;
         return result;
     }
+
+    public String formatDateToStringForInput(GregorianCalendar date) {
+        String day = "";
+        String month = "";
+
+        int dayInt = date.get(GregorianCalendar.DAY_OF_MONTH);
+        String dayStr = Integer.toString(dayInt);
+        if (dayInt < 10) {
+            day = "0" + dayStr;
+        }
+        else {
+            day = dayStr;
+        }
+
+        int monthInt = date.get(GregorianCalendar.MONTH);
+        String monthStr = Integer.toString(monthInt);
+        if (monthInt < 10) {
+            month = "0" + monthStr;
+        }
+        else {
+            month = monthStr;
+        }
+
+        String year = Integer.toString(date.get(GregorianCalendar.YEAR));
+
+        String result = year + "-" + month + "-" + day;
+        return result;
+    }
+
 }

@@ -3,9 +3,11 @@ package controllers;
 import db.DBHelper;
 import models.PreviousPurchase;
 import models.Shop;
+import models.User;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,15 +26,13 @@ public class PreviousPurchasesController {
         get("/previous-purchases/:id/edit", (req, res) -> {
             int id = Integer.parseInt(req.params(":id"));
             PreviousPurchase previousPurchase = DBHelper.find(PreviousPurchase.class, id);
-
-//            List<Shop> shops = DBHelper.getAll(Shop.class);
-
+            List<Shop> shops = DBHelper.getAll(Shop.class);
+            List<User> users = DBHelper.getAll(User.class);
             Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
-
-//            model.put("shops", shops);
-
+            model.put("shops", shops);
+            model.put("users", users);
             model.put("template", "templates/previousPurchases/edit.vtl");
             model.put("previousPurchase", previousPurchase);
             return new ModelAndView(model, "templates/layout.vtl");
@@ -51,12 +51,14 @@ public class PreviousPurchasesController {
 
 
         get ("/previous-purchases/new", (req, res) -> {
+            List<User> users = DBHelper.getAll(User.class);
+            List<Shop> shops = DBHelper.getAll(Shop.class);
             Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
-            List<Shop> shops = DBHelper.getAll(Shop.class);
+            model.put("users", users);
             model.put("shops", shops);
-            model.put("template", "templates/previousPurchase/create.vtl");
+            model.put("template", "templates/previousPurchases/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
@@ -64,30 +66,28 @@ public class PreviousPurchasesController {
         get("/previous-purchases/:id", (req, res) -> {
             int id = Integer.parseInt(req.params(":id"));
             PreviousPurchase previousPurchase = DBHelper.find(PreviousPurchase.class, id);
-
-//            Manager manager = DBHelper.findManagerForDept(engineer.getDepartment());
-
             Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
             model.put("previousPurchase", previousPurchase);
-
-//            model.put("manager", manager);
-
-            model.put("template", "templates/previousPurchase/show.vtl");
+            model.put("template", "templates/previousPurchases/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
 
         post ("/previous-purchases", (req, res) -> {
+            double total = Double.parseDouble(req.queryParams("total"));
+            int userId = Integer.parseInt(req.queryParams("user"));
+            User user = DBHelper.find(User.class, userId);
+            String strOrderDate = req.queryParams("orderDate");
+            GregorianCalendar orderDate = DBHelper.formatStringToDate(strOrderDate);
+            String strDeliveryDate = req.queryParams("deliveryDate");
+            GregorianCalendar deliveryDate = DBHelper.formatStringToDate(strDeliveryDate);
             int shopId = Integer.parseInt(req.queryParams("shop"));
             Shop shop = DBHelper.find(Shop.class, shopId);
 
-//            String firstName = req.queryParams("firstName");
-//            String lastName = req.queryParams("lastName");
-//            int salary = Integer.parseInt(req.queryParams("salary"));
-//            PreviousPurchase previousPurchase = new PreviousPurchase(firstName, lastName, salary, shop);
-//            DBHelper.saveOrUpdate(previousPurchase);
+            PreviousPurchase previousPurchase = new PreviousPurchase(total, user, orderDate, deliveryDate, shop);
+            DBHelper.saveOrUpdate(previousPurchase);
 
             res.redirect("/previous-purchases");
             return null;
@@ -106,14 +106,20 @@ public class PreviousPurchasesController {
         post ("/previous-purchases/:id", (req, res) -> {
             int id = Integer.parseInt(req.params(":id"));
             PreviousPurchase previousPurchase = DBHelper.find(PreviousPurchase.class, id);
-
-//            String firstName = req.queryParams("firstName");
-//            String lastName = req.queryParams("lastName");
-//            int salary = Integer.parseInt(req.queryParams("salary"));
-//            engineer.setFirstName(firstName);
-//            engineer.setLastName(lastName);
-//            engineer.setSalary(salary);
-
+            double total = Double.parseDouble(req.queryParams("total"));
+            int userId = Integer.parseInt(req.queryParams("user"));
+            User user = DBHelper.find(User.class, userId);
+            String strOrderDate = req.queryParams("orderDate");
+            GregorianCalendar orderDate = DBHelper.formatStringToDate(strOrderDate);
+            String strDeliveryDate = req.queryParams("deliveryDate");
+            GregorianCalendar deliveryDate = DBHelper.formatStringToDate(strDeliveryDate);
+            int shopId = Integer.parseInt(req.queryParams("shop"));
+            Shop shop = DBHelper.find(Shop.class, shopId);
+            previousPurchase.setTotal(total);
+            previousPurchase.setUser(user);
+            previousPurchase.setOrderDate(orderDate);
+            previousPurchase.setDeliveryDate(deliveryDate);
+            previousPurchase.setShop(shop);
             DBHelper.saveOrUpdate(previousPurchase);
             res.redirect("/previous-purchases");
             return null;

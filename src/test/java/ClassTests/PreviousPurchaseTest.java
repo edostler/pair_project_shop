@@ -62,4 +62,9 @@ public class PreviousPurchaseTest {
         assertEquals("28/5/2020", previousOrder.formatDateToString(deliveryDate));
     }
 
+    @Test
+    public void testFormatDateToStringForInput() {
+        assertEquals("2020-05-28", previousOrder.formatDateToStringForInput(deliveryDate));
+    }
+
 }
