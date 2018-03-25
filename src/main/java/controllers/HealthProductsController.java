@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class HealthProductsController {
 
@@ -43,6 +44,14 @@ public class HealthProductsController {
             model.put("user", loggedInUser);
 
             return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post ("/health-products/:id/delete", (req, res) -> {
+            int id = Integer.parseInt(req.params(":id"));
+            Health productToDelete = DBHelper.find(Health.class, id);
+            DBHelper.delete(productToDelete);
+            res.redirect("/health-products");
+            return null;
         }, new VelocityTemplateEngine());
     }
 

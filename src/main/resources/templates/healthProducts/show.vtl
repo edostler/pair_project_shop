@@ -10,11 +10,17 @@
     </ul>
 
 
-    <form action="/products/add" method="post">
-        <td>Qty:<input class="inputbox" type="text" name="quantity" required="true">
-        </td>
-        <td><input type="submit" value="Add to basket" class="button">
-        </td>
+    <a href="/health-products/$healthProduct.getId()/edit" class="button center">Edit</a>
+    <form action="/health-products/$healthProduct.getId()/delete" method="post">
+        <input type="submit" value="Delete" class="button center">
     </form>
+    <a href="/health-products" class="button center">Back to list</a>
+
+    <!--<form action="/products/add" method="post">-->
+        <!--<td>Qty:<input class="inputbox" type="text" name="quantity" required="true">-->
+        <!--</td>-->
+        <!--<td><input type="submit" value="Add to basket" class="button">-->
+        <!--</td>-->
+    <!--</form>-->
 
 </div>
