@@ -1,5 +1,8 @@
 package db;
 
+import models.CurrentPurchase;
+import models.Customer;
+import models.Product;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -118,6 +121,24 @@ public class DBHelper {
         int year = Integer.parseInt(dateParts.get(2));
         GregorianCalendar result  = new GregorianCalendar(day, month, year);
         return result;
+    }
+
+    public static Customer findCustomerByUsername(String username) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Customer customer = null;
+        Criteria cr = session.createCriteria(Customer.class);
+        cr.add(Restrictions.eq("username", username));
+        customer = getUnique(cr);
+        return customer;
+    }
+
+    public static CurrentPurchase findBasketForCustomer(Customer customer) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        CurrentPurchase basket = null;
+        Criteria cr = session.createCriteria(CurrentPurchase.class);
+        cr.add(Restrictions.eq("customer", customer));
+        basket = getUnique(cr);
+        return basket;
     }
 
 }
