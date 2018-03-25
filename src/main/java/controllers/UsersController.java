@@ -37,7 +37,7 @@ public class UsersController {
 
             Map<String, Object> model = new HashMap<>();
             model.put("user", user);
-            model.put("template", "templates/departments/edit.vtl");
+            model.put("template", "templates/users/edit.vtl");
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
             model.put("user", loggedInUser);
 
