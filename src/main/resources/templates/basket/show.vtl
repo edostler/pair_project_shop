@@ -1,0 +1,18 @@
+<div class="container">
+
+    <p> Total: £$basket.getTotal()</p>
+
+    <table class="products-list">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        #foreach($product in $contents)
+        <tr>
+            <td>$product.getName()</td>
+            <td>$product.getPrice()</td>
+        </tr>
+        #end
+    </table>
+
+</div>
