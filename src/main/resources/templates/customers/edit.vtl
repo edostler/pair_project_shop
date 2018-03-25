@@ -2,13 +2,13 @@
 
 <form action="/customers/$customer.getId()" method="post">
     <label for="name">Name:</label>
-    <input id="name" class="inputbox" type="text" name="name" required="true">
+    <input id="name" class="inputbox" type="text" name="name" required="true" value="$customer.getName()">
 
     <label for="username">Username:</label>
-    <input id="username" class="inputbox" type="text" name="username" required="true">
+    <input id="username" class="inputbox" type="text" name="username" required="true" value="$customer.getUsername()">
 
     <label for="distance">Distance(Km):</label>
-    <input id="distance" type="number" name="distance" required="true" class="inputbox">
+    <input id="distance" type="number" name="distance" required="true" class="inputbox" value="$customer.getDistance()">
 
     <label for="shop">Shop:</label> <!-- NEW -->
     <select id="shop" name="shop">
