@@ -1,0 +1,23 @@
+<p>New Product</p>
+
+<form action="/products" method="post">
+    <label for="name">Name:</label>
+    <input id="name" class="inputbox" type="text" name="name" required="true">
+
+    <label for="description">Description:</label>
+    <input id="description" class="inputbox" type="text" name="desciption" required="true">
+
+    <label id="quantity" for="quantity">Quantity:</label>
+    <input type="number" name="quantity" required="true" class="inputbox">
+
+    <label id="stockDate" for="stockDate">StockDate:</label>
+    <input type="text" name="stockDate" required="true" class="inputbox">
+
+    <label id="price" for="price">Price:</label>
+    <input type="number" name="price" required="true" class="inputbox">
+
+
+    <input type="submit" value="Save" class="button">
+
+    <a href="/customers" class="button center">Cancel</a>
+</form>
