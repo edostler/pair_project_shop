@@ -1,6 +1,30 @@
+<p>Existing customer? Please sign in.</p>
+
 <form action="/login" method="post">
     <label for="username">Your name</label>
-    <input id="username" name="username" type="text">
+    <input id="username" name="username" type="text" placeholder="Enter Username">
 
-    <button type="submit">Submit name</button>
+    <button type="submit">Login</button>
+</form>
+
+<p>Otherwise, please register your details below:</p>
+
+<form action="/login-new" method="post">
+    <label for="name">Name:</label>
+    <input id="name" class="inputbox" type="text" name="name" required="true">
+
+    <label for="newUsername">Username:</label>
+    <input id="newUsername" class="inputbox" type="text" name="username" required="true">
+
+    <label for="distance">Distance(Km):</label>
+    <input id="distance" type="number" name="distance" required="true" class="inputbox">
+
+    <label for="shop">Shop:</label>
+    <select id="shop" name="shop">
+        #foreach( $shop in $shops )
+        <option value="$shop.getId()">$shop.getName()</option>
+        #end
+    </select>
+
+    <input type="submit" value="Save" class="button">
 </form>
