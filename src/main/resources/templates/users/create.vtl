@@ -1,8 +1,4 @@
-<p>Existing customer? Please sign in.</p>
-
-<a href="/login" class="button center">Sign in</a>
-
-<p>Otherwise, please register your details below:</p>
+<p>New Customer</p>
 
 <form action="/users" method="post">
     <label for="name">Name:</label>
@@ -20,8 +16,6 @@
         <option value="$shop.getId()">$shop.getTitle()</option>
         #end
     </select>
-
-
 
     <input type="submit" value="Save" class="button">
 </form>
