@@ -9,12 +9,18 @@
         <li>Price: $clothingProduct.getPrice()</li>
     </ul>
 
-
-    <form action="/products/add" method="post">
-        <td>Qty:<input class="inputbox" type="text" name="quantity" required="true">
-        </td>
-        <td><input type="submit" value="Add to basket" class="button">
-        </td>
+    <a href="/clothing-products/$clothingProduct.getId()/edit" class="button center">Edit</a>
+    <form action="/clothing-products/$clothingProduct.getId()/delete" method="post">
+        <input type="submit" value="Delete" class="button center">
     </form>
+    <a href="/clothing-products" class="button center">Back to list</a>
+
+
+    <!--<form action="/products/add" method="post">-->
+        <!--<td>Qty:<input class="inputbox" type="text" name="quantity" required="true">-->
+        <!--</td>-->
+        <!--<td><input type="submit" value="Add to basket" class="button">-->
+        <!--</td>-->
+    <!--</form>-->
 
 </div>

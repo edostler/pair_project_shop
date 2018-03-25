@@ -2,6 +2,7 @@ package controllers;
 
 import db.DBHelper;
 import models.Clothing;
+import models.Food;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class ClothingProductsController {
 
@@ -42,6 +44,14 @@ public class ClothingProductsController {
             model.put("user", loggedInUser);
 
             return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post ("/clothing-products/:id/delete", (req, res) -> {
+            int id = Integer.parseInt(req.params(":id"));
+            Clothing productToDelete = DBHelper.find(Clothing.class, id);
+            DBHelper.delete(productToDelete);
+            res.redirect("/clothing-products");
+            return null;
         }, new VelocityTemplateEngine());
     }
 }
