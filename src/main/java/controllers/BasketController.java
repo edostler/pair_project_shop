@@ -1,11 +1,10 @@
 package controllers;
 
 import db.DBHelper;
-import models.CurrentPurchase;
-import models.Customer;
-import models.Product;
+import models.*;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +33,48 @@ public class BasketController {
             model.put("contents", contents);
             model.put("template", "templates/basket/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+        post("/basket", (req, res) -> {
+            int productId = Integer.parseInt(req.queryParams("id"));
+            Product product = DBHelper.find(Product.class, productId);
+
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            CurrentPurchase basket = DBHelper.findBasketForCustomer(customer);
+
+            String name = product.getName();
+            double price = product.getPrice();
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            String description = product.getDescription();
+            GregorianCalendar stockDate = product.getStockDate();
+            Shop shop = product.getShop();
+
+            if (product.getClass() == Food.class) {
+                Food stockFood = (Food) product;
+                FoodCategory foodCategory = stockFood.getCategory();
+                Food food = new Food(name, foodCategory, price, quantity, description, stockDate, shop);
+                DBHelper.saveOrUpdate(food);
+                DBHelper.addProductToPurchase(food, basket);
+            }
+            else if (product.getClass() == Clothing.class) {
+                Clothing stockClothing = (Clothing) product;
+                ClothingCategory clothingCategory = stockClothing.getCategory();
+                Clothing clothing = new Clothing(name, clothingCategory, price, quantity, description, stockDate, shop);
+                DBHelper.saveOrUpdate(clothing);
+                DBHelper.addProductToPurchase(clothing, basket);
+            }
+            else {
+                Health stockHealth = (Health) product;
+                HealthCategory healthCategory = stockHealth.getCategory();
+                Health health = new Health(name, healthCategory, price, quantity, description, stockDate, shop);
+                DBHelper.saveOrUpdate(health);
+                DBHelper.addProductToPurchase(health, basket);
+                }
+            req.headers("referer");
+//            res.redirect("/products");
+            return null;
         }, new VelocityTemplateEngine());
 
     }

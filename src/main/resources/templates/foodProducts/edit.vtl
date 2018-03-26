@@ -16,7 +16,7 @@
     </select>
 
     <label for="description">Description:</label>
-    <input id="description" class="inputbox" type="text" name="desciption" required="true" value="$food.getDescription()">
+    <input id="description" class="inputbox" type="text" name="description" required="true" value="$food.getDescription()">
 
     <label id="quantity" for="quantity">Quantity:</label>
     <input type="number" name="quantity" required="true" class="inputbox" value="$food.getQuantity()">
@@ -25,9 +25,9 @@
     <input type="text" name="stockDate" required="true" class="inputbox" value="$food.formatDateToStringForInput($food.getStockDate())">
 
     <label id="price" for="price">Price:</label>
-    <input type="number" name="price" required="true" class="inputbox" value="$food.getPrice()">
+    <input step="0.01" type="number" name="price" required="true" class="inputbox" value="$food.getPrice()">
 
-    <label for="shop">Shop:</label> <!-- NEW -->
+    <label for="shop">Shop:</label>
     <select id="shop" name="shop">
         #foreach( $shop in $shops )
         <option value="$shop.getId()"
@@ -36,7 +36,6 @@
                 #end>$shop.getName()</option>
         #end
     </select>
-
 
     <input type="submit" value="Save" class="button">
 

@@ -40,14 +40,21 @@ public class ProductsController {
 //            return new ModelAndView(model, "templates/layout.vtl");
 //        }, new VelocityTemplateEngine());
 
+
         get("/products", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Product> products = DBHelper.getAll(Product.class);
             model.put("products", products);
-            model.put("template","templates/products/index.vtl");
 
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
+
+            if (loggedInUser.equals("admin")) {
+                model.put("template","templates/products/index.vtl");
+                }
+            else {
+                model.put("template","templates/products/customerIndex.vtl");
+            }
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
