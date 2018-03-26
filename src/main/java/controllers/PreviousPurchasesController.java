@@ -77,8 +77,8 @@ public class PreviousPurchasesController {
 
         post ("/previous-purchases", (req, res) -> {
             double total = Double.parseDouble(req.queryParams("total"));
-            int userId = Integer.parseInt(req.queryParams("customer"));
-            Customer customer = DBHelper.find(Customer.class, userId);
+            int customerId = Integer.parseInt(req.queryParams("customer"));
+            Customer customer = DBHelper.find(Customer.class, customerId);
             String strPurchaseDate = req.queryParams("purchaseDate");
             GregorianCalendar purchaseDate = DBHelper.formatStringToDate(strPurchaseDate);
             String strDeliveryDate = req.queryParams("deliveryDate");
@@ -107,8 +107,8 @@ public class PreviousPurchasesController {
             int id = Integer.parseInt(req.params(":id"));
             PreviousPurchase previousPurchase = DBHelper.find(PreviousPurchase.class, id);
             double total = Double.parseDouble(req.queryParams("total"));
-            int userId = Integer.parseInt(req.queryParams("customer"));
-            Customer customer = DBHelper.find(Customer.class, userId);
+            int  customerId = Integer.parseInt(req.queryParams("customer"));
+            Customer customer = DBHelper.find(Customer.class, customerId);
             String strPurchaseDate = req.queryParams("purchaseDate");
             GregorianCalendar purchaseDate = DBHelper.formatStringToDate(strPurchaseDate);
             String strDeliveryDate = req.queryParams("deliveryDate");
