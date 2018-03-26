@@ -88,13 +88,13 @@ public class AccountpageController {
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
             String name = req.queryParams("name");
-            String username = req.queryParams("username");
+            String username = loggedInUser;
             int shopId = Integer.parseInt(req.queryParams("shop"));
             Shop shop = DBHelper.find(Shop.class, shopId);
             int distance = Integer.parseInt(req.queryParams("distance"));
 
             customer.setName(name);
-            customer.setUsername(username);
+//            customer.setUsername(username);
 //            loggedInUser.equals(username);
             customer.setDistance(distance);
             customer.setShop(shop);
