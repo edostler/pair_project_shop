@@ -60,12 +60,26 @@ public class Seeds {
         DBHelper.saveOrUpdate(currentPurchase2);
         DBHelper.saveOrUpdate(currentPurchase3);
 
+//        customer1.setBasket(currentPurchase1);
+//        DBHelper.saveOrUpdate(customer1);
+
         PreviousPurchase previousPurchase1 = new PreviousPurchase(0.00, customer1, new GregorianCalendar(2018, 2, 22), new GregorianCalendar(2018, 2, 23), shop);
         PreviousPurchase previousPurchase2 = new PreviousPurchase(0.00, customer1, new GregorianCalendar(2018, 2, 28), new GregorianCalendar(2018, 3, 01), shop);
         PreviousPurchase previousPurchase3 = new PreviousPurchase(0.00, customer1, new GregorianCalendar(2018, 3, 06), new GregorianCalendar(2018, 3, 07), shop);
         DBHelper.saveOrUpdate(previousPurchase1);
         DBHelper.saveOrUpdate(previousPurchase2);
         DBHelper.saveOrUpdate(previousPurchase3);
+
+        DBHelper.addProductToPurchase(food1, currentPurchase1);
+        DBHelper.addProductToPurchase(clothing1, currentPurchase2);
+        DBHelper.addProductToPurchase(health1, currentPurchase3);
+
+        DBHelper.addProductToPurchase(food2, previousPurchase1);
+        DBHelper.addProductToPurchase(clothing2, previousPurchase1);
+        DBHelper.addProductToPurchase(health2, previousPurchase2);
+        DBHelper.addProductToPurchase(food3, previousPurchase2);
+        DBHelper.addProductToPurchase(clothing3, previousPurchase3);
+        DBHelper.addProductToPurchase(health3, previousPurchase3);
 
         Customer foundCustomer = DBHelper.find(Customer.class, customer1.getId());
 

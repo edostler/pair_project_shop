@@ -71,4 +71,8 @@ public abstract class Purchase {
         increaseTotal(product.getPrice());
     }
 
+    public void addProduct(Product product){
+        this.contents.add(product);
+    }
+
 }

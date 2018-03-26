@@ -26,6 +26,7 @@ public class Customer {
         this.username = username;
         this.lifetimeSpend = 0;
         this.previousPurchases = new HashSet<>();
+        this.basket = null;
         this.shop = shop;
     }
 

@@ -1,6 +1,7 @@
 package controllers;
 
 import db.DBHelper;
+import models.CurrentPurchase;
 import models.Customer;
 import models.Shop;
 import spark.ModelAndView;
@@ -79,6 +80,8 @@ public class CustomersController {
             int distance = Integer.parseInt(req.queryParams("distance"));
             Customer customer = new Customer(name, username, distance, shop);
             DBHelper.saveOrUpdate(customer);
+            CurrentPurchase currentPurchase = new CurrentPurchase(0.00, customer);
+            DBHelper.saveOrUpdate(currentPurchase);
             res.redirect("/customers");
             return null;
         }, new VelocityTemplateEngine());

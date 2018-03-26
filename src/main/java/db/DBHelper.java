@@ -3,6 +3,7 @@ package db;
 import models.CurrentPurchase;
 import models.Customer;
 import models.Product;
+import models.Purchase;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -139,6 +140,13 @@ public class DBHelper {
         cr.add(Restrictions.eq("customer", customer));
         basket = getUnique(cr);
         return basket;
+    }
+
+    public static void addProductToPurchase(Product product, Purchase purchase) {
+        product.setPurchase(purchase);
+        purchase.addProduct(product);
+        saveOrUpdate(product);
+        saveOrUpdate(purchase);
     }
 
 }

@@ -1,6 +1,7 @@
 package controllers;
 
 import db.DBHelper;
+import models.CurrentPurchase;
 import models.Shop;
 import models.Customer;
 import spark.ModelAndView;
@@ -88,6 +89,12 @@ public class LoginController {
             Shop shop = DBHelper.find(Shop.class, shopId);
             Customer customer = new Customer(name, username, distance, shop);
             DBHelper.saveOrUpdate(customer);
+
+            CurrentPurchase currentPurchase = new CurrentPurchase(0.00, customer);
+            DBHelper.saveOrUpdate(currentPurchase);
+//            customer.setBasket(currentPurchase);
+//            DBHelper.saveOrUpdate(customer);
+
             req.session().attribute("username", username);
             res.redirect("/welcome");
             return null;

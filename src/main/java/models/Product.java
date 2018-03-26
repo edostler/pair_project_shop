@@ -29,7 +29,7 @@ public abstract class Product {
         this.stockDate = stockDate;
         this.shop = shop;
         this.purchase = null;
-        getAvailability();
+        this.availability = getAvailability();
     }
 
     @Id
@@ -131,6 +131,5 @@ public abstract class Product {
         String result = day + "/" + month + "/" +year;
         return result;
     }
-
 
 }
