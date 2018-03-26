@@ -11,8 +11,6 @@
             <th>Category</th>
             <th>Description</th>
             <th>Availability</th>
-            <th>In Stock</th>
-            <th>Stock Date</th>
             <th>Price</th>
         </tr>
         #foreach($food in $foods)
@@ -21,8 +19,6 @@
             <td>$food.getCategory()</td>
             <td>$food.getDescription()</td>
             <td>$food.availability</td>
-            <td>$food.getQuantity()</td>
-            <td>$food.formatDateToString($food.getStockDate())</td>
             <td>$food.getPrice()</td>
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" name="quantity" required="true"></td>
