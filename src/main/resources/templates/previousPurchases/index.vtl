@@ -15,7 +15,7 @@
         </tr>
         #foreach($previousPurchase in $previousPurchases)
         <tr>
-            <td>$previousPurchase.getUser().getName()</td>
+            <td>$previousPurchase.getCustomer().getName()</td>
             <td>$previousPurchase.formatDateToString($previousPurchase.getPurchaseDate())</td>
             <td>$previousPurchase.formatDateToString($previousPurchase.getDeliveryDate())</td>
             <td>$previousPurchase.getTotal()</td>
