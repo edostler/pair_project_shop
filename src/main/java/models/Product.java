@@ -132,4 +132,9 @@ public abstract class Product {
         return result;
     }
 
+    public double calculateQuantityPrice() {
+        double result = this.quantity * this.price;
+        return result;
+    }
+
 }

@@ -5,12 +5,16 @@
     <table class="products-list">
         <tr>
             <th>Name</th>
-            <th>Price</th>
+            <th>Quantity</th>
+            <th>Product Price</th>
+            <th>Quantity Price</th>
         </tr>
         #foreach($product in $contents)
         <tr>
             <td>$product.getName()</td>
+            <td>$product.getQuantity()</td>
             <td>$product.getPrice()</td>
+            <td>$product.calculateQuantityPrice()</td>
         </tr>
         #end
     </table>
