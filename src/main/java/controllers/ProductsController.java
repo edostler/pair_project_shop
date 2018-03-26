@@ -71,7 +71,7 @@ public class ProductsController {
 //            Map<String, Object> model = new HashMap<>();
 //
 //            model.put("product", product);
-//            model.put("template", "templates/products/show.vtl");
+//            model.put("template", "templates/products/index.vtl");
 //            String loggedInUser = LoginController.getLoggedInUsername(req, res);
 //            model.put("user", loggedInUser);
 //

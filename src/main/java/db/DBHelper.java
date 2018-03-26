@@ -165,4 +165,13 @@ public class DBHelper {
         return clothingCategories;
     }
 
+    public static List<Product> findContentsForBasket(CurrentPurchase basket) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Product> contents = new ArrayList<>();
+        Criteria cr = session.createCriteria(Product.class);
+        cr.add(Restrictions.eq("purchase", basket));
+        contents = getList(cr);
+        return contents;
+    }
+
 }
