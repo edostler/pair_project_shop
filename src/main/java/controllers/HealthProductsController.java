@@ -1,11 +1,11 @@
 package controllers;
 
 import db.DBHelper;
-import models.Clothing;
-import models.Health;
+import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +20,25 @@ public class HealthProductsController {
     }
 
     private void setupEndPoints() {
+
+        get("/health-products/:id/edit", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Health health = DBHelper.find(Health.class, intId);
+            List<Shop> shops = DBHelper.getAll(Shop.class);
+            List<HealthCategory> healthCategories = DBHelper.getAllHealthCategories();
+
+            Map<String, Object> model = new HashMap<>();
+            model.put("shops", shops);
+            model.put("healthCategories", healthCategories);
+            model.put("health", health);
+            model.put("template", "templates/healthProducts/edit.vtl");
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
         get("/health-products", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Health> healthProducts = DBHelper.getAll(Health.class);
@@ -28,6 +47,19 @@ public class HealthProductsController {
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
 
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+        get ("/health-products/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Shop> shops = DBHelper.getAll(Shop.class);
+            List<HealthCategory> healthCategories = DBHelper.getAllHealthCategories();
+            model.put("shops", shops);
+            model.put("healthCategories", healthCategories);
+            model.put("template", "templates/healthProducts/create.vtl");
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
@@ -52,6 +84,54 @@ public class HealthProductsController {
             DBHelper.delete(productToDelete);
             res.redirect("/health-products");
             return null;
+        }, new VelocityTemplateEngine());
+
+
+        post ("/health-products", (req, res) -> {
+            int shopId = Integer.parseInt(req.queryParams("shop"));
+            Shop shop = DBHelper.find(Shop.class, shopId);
+            String name = req.queryParams("name");
+            String description = req.queryParams("description");
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            double price = Double.parseDouble(req.queryParams("price"));
+            String strStockDate = req.queryParams("stockDate");
+            GregorianCalendar stockDate = DBHelper.formatStringToDate(strStockDate);
+            String category = req.queryParams("category");
+            HealthCategory healthCategory = HealthCategory.valueOf(category);
+            Health health = new Health(name, healthCategory, price, quantity, description, stockDate, shop);
+            DBHelper.saveOrUpdate(health);
+            res.redirect("/health-products");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        post ("/health-products/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Health health = DBHelper.find(Health.class, intId);
+            int shopId = Integer.parseInt(req.queryParams("shop"));
+            Shop shop = DBHelper.find(Shop.class, shopId);
+            String name = req.queryParams("name");
+            String category = req.queryParams("category");
+            HealthCategory healthCategory = HealthCategory.valueOf(category);
+            String description = req.queryParams("description");
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+//
+            String strStockDate = req.queryParams("stockDate");
+            GregorianCalendar stockDate = DBHelper.formatStringToDate(strStockDate);
+            double price = Double.parseDouble(req.queryParams("price"));
+
+            health.setName(name);
+            health.setCategory(healthCategory);
+            health.setDescription(description);
+            health.setQuantity(quantity);
+            health.setStockDate(stockDate);
+            health.setPrice(price);
+            health.setShop(shop);
+//
+            DBHelper.saveOrUpdate(health);
+            res.redirect("/health-products");
+            return null;
+
         }, new VelocityTemplateEngine());
     }
 

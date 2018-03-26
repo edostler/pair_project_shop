@@ -1,8 +1,8 @@
 <p>Edit Product</p>
 
-<form action="/health-products/health.getId()" method="post">
+<form action="/health-products/$health.getId()" method="post">
     <label for="name">Name:</label>
-    <input id="name" class="inputbox" type="text" name="name" required="true" value="health.getName()">
+    <input id="name" class="inputbox" type="text" name="name" required="true" value="$health.getName()">
 
     <label for="category">Category:</label>
     <select id="category" name="category">
@@ -16,7 +16,7 @@
     </select>
 
     <label for="description">Description:</label>
-    <input id="description" class="inputbox" type="text" name="desciption" required="true" value="$health.getDescription()">
+    <input id="description" class="inputbox" type="text" name="description" required="true" value="$health.getDescription()">
 
     <label id="quantity" for="quantity">Quantity:</label>
     <input type="number" name="quantity" required="true" class="inputbox" value="$health.getQuantity()">

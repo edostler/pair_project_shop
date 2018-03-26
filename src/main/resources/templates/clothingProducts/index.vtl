@@ -22,7 +22,7 @@
             <td>$clothingProduct.formatDateToString($clothingProduct.getStockDate())</td>
             <td>$clothingProduct.getPrice()</td>
             <form action="/products/add" method="post">
-                <td>Qty:<input class="inputbox" type="text" name="quantity" required="true">
+                <td>Qty:<input class="inputbox" type="number" name="quantity" required="true">
                 </td>
                 <td><input type="submit" value="Add to basket" class="button">
                 </td>

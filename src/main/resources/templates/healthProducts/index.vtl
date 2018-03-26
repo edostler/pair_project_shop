@@ -2,9 +2,12 @@
 
 <div class="container">
 
+    <a href="/health-products/new" class="button center">New Product</a>
+
     <table class="products-list">
         <tr>
             <th>Name</th>
+            <th>Category</th>
             <th>Description</th>
             <th>Availability</th>
             <th>In Stock</th>
@@ -14,13 +17,14 @@
         #foreach($healthProduct in $healthProducts)
         <tr>
             <td><a href="/health-products/$healthProduct.getId()">$healthProduct.getName()</a></td>
+            <td>$healthProduct.getCategory()</td>
             <td>$healthProduct.getDescription()</td>
             <td>$healthProduct.availability</td>
             <td>$healthProduct.getQuantity()</td>
             <td>$healthProduct.formatDateToString($healthProduct.getStockDate())</td>
             <td>$healthProduct.getPrice()</td>
             <form action="/products/add" method="post">
-                <td>Qty:<input class="inputbox" type="text" name="quantity" required="true">
+                <td>Qty:<input class="inputbox" type="number" name="quantity" required="true">
                 </td>
                 <td><input type="submit" value="Add to basket" class="button">
                 </td>
