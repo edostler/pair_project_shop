@@ -4,12 +4,12 @@
     <label for="name">Name:</label>
     <input id="name" class="inputbox" type="text" name="name" required="true">
 
-    <!--<label for="category">Category:</label> &lt;!&ndash; NEW &ndash;&gt;-->
-    <!--<select id="category" name="category">-->
-        <!--#foreach( $category in $FoodCategory )-->
-        <!--<option value="">$shop.getName()</option>-->
-        <!--#end-->
-    <!--</select>-->
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+        #foreach( $category in $FoodCategory )
+        <option value="">$shop.getName()</option>
+        #end
+    </select>
 
     <label for="description">Description:</label>
     <input id="description" class="inputbox" type="text" name="desciption" required="true">

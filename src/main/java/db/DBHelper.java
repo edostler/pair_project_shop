@@ -1,8 +1,6 @@
 package db;
 
-import models.CurrentPurchase;
-import models.Customer;
-import models.Product;
+import models.*;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -139,6 +138,24 @@ public class DBHelper {
         cr.add(Restrictions.eq("customer", customer));
         basket = getUnique(cr);
         return basket;
+    }
+
+    public static ArrayList<FoodCategory> getAllFoodCategories(){
+        ArrayList<FoodCategory> foodCategories = new ArrayList<>();
+        Collections.addAll(foodCategories, FoodCategory.values());
+        return foodCategories;
+    }
+
+    public static ArrayList<HealthCategory> getAllHealthCategories(){
+        ArrayList<HealthCategory> healthCategories = new ArrayList<>();
+        Collections.addAll(healthCategories, HealthCategory.values());
+        return healthCategories;
+    }
+
+    public static ArrayList<ClothingCategory> getAllClothingCategories(){
+        ArrayList<ClothingCategory> clothingCategories = new ArrayList<>();
+        Collections.addAll(clothingCategories, ClothingCategory.values());
+        return clothingCategories;
     }
 
 }
