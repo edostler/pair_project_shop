@@ -174,4 +174,13 @@ public class DBHelper {
         return contents;
     }
 
+    public static List<PreviousPurchase> getAllPreviousPurchasesForCustomer(Customer customer){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<PreviousPurchase> customerPreviousPurchases = new ArrayList<>();
+        Criteria cr = session.createCriteria(PreviousPurchase.class);
+        cr.add(Restrictions.eq("customer", customer));
+        customerPreviousPurchases = getList(cr);
+        return customerPreviousPurchases;
+    }
+
 }
