@@ -1,12 +1,15 @@
 package controllers;
 
+import db.DBHelper;
+import models.Customer;
+import models.Shop;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class AccountpageController {
 
@@ -15,12 +18,34 @@ public class AccountpageController {
     }
 
     private void setupEndPoints() {
-
-        get("/account", (req, res) ->{
-
+//
+        get("/account/edit", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            List<Shop> shops = DBHelper.getAll(Shop.class);
+//            Shop shop = customer.getShop();
+            model.put("customer", customer);
             model.put("user", loggedInUser);
+            model.put("shops", shops);
+            model.put("template", "templates/accountpage/customer_edit.vtl");
+
+            if (loggedInUser.equals("admin")) {
+                model.put("template","templates/accountpage/admin_edit.vtl");
+            }
+            else {
+                model.put("template","templates/accountpage/customer_edit.vtl");
+            }
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+        get("/account", (req, res) ->{
+            Map<String, Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            model.put("user", loggedInUser);
+            model.put("customer", customer);
             model.put("template", "templates/accountPage/customer_account.vtl");
 
             if (loggedInUser.equals("admin")) {
@@ -32,5 +57,25 @@ public class AccountpageController {
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, new VelocityTemplateEngine());
+
+        post("/account", (req, res) ->{
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            String name = req.queryParams("name");
+            String username = req.queryParams("username");
+            int shopId = Integer.parseInt(req.queryParams("shop"));
+            Shop shop = DBHelper.find(Shop.class, shopId);
+            int distance = Integer.parseInt(req.queryParams("distance"));
+
+            customer.setName(name);
+            customer.setUsername(username);
+//            loggedInUser.equals(username);
+            customer.setDistance(distance);
+            customer.setShop(shop);
+            DBHelper.saveOrUpdate(customer);
+            res.redirect("/account");
+            return null;
+        }, new VelocityTemplateEngine());
+
     }
 }
