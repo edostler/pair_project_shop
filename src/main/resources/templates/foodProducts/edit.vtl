@@ -4,6 +4,13 @@
     <label for="name">Name:</label>
     <input id="name" class="inputbox" type="text" name="name" required="true" value="$food.getName()">
 
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+        #foreach( $category in $foodCategories )
+        <option>$category</option>
+        #end
+    </select>
+
     <label for="description">Description:</label>
     <input id="description" class="inputbox" type="text" name="desciption" required="true" value="$food.getDescription()">
 

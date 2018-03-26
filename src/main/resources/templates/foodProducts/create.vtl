@@ -4,21 +4,21 @@
     <label for="name">Name:</label>
     <input id="name" class="inputbox" type="text" name="name" required="true">
 
-    <!--<label for="category">Category:</label> &lt;!&ndash; NEW &ndash;&gt;-->
-    <!--<select id="category" name="category">-->
-        <!--#foreach( $category in $FoodCategory )-->
-        <!--<option value="">$shop.getName()</option>-->
-        <!--#end-->
-    <!--</select>-->
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+        #foreach( $category in $foodCategories )
+        <option>$category</option>
+        #end
+    </select>
 
     <label for="description">Description:</label>
-    <input id="description" class="inputbox" type="text" name="desciption" required="true">
+    <input id="description" class="inputbox" type="text" name="description" required="true">
 
     <label id="quantity" for="quantity">Quantity:</label>
     <input type="number" name="quantity" required="true" class="inputbox">
 
-    <label id="stockDate" for="stockDate">StockDate:</label>
-    <input type="text" name="stockDate" required="true" class="inputbox">
+    <label for="stockDate">Stock Date:</label>
+    <input id="stockDate" class="inputbox" type="date" name="stockDate" required="true" value="$food.formatDateToStringForInput($food.getStockDate())">
 
     <label id="price" for="price">Price:</label>
     <input type="text" name="price" required="true" class="inputbox">

@@ -32,9 +32,12 @@ public class FoodProductsController {
             Integer intId = Integer.parseInt(strId);
             Food food = DBHelper.find(Food.class, intId);
             List<Shop> shops = DBHelper.getAll(Shop.class);
-
+            List<FoodCategory> foodCategories = DBHelper.getAllFoodCategories();
+//            String category = req.queryParams("category");
+//            FoodCategory foodCategory = FoodCategory.valueOf(category);
             Map<String, Object> model = new HashMap<>();
             model.put("shops", shops);
+            model.put("categories", foodCategories);
             model.put("food", food);
             model.put("template", "templates/foodProducts/edit.vtl");
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
@@ -57,7 +60,9 @@ public class FoodProductsController {
         get ("/food-products/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Shop> shops = DBHelper.getAll(Shop.class);
+            List<FoodCategory> foodCategories = DBHelper.getAllFoodCategories();
             model.put("shops", shops);
+            model.put("foodCategories", foodCategories);
             model.put("template", "templates/foodProducts/create.vtl");
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
@@ -83,20 +88,22 @@ public class FoodProductsController {
 
 
 
-//        post ("/food-products", (req, res) -> {
-//            int shopId = Integer.parseInt(req.queryParams("shop"));
-//            Shop shop = DBHelper.find(Shop.class, shopId);
-//            String name = req.queryParams("name");
-//            String description = req.queryParams("description");
-//            int quantity = Integer.parseInt(req.queryParams("quantity"));
-//            double price = Double.parseDouble(req.queryParams("price"));
-//            String strStockDate = req.queryParams("stockDate");
-//            GregorianCalendar stockDate = DBHelper.formatStringToDate(strStockDate);
-//            Food food = new Food(name, category, price, quantity, description, stockDate, shop);
-//            DBHelper.saveOrUpdate(food);
-//            res.redirect("/customers");
-//            return null;
-//        }, new VelocityTemplateEngine());
+        post ("/food-products", (req, res) -> {
+            int shopId = Integer.parseInt(req.queryParams("shop"));
+            Shop shop = DBHelper.find(Shop.class, shopId);
+            String name = req.queryParams("name");
+            String description = req.queryParams("description");
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            double price = Double.parseDouble(req.queryParams("price"));
+            String strStockDate = req.queryParams("stockDate");
+            GregorianCalendar stockDate = DBHelper.formatStringToDate(strStockDate);
+            String category = req.queryParams("category");
+            FoodCategory foodCategory = FoodCategory.valueOf(category);
+            Food food = new Food(name, foodCategory, price, quantity, description, stockDate, shop);
+            DBHelper.saveOrUpdate(food);
+            res.redirect("/food-products");
+            return null;
+        }, new VelocityTemplateEngine());
 
         post ("/food-products/:id/delete", (req, res) -> {
             int id = Integer.parseInt(req.params(":id"));
