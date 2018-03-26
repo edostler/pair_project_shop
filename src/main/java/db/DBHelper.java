@@ -1,13 +1,6 @@
 package db;
 
-<<<<<<< HEAD
-import models.CurrentPurchase;
-import models.Customer;
-import models.Product;
-import models.Purchase;
-=======
 import models.*;
->>>>>>> feature/addFoodProduct
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
