@@ -22,6 +22,7 @@ public class MainController {
 
         LoginController loginController = new LoginController();
         HomepageController homepageController = new HomepageController();
+        AccountpageController accountpageController = new AccountpageController();
         BasketController basketController = new BasketController();
         ShopsController shopsController = new ShopsController();
         CustomersController customersController = new CustomersController();
