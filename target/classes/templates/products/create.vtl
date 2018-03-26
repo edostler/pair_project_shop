@@ -5,17 +5,23 @@
     <!--<input id="name" class="inputbox" type="text" name="name" required="true">-->
 
     <!--<label for="description">Description:</label>-->
-    <!--<input id="description" class="inputbox" type="text" name="desciption" required="true">-->
+    <!--<input id="description" class="inputbox" type="text" name="description" required="true">-->
 
     <!--<label id="quantity" for="quantity">Quantity:</label>-->
     <!--<input type="number" name="quantity" required="true" class="inputbox">-->
 
-    <!--<label id="stockDate" for="stockDate">StockDate:</label>-->
-    <!--<input type="text" name="stockDate" required="true" class="inputbox">-->
+    <!--<label for="stockDate">Stock Date:</label>-->
+    <!--<input id="stockDate" class="inputbox" type="date" name="stockDate" required="true" value="$product.formatDateToStringForInput($product.getStockDate())">-->
 
     <!--<label id="price" for="price">Price:</label>-->
-    <!--<input type="text" name="price" required="true" class="inputbox">-->
+    <!--<input step="0.01" type="text" name="price" required="true" class="inputbox">-->
 
+    <!--<label for="shop">Shop:</label>-->
+    <!--<select id="shop" name="shop">-->
+        <!--#foreach( $shop in $shops )-->
+        <!--<option value="$shop.getId()">$shop.getName()</option>-->
+        <!--#end-->
+    <!--</select>-->
 
     <!--<input type="submit" value="Save" class="button">-->
 

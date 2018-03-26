@@ -25,7 +25,8 @@
             <td>$product.getPrice()</td>
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" name="quantity" required="true"></td>
-                <td><label for="id"></label>
+                <td>
+                    <label for="id"></label>
                     <input id="id" class="inputbox" type="number" name="id" required="true" value="$product.getId()">
                 </td>
                 <td><input type="submit" value="Add to basket" class="button"></td>
@@ -33,5 +34,6 @@
         </tr>
         #end
     </table>
+
 </div>
 

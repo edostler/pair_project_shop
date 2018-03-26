@@ -1,4 +1,4 @@
-<p>Edit Product</p>
+<p>Edit Health Product</p>
 
 <form action="/health-products/$health.getId()" method="post">
     <label for="name">Name:</label>
@@ -8,10 +8,11 @@
     <select id="category" name="category">
         #foreach( $category in $healthCategories )
         <option value="$category"
-                #if ($category == $health.getCategory())
+            #if ($category == $health.getCategory())
                 selected="selected"
-                #end>
-            $category</option>
+            #end>
+            $category
+        </option>
         #end
     </select>
 
@@ -25,18 +26,18 @@
     <input type="text" name="stockDate" required="true" class="inputbox" value="$health.formatDateToStringForInput($health.getStockDate())">
 
     <label id="price" for="price">Price:</label>
-    <input type="number" name="price" required="true" class="inputbox" value="$health.getPrice()">
+    <input step="0.01" type="number" name="price" required="true" class="inputbox" value="$health.getPrice()">
 
-    <label for="shop">Shop:</label> <!-- NEW -->
+    <label for="shop">Shop:</label>
     <select id="shop" name="shop">
         #foreach( $shop in $shops )
         <option value="$shop.getId()"
-                #if ($shop.getId() == $health.getShop().getId())
+            #if ($shop.getId() == $health.getShop().getId())
                 selected="selected"
-                #end>$shop.getName()</option>
+            #end>$shop.getName()
+        </option>
         #end
     </select>
-
 
     <input type="submit" value="Save" class="button">
 

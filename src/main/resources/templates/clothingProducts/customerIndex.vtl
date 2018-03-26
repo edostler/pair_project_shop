@@ -1,6 +1,6 @@
-<p>All Food Products</p>
+<p>All Clothing Products</p>
 
-<p><a href="/clothing-products">Clothing Products</a></p>
+<p><a href="/food-products">Food Products</a></p>
 <p><a href="/health-products">Health Products</a></p>
 
 <div class="container">
@@ -15,20 +15,20 @@
             <th>Stock Date</th>
             <th>Price</th>
         </tr>
-        #foreach($food in $foods)
+        #foreach($clothingProduct in $clothingProducts)
         <tr>
-            <td>$food.getName()</td>
-            <td>$food.getCategory()</td>
-            <td>$food.getDescription()</td>
-            <td>$food.availability</td>
-            <td>$food.getQuantity()</td>
-            <td>$food.formatDateToString($food.getStockDate())</td>
-            <td>$food.getPrice()</td>
+            <td>$clothingProduct.getName()</td>
+            <td>$clothingProduct.getCategory()</td>
+            <td>$clothingProduct.getDescription()</td>
+            <td>$clothingProduct.availability</td>
+            <td>$clothingProduct.getQuantity()</td>
+            <td>$clothingProduct.formatDateToString($clothingProduct.getStockDate())</td>
+            <td>$clothingProduct.getPrice()</td>
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" name="quantity" required="true"></td>
                 <td>
                     <label for="id"></label>
-                    <input id="id" class="inputbox" type="number" name="id" required="true" value="$food.getId()">
+                    <input id="id" class="inputbox" type="number" name="id" required="true" value="$clothingProduct.getId()">
                 </td>
                 <td><input type="submit" value="Add to basket" class="button"></td>
             </form>

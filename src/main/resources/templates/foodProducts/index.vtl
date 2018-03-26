@@ -1,8 +1,11 @@
-<p>All Foods</p>
+<p>All Food Products</p>
+
+<p><a href="/clothing-products">Clothing Products</a></p>
+<p><a href="/health-products">Health Products</a></p>
 
 <div class="container">
 
-    <a href="/food-products/new" class="button center">New Product</a>
+    <a href="/food-products/new" class="button center">New Food Product</a>
 
     <table class="products-list">
         <tr>
@@ -24,7 +27,7 @@
             <td>$food.formatDateToString($food.getStockDate())</td>
             <td>$food.getPrice()</td>
             <!--WILL NEED THE BELOW STRUCTURE (NOT CONTENT, NEEDS EDITING) TO CREATE ADMIN INCREASE STOCK FUNCTION - SEE TRELLO-->
-            <!--<form action="/basket/create" method="post">-->
+            <!--<form action="/basket" method="post">-->
                 <!--<td>Qty:<input class="inputbox" type="number" name="quantity" required="true"></td>-->
                 <!--<td>-->
                     <!--<label for="id"></label>-->
@@ -37,6 +40,5 @@
     </table>
 
     <a href="/products" class="button center">Back To All Products</a>
-
 
 </div>

@@ -1,4 +1,4 @@
-<p>Edit Product</p>
+<p>Edit Food Product</p>
 
 <form action="/food-products/$food.getId()" method="post">
     <label for="name">Name:</label>
@@ -8,10 +8,11 @@
     <select id="category" name="category">
         #foreach( $category in $foodCategories )
         <option value="$category"
-        #if ($category == $food.getCategory())
-            selected="selected"
-        #end>
-            $category</option>
+            #if ($category == $food.getCategory())
+                selected="selected"
+            #end>
+            $category
+        </option>
         #end
     </select>
 
@@ -31,9 +32,10 @@
     <select id="shop" name="shop">
         #foreach( $shop in $shops )
         <option value="$shop.getId()"
-                #if ($shop.getId() == $food.getShop().getId())
+            #if ($shop.getId() == $food.getShop().getId())
                 selected="selected"
-                #end>$shop.getName()</option>
+            #end>$shop.getName()
+        </option>
         #end
     </select>
 
