@@ -1,0 +1,45 @@
+<p>Edit Product</p>
+
+<form action="/clothing-products/$clothing.getId()" method="post">
+    <label for="name">Name:</label>
+    <input id="name" class="inputbox" type="text" name="name" required="true" value="$clothing.getName()">
+
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+        #foreach( $category in $clothingCategories )
+        <option value="$category"
+                #if ($category == $clothing.getCategory())
+                selected="selected"
+                #end>
+            $category</option>
+        #end
+    </select>
+
+    <label for="description">Description:</label>
+    <input id="description" class="inputbox" type="text" name="desciption" required="true" value="$clothing.getDescription()">
+
+    <label id="quantity" for="quantity">Quantity:</label>
+    <input type="number" name="quantity" required="true" class="inputbox" value="$clothing.getQuantity()">
+
+    <label id="stockDate" for="stockDate">StockDate:</label>
+    <input type="text" name="stockDate" required="true" class="inputbox" value="$clothing.formatDateToStringForInput($clothing.getStockDate())">
+
+    <label id="price" for="price">Price:</label>
+    <input type="number" name="price" required="true" class="inputbox" value="$clothing.getPrice()">
+
+    <label for="shop">Shop:</label> <!-- NEW -->
+    <select id="shop" name="shop">
+        #foreach( $shop in $shops )
+        <option value="$shop.getId()"
+                #if ($shop.getId() == $food.getShop().getId())
+                selected="selected"
+                #end>$shop.getName()</option>
+        #end
+    </select>
+
+
+    <input type="submit" value="Save" class="button">
+
+</form>
+
+<a href="/clothing-products/$clothing.getId()" class="button center">Cancel</a>
