@@ -7,7 +7,11 @@
     <label for="category">Category:</label>
     <select id="category" name="category">
         #foreach( $category in $foodCategories )
-        <option>$category</option>
+        <option value="$category"
+        #if ($category == $food.getCategory())
+            selected="selected"
+        #end>
+            $category</option>
         #end
     </select>
 
@@ -18,14 +22,24 @@
     <input type="number" name="quantity" required="true" class="inputbox" value="$food.getQuantity()">
 
     <label id="stockDate" for="stockDate">StockDate:</label>
-    <input type="text" name="stockDate" required="true" class="inputbox" value="$food.formatDateToString($food.getStockDate())">
+    <input type="text" name="stockDate" required="true" class="inputbox" value="$food.formatDateToStringForInput($food.getStockDate())">
 
     <label id="price" for="price">Price:</label>
     <input type="number" name="price" required="true" class="inputbox" value="$food.getPrice()">
+
+    <label for="shop">Shop:</label> <!-- NEW -->
+    <select id="shop" name="shop">
+        #foreach( $shop in $shops )
+        <option value="$shop.getId()"
+                #if ($shop.getId() == $food.getShop().getId())
+                selected="selected"
+                #end>$shop.getName()</option>
+        #end
+    </select>
 
 
     <input type="submit" value="Save" class="button">
 
 </form>
 
-<a href="/food-products/food.getId()" class="button center">Cancel</a>
+<a href="/food-products/$food.getId()" class="button center">Cancel</a>

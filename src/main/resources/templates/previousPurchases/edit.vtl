@@ -8,11 +8,11 @@
     <label for="total">Total(£):</label>
     <input id="total" type="number" name="total" required="true" class="inputbox" value="$previousPurchase.getTotal()">
 
-    <label for="customer">User:</label>
+    <label for="customer">Customer:</label>
     <select id="customer" name="customer">
         #foreach( $customer in $customers )
         <option value="$customer.getId()"
-            #if ($customer.getId() == $previousPurchase.getUser().getId())
+            #if ($customer.getId() == $previousPurchase.getCustomer().getId())
                 selected="selected"
             #end>
             $customer.getName()</option>
