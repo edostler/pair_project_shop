@@ -137,4 +137,32 @@ public abstract class Product {
         return result;
     }
 
+    public String formatDateToStringForInput(GregorianCalendar date) {
+        String day = "";
+        String month = "";
+
+        int dayInt = date.get(GregorianCalendar.DAY_OF_MONTH);
+        String dayStr = Integer.toString(dayInt);
+        if (dayInt < 10) {
+            day = "0" + dayStr;
+        }
+        else {
+            day = dayStr;
+        }
+
+        int monthInt = date.get(GregorianCalendar.MONTH);
+        String monthStr = Integer.toString(monthInt);
+        if (monthInt < 10) {
+            month = "0" + monthStr;
+        }
+        else {
+            month = monthStr;
+        }
+
+        String year = Integer.toString(date.get(GregorianCalendar.YEAR));
+
+        String result = year + "-" + month + "-" + day;
+        return result;
+    }
+
 }

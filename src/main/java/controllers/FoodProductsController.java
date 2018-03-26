@@ -37,7 +37,7 @@ public class FoodProductsController {
 //            FoodCategory foodCategory = FoodCategory.valueOf(category);
             Map<String, Object> model = new HashMap<>();
             model.put("shops", shops);
-            model.put("categories", foodCategories);
+            model.put("foodCategories", foodCategories);
             model.put("food", food);
             model.put("template", "templates/foodProducts/edit.vtl");
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
@@ -113,25 +113,38 @@ public class FoodProductsController {
             return null;
         }, new VelocityTemplateEngine());
 
-//        post ("/products/:id", (req, res) -> {
-//            String strId = req.params(":id");
-//            Integer intId = Integer.parseInt(strId);
-//            Product product = DBHelper.find(Product.class, intId);
-//            int shopId = Integer.parseInt(req.queryParams("shop"));
-//            Shop shop = DBHelper.find(Shop.class, shopId);
-//            String name = req.queryParams("name");
-//            String username = req.queryParams("username");
-//            int distance = Integer.parseInt(req.queryParams("distance"));
+        post ("/food-products/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Food food = DBHelper.find(Food.class, intId);
+            int shopId = Integer.parseInt(req.queryParams("shop"));
+            Shop shop = DBHelper.find(Shop.class, shopId);
+            String name = req.queryParams("name");
+            String category = req.queryParams("category");
+            FoodCategory foodCategory = FoodCategory.valueOf(category);
+            String description = req.queryParams("description");
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
 //
-//            customer.setName(name);
-//            customer.setUsername(username);
-//            customer.setDistance(distance);
-//            customer.setShop(shop);
-//            DBHelper.saveOrUpdate(customer);
-//            res.redirect("/customers");
-//            return null;
+            String strStockDate = req.queryParams("stockDate");
+            GregorianCalendar stockDate = DBHelper.formatStringToDate(strStockDate);
+            double price = Double.parseDouble(req.queryParams("price"));
+
 //
-//        }, new VelocityTemplateEngine());
+
+//
+            food.setName(name);
+            food.setCategory(foodCategory);
+            food.setDescription(description);
+            food.setQuantity(quantity);
+            food.setStockDate(stockDate);
+            food.setPrice(price);
+            food.setShop(shop);
+//
+            DBHelper.saveOrUpdate(food);
+            res.redirect("/food-products");
+            return null;
+
+        }, new VelocityTemplateEngine());
     }
 
 }
