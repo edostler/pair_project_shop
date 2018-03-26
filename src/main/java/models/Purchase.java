@@ -1,7 +1,9 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -11,14 +13,14 @@ public abstract class Purchase {
 
     private int id;
     private double total;
-    private Set<Product> contents;
+    private List<Product> contents;
 
     public Purchase() {
     }
 
     public Purchase(double total) {
         this.total = total;
-        this.contents = new HashSet<>();
+        this.contents = new ArrayList<>();
     }
 
     @Id
@@ -42,11 +44,11 @@ public abstract class Purchase {
     }
 
     @OneToMany(mappedBy = "purchase", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    public Set<Product> getContents() {
+    public List<Product> getContents() {
         return contents;
     }
 
-    public void setContents(Set<Product> contents) {
+    public void setContents(List<Product> contents) {
         this.contents = contents;
     }
 

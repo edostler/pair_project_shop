@@ -4,10 +4,7 @@ import db.DBHelper;
 import models.*;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -43,6 +40,8 @@ public class BasketController {
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
             CurrentPurchase basket = DBHelper.findBasketForCustomer(customer);
+            List<Product> contents = DBHelper.findContentsForBasket(basket);
+            basket.setContents(contents);
 
             String name = product.getName();
             double price = product.getPrice();
@@ -72,8 +71,8 @@ public class BasketController {
                 DBHelper.saveOrUpdate(health);
                 DBHelper.addProductToPurchase(health, basket);
                 }
-            req.headers("referer");
-//            res.redirect("/products");
+            String url = req.headers("referer");
+            res.redirect(url);
             return null;
         }, new VelocityTemplateEngine());
 
