@@ -2,6 +2,7 @@ package controllers;
 
 import db.DBHelper;
 import models.Customer;
+import models.PreviousPurchase;
 import models.Shop;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -38,6 +39,31 @@ public class AccountpageController {
             }
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+
+        get("/account/previous-purchases", (req, res)->{
+            Map<String, Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            List<Shop> shops = DBHelper.getAll(Shop.class);
+            List<PreviousPurchase> previousPurchases = DBHelper.getAll(PreviousPurchase.class);
+            List<PreviousPurchase> customerPreviousPurchases = DBHelper.getAllPreviousPurchasesForCustomer(customer);
+
+            model.put("customer", customer);
+            model.put("user", loggedInUser);
+            model.put("shops", shops);
+            model.put("previousPurchases", previousPurchases);
+            model.put("customerPreviousPurchases", customerPreviousPurchases);
+
+            if (loggedInUser.equals("admin")) {
+                model.put("template","templates/previousPurchases/index.vtl");
+            }
+            else {
+                model.put("template","templates/accountpage/customer_previousOrders.vtl");
+            }
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
 
 
         get("/account", (req, res) ->{
