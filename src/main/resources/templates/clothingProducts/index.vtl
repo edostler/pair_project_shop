@@ -5,6 +5,7 @@
     <table class="products-list">
         <tr>
             <th>Name</th>
+            <th>Category</th>
             <th>Description</th>
             <th>Availability</th>
             <th>In Stock</th>
@@ -14,6 +15,7 @@
         #foreach($clothingProduct in $clothingProducts)
         <tr>
             <td><a href="/clothing-products/$clothingProduct.getId()">$clothingProduct.getName()</a></td>
+            <td>$clothingProduct.getCategory()</td>
             <td>$clothingProduct.getDescription()</td>
             <td>$clothingProduct.availability</td>
             <td>$clothingProduct.getQuantity()</td>
