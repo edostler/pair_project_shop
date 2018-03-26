@@ -21,7 +21,7 @@
     <input id="stockDate" class="inputbox" type="date" name="stockDate" required="true" value="$food.formatDateToStringForInput($food.getStockDate())">
 
     <label id="price" for="price">Price:</label>
-    <input type="text" name="price" required="true" class="inputbox">
+    <input step="0.01" type="text" name="price" required="true" class="inputbox">
 
     <label for="shop">Shop:</label> <!-- NEW -->
     <select id="shop" name="shop">
@@ -29,7 +29,6 @@
         <option value="$shop.getId()">$shop.getName()</option>
         #end
     </select>
-
 
     <input type="submit" value="Save" class="button">
 
