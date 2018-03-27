@@ -1,10 +1,7 @@
 package db;
 
 import models.*;
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.mapping.Collection;
@@ -200,12 +197,7 @@ public class DBHelper {
         List<T> stock = null;
         Criteria cr = session.createCriteria(classType);
         cr.add(Restrictions.eq("shop", shop));
-
-//        cr.addOrder(Order.asc("name")).addOrder(Order.asc("availability"));
-
-        cr.addOrder(Order.asc("name"));
-//        cr.addOrder(Order.asc("availability"));
-
+        cr.addOrder(Order.desc("availability")).addOrder(Order.asc("name"));
         stock = getList(cr);
         return stock;
     }
