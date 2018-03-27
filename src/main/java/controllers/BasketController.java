@@ -99,7 +99,10 @@ public class BasketController {
             List<Product> contents = DBHelper.findContentsForBasket(basket);
             for(Product content: contents){
                 if(content.getId() == productId){
+                    basket.reduceTotalInBasket(content);
+                    DBHelper.saveOrUpdate(basket);
                     DBHelper.delete(content);
+
                 }
             }
 
