@@ -26,7 +26,10 @@
                     <label for="id"></label>
                     <input id="id" class="inputbox" type="number" name="id" required="true" value="$healthProduct.getId()">
                 </td>
+                #if ($healthProduct.availability)
                 <td><input type="submit" value="Add to basket" class="button"></td>
+                #else <td>Sorry, out of stock</td>
+                #end
             </form>
         </tr>
         #end

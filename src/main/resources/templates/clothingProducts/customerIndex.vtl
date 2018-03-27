@@ -20,13 +20,18 @@
             <td>$clothingProduct.getDescription()</td>
             <td>$clothingProduct.availability</td>
             <td>$clothingProduct.getPrice()</td>
+
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" name="quantity" required="true"></td>
                 <td>
                     <label for="id"></label>
                     <input id="id" class="inputbox" type="number" name="id" required="true" value="$clothingProduct.getId()">
                 </td>
+                #if ($clothingProduct.availability)
                 <td><input type="submit" value="Add to basket" class="button"></td>
+                #else <td>Sorry, out of stock</td>
+                #end
+
             </form>
         </tr>
         #end

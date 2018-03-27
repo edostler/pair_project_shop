@@ -26,7 +26,10 @@
                     <label for="id"></label>
                     <input id="id" class="inputbox" type="number" name="id" required="true" value="$food.getId()">
                 </td>
+                #if ($food.availability)
                 <td><input type="submit" value="Add to basket" class="button"></td>
+                #else <td>Sorry, out of stock</td>
+                #end
             </form>
         </tr>
         #end
