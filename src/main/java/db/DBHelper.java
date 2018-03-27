@@ -5,7 +5,9 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.mapping.Collection;
 import sun.tools.java.ClassType;
 
 import java.util.ArrayList;
@@ -198,6 +200,12 @@ public class DBHelper {
         List<T> stock = null;
         Criteria cr = session.createCriteria(classType);
         cr.add(Restrictions.eq("shop", shop));
+
+//        cr.addOrder(Order.asc("name")).addOrder(Order.asc("availability"));
+
+        cr.addOrder(Order.asc("name"));
+//        cr.addOrder(Order.asc("availability"));
+
         stock = getList(cr);
         return stock;
     }

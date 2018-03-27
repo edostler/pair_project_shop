@@ -23,8 +23,7 @@
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" name="quantity" required="true"></td>
                 <td>
-                    <label for="id"></label>
-                    <input id="id" class="inputbox" type="number" name="id" required="true" value="$food.getId()">
+                    <input id="id" class="inputbox" type="number" name="id" required="true" value="$food.getId()" hidden>
                 </td>
                 <td><input type="submit" value="Add to basket" class="button"></td>
             </form>
