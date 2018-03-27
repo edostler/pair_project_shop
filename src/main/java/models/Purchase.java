@@ -80,4 +80,8 @@ public abstract class Purchase {
         reduceTotal(totalPrice);
     }
 
+    public void emptyContents() {
+        this.contents.clear();
+    }
+
 }

@@ -22,6 +22,9 @@ public class Seeds {
         Shop shop = new Shop("PPS Groceries");
         DBHelper.saveOrUpdate(shop);
 
+        Shop shop2 = new Shop("SOLD");
+        DBHelper.saveOrUpdate(shop2);
+
         Customer customer1 = new Customer("James Bond", "Bond007", 20, shop);
         Customer customer2 = new Customer("Clark Kent", "Superman01", 30, shop);
         Customer customer3 = new Customer("Bruce Wayne", "Batman01", 55, shop);

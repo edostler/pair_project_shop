@@ -28,4 +28,5 @@ public class CurrentPurchase extends Purchase {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
 }
