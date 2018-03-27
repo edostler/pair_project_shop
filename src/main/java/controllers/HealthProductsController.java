@@ -40,7 +40,10 @@ public class HealthProductsController {
 
         get("/health-products", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Health> healthProducts = DBHelper.getAll(Health.class);
+            Shop stockShop = DBHelper.findShopByName("PPS Groceries");
+            List<Health> healthProducts = DBHelper.findProductsByShop(Health.class, stockShop);
+
+//            List<Health> healthProducts = DBHelper.getAll(Health.class);
             model.put("healthProducts", healthProducts);
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);

@@ -40,7 +40,11 @@ public class ClothingProductsController {
 
         get("/clothing-products", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Clothing> clothingProducts = DBHelper.getAll(Clothing.class);
+
+            Shop stockShop = DBHelper.findShopByName("PPS Groceries");
+            List<Clothing> clothingProducts = DBHelper.findProductsByShop(Clothing.class, stockShop);
+
+//            List<Clothing> clothingProducts = DBHelper.getAll(Clothing.class);
             model.put("clothingProducts", clothingProducts);
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);

@@ -70,10 +70,6 @@ public class Seeds {
         DBHelper.saveOrUpdate(previousPurchase2);
         DBHelper.saveOrUpdate(previousPurchase3);
 
-        DBHelper.addProductToPurchase(food1, currentPurchase1);
-        DBHelper.addProductToPurchase(clothing1, currentPurchase2);
-        DBHelper.addProductToPurchase(health1, currentPurchase3);
-
         DBHelper.addProductToPurchase(food2, previousPurchase1);
         DBHelper.addProductToPurchase(clothing2, previousPurchase1);
         DBHelper.addProductToPurchase(health2, previousPurchase2);

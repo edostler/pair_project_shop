@@ -43,7 +43,10 @@ public class FoodProductsController {
 
         get("/food-products", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Food> foods = DBHelper.getAll(Food.class);
+            Shop stockShop = DBHelper.findShopByName("PPS Groceries");
+            List<Food> foods = DBHelper.findProductsByShop(Food.class, stockShop);
+
+//            List<Food> foods = DBHelper.getAll(Food.class);
             model.put("foods", foods);
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
