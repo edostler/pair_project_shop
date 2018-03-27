@@ -43,34 +43,48 @@ public class BasketController {
             List<Product> contents = DBHelper.findContentsForBasket(basket);
             basket.setContents(contents);
 
+            int shopQuantity = product.getQuantity();
+
             String name = product.getName();
             double price = product.getPrice();
-            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            int purchaseQuantity = Integer.parseInt(req.queryParams("quantity"));
             String description = product.getDescription();
             GregorianCalendar stockDate = product.getStockDate();
             Shop shop = product.getShop();
 
+            if (shopQuantity < purchaseQuantity) {
+                purchaseQuantity = shopQuantity;
+//                NEED TO FLAG THE USER IF NOT ENOUGH AVAILABLE
+            }
+
             if (product.getClass() == Food.class) {
                 Food stockFood = (Food) product;
                 FoodCategory foodCategory = stockFood.getCategory();
-                Food food = new Food(name, foodCategory, price, quantity, description, stockDate, shop);
+                Food food = new Food(name, foodCategory, price, purchaseQuantity, description, stockDate, shop);
                 DBHelper.saveOrUpdate(food);
                 DBHelper.addProductToPurchase(food, basket);
             }
             else if (product.getClass() == Clothing.class) {
                 Clothing stockClothing = (Clothing) product;
                 ClothingCategory clothingCategory = stockClothing.getCategory();
-                Clothing clothing = new Clothing(name, clothingCategory, price, quantity, description, stockDate, shop);
+                Clothing clothing = new Clothing(name, clothingCategory, price, purchaseQuantity, description, stockDate, shop);
                 DBHelper.saveOrUpdate(clothing);
                 DBHelper.addProductToPurchase(clothing, basket);
             }
             else {
                 Health stockHealth = (Health) product;
                 HealthCategory healthCategory = stockHealth.getCategory();
-                Health health = new Health(name, healthCategory, price, quantity, description, stockDate, shop);
+                Health health = new Health(name, healthCategory, price, purchaseQuantity, description, stockDate, shop);
                 DBHelper.saveOrUpdate(health);
                 DBHelper.addProductToPurchase(health, basket);
                 }
+
+            int newShopQuantity = shopQuantity - purchaseQuantity;
+            product.setQuantity(newShopQuantity);
+            boolean availability = product.checkAvailability();
+            product.setAvailability(availability);
+            DBHelper.saveOrUpdate(product);
+
             String url = req.headers("referer");
             res.redirect(url);
             return null;

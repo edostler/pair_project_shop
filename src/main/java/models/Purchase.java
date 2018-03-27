@@ -69,12 +69,9 @@ public abstract class Purchase {
     }
 
     public void addToBasket(Product product){
+        double totalPrice = product.getPrice() * product.getQuantity();
         addProductToContents(product);
-        increaseTotal(product.getPrice());
-    }
-
-    public void addProduct(Product product){
-        this.contents.add(product);
+        increaseTotal(totalPrice);
     }
 
 }
