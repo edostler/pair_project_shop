@@ -2,6 +2,7 @@ package controllers;
 
 import db.Seeds;
 import spark.ModelAndView;
+import spark.Spark;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
@@ -42,6 +43,11 @@ public class MainController {
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+
+        Spark.exception(Exception.class, (exception, request, response) -> {
+            exception.printStackTrace();
+        });
     }
 
 //    static int getHerokuAssignedPort() {

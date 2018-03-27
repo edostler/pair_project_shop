@@ -93,16 +93,26 @@ public class BasketController {
 
         post("/basket/:id/remove", (req, res) ->{
             int productId = Integer.parseInt(req.params("id"));
+            Product removedProduct = DBHelper.find(Product.class, productId);
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
             CurrentPurchase basket = DBHelper.findBasketForCustomer(customer);
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
+            List<Product> products = DBHelper.findProductsByShop(Product.class, shop);
             List<Product> contents = DBHelper.findContentsForBasket(basket);
+
             for(Product content: contents){
-                if(content.getId() == productId){
+                if(content.getName().equals(removedProduct.getName())){
                     basket.reduceTotalInBasket(content);
                     DBHelper.saveOrUpdate(basket);
+                    for(Product product: products){
+                        if(product.getName().equals(removedProduct.getName())){
+                            product.setQuantity(product.getQuantity() + content.getQuantity());
+                            product.setAvailability(product.checkAvailability());
+                            DBHelper.saveOrUpdate(product);
+                        }
+                    }
                     DBHelper.delete(content);
-
                 }
             }
 
