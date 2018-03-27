@@ -8,7 +8,7 @@
         <li>Availability: $product.availability</li>
         <li>In Stock: $product.getQuantity()</li>
         <li>Stock Date: $product.formatDateToString($product.getStockDate())</li>
-        <li>Price: $product.getPrice()</li>
+        <li>Price: $product.formatToDecimal($product.getPrice())</li>
     </ul>
 
     <a href="/products/$product.getId()/edit" class="button center">Edit</a>

@@ -132,7 +132,7 @@ public class BasketController {
             if (basket.getTotal() < 40.00) {
                 delivery = customer.calculateBaseDelivery();
             }
-            double total = basket.getTotal() + delivery;
+            String total = basket.formatToDecimal((basket.getTotal() + delivery));
             model.put("user", loggedInUser);
             model.put("basket", basket);
             model.put("contents", contents);

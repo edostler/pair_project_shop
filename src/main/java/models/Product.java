@@ -176,4 +176,8 @@ public abstract class Product {
         return result;
     }
 
+    public String formatToDecimal(double value) {
+        return String.format("%.2f", value);
+    }
+
 }

@@ -6,7 +6,7 @@
 <form action="/previous-purchases/$previousPurchase.getId()" method="post">
 
     <label for="total">Total(£):</label>
-    <input id="total" type="number" name="total" required="true" class="inputbox" value="$previousPurchase.getTotal()">
+    <input step="0.01" id="total" type="number" name="total" required="true" class="inputbox" value="$previousPurchase.formatToDecimal($previousPurchase.getTotal())">
 
     <label for="customer">Customer:</label>
     <select id="customer" name="customer">
