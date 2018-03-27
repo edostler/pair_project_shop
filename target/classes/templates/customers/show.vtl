@@ -1,0 +1,12 @@
+<div>
+    <p> Name: $customer.getName()</p>
+    <p> Username: $customer.getUsername()</p>
+    <p> Distance:(km) $customer.getDistance()</p>
+    <p> Shop: $customer.getShop().getName()</p>
+</div>
+
+<a href="/customers/$customer.getId()/edit" class="button center">Edit</a>
+<form action="/customers/$customer.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button center">
+</form>
+<a href="/customers" class="button center">Back to list</a>

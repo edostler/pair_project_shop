@@ -1,0 +1,60 @@
+<p>View Invoice</p>
+
+<div class="container">
+
+    <form action="/basket/purchase" method="post">
+
+        <label for="deliveryDate">Delivery Date:</label>
+        <input id="deliveryDate" class="inputbox" type="date" name="deliveryDate" required="true">
+
+        <table class="products-list">
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Product Price</th>
+                <th>Quantity Price</th>
+            </tr>
+            #foreach($product in $contents)
+            <tr>
+                <td>$product.getName()</td>
+                <td>$product.getQuantity()</td>
+                <td>$product.getPrice()</td>
+                <td>$product.calculateQuantityPrice()</td>
+            </tr>
+            #end
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Sub Total:</td>
+                <td>£$basket.getTotal()</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Delivery Charge:</td>
+                <td>£$customer.calculateBaseDelivery()</td>
+            </tr>
+            #if ($basket.getTotal() >= 40.00)
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Delivery Discount:</td>
+                <td>-£$customer.calculateBaseDelivery()</td>
+            </tr>
+            #end
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Total:</td>
+                <td>£$total</td>
+            </tr>
+            <tr>
+                <td><a href="/basket" class="button center">Cancel</a></td>
+                <td></td>
+                <td></td>
+                <td><input type="submit" value="Confirm" class="button"></td>
+            </tr>
+        </table>
+    </form>
+
+</div>

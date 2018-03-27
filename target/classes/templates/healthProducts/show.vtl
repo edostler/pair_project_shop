@@ -1,0 +1,21 @@
+<p>Show Health Product</p>
+
+<div class="container">
+
+    <ul>
+        <li>Name: $healthProduct.getName()</li>
+        <li>Category: $healthProduct.getCategory()</li>
+        <li>Description: $healthProduct.getDescription()</li>
+        <li>Availability: $healthProduct.availability</li>
+        <li>In Stock: $healthProduct.getQuantity()</li>
+        <li>Stock Date: $healthProduct.formatDateToString($healthProduct.getStockDate())</li>
+        <li>Price: $healthProduct.getPrice()</li>
+    </ul>
+
+    <a href="/health-products/$healthProduct.getId()/edit" class="button center">Edit</a>
+    <form action="/health-products/$healthProduct.getId()/delete" method="post">
+        <input type="submit" value="Delete" class="button center">
+    </form>
+    <a href="/health-products" class="button center">Back to list</a>
+
+</div>
