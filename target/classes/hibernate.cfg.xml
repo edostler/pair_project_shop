@@ -9,14 +9,17 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/shopdb</property>
         <property name="connection_pool_size">1</property>
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
-        <mapping class="models.CurrentOrder"/>
-        <mapping class="models.Order"/>
-        <mapping class="models.PreviousOrder"/>
+        <mapping class="models.CurrentPurchase"/>
+        <mapping class="models.Purchase"/>
+        <mapping class="models.PreviousPurchase"/>
         <mapping class="models.Product"/>
         <mapping class="models.Shop"/>
-        <mapping class="models.User"/>
+        <mapping class="models.Customer"/>
+        <mapping class="models.Health"/>
+        <mapping class="models.Food"/>
+        <mapping class="models.Clothing"/>
 
     </session-factory>
 </hibernate-configuration>

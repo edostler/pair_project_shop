@@ -1,0 +1,41 @@
+<p>All Clothing Products</p>
+
+<p><a href="/food-products">Food Products</a></p>
+<p><a href="/health-products">Health Products</a></p>
+
+<div class="container">
+
+    <table class="products-list">
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Availability</th>
+            <th>Price</th>
+        </tr>
+        #foreach($clothingProduct in $clothingProducts)
+        <tr>
+            <td>$clothingProduct.getName()</td>
+            <td>$clothingProduct.getCategory()</td>
+            <td>$clothingProduct.getDescription()</td>
+            <td>$clothingProduct.availability</td>
+            <td>$clothingProduct.getPrice()</td>
+
+            <form action="/basket" method="post">
+                <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
+                <td>
+                    <input id="id" class="inputbox" type="number" name="id" required="true" value="$clothingProduct.getId()" hidden>
+                </td>
+                #if ($clothingProduct.availability)
+                <td><input type="submit" value="Add to basket" class="button"></td>
+                #else <td>Sorry, out of stock</td>
+                #end
+
+            </form>
+        </tr>
+        #end
+    </table>
+
+    <a href="/products" class="button center">Back To All Products</a>
+
+</div>

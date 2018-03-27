@@ -1,0 +1,34 @@
+<p>Edit Product</p>
+
+<form action="/products/$product.getId()" method="post">
+    <label for="name">Name:</label>
+    <input id="name" class="inputbox" type="text" name="name" required="true" value="$product.getName()">
+
+    <label for="description">Description:</label>
+    <input id="description" class="inputbox" type="text" name="description" required="true" value="$product.getDescription()">
+
+    <label id="quantity" for="quantity">Quantity:</label>
+    <input type="number" name="quantity" required="true" class="inputbox" value="$product.getQuantity()">
+
+    <label id="stockDate" for="stockDate">StockDate:</label>
+    <input type="text" name="stockDate" required="true" class="inputbox" value="$product.formatDateToStringForInput($product.getStockDate())">
+
+    <label id="price" for="price">Price:</label>
+    <input step="0.01" type="number" name="price" required="true" class="inputbox" value="$product.getPrice()">
+
+    <label for="shop">Shop:</label>
+    <select id="shop" name="shop">
+        #foreach( $shop in $shops )
+        <option value="$shop.getId()"
+            #if ($shop.getId() == $food.getShop().getId())
+                selected="selected"
+            #end>$shop.getName()
+        </option>
+        #end
+    </select>
+
+    <input type="submit" value="Save" class="button">
+
+</form>
+
+<a href="/products/$product.getId()" class="button center">Cancel</a>

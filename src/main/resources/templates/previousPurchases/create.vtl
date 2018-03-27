@@ -1,0 +1,30 @@
+<p class="pageHeader">New Previous Purchase</p>
+
+<form action="/previous-purchases" method="post">
+
+    <label for="total">Total(£):</label>
+    <input id="total" type="number" name="total" required="true" class="inputbox">
+
+    <label for="customer">Customer:</label>
+    <select id="customer" name="customer">
+        #foreach( $customer in $customers )
+        <option value="$customer.getId()">$customer.getName()</option>
+        #end
+    </select>
+
+    <label for="purchaseDate">Purchase Date:</label>
+    <input id="purchaseDate" class="inputbox" type="date" name="purchaseDate" required="true">
+
+    <label for="deliveryDate">Delivery Date:</label>
+    <input id="deliveryDate" class="inputbox" type="date" name="deliveryDate" required="true">
+
+    <label for="shop">Shop:</label>
+    <select id="shop" name="shop">
+        #foreach( $shop in $shops )
+        <option value="$shop.getId()">$shop.getName()</option>
+        #end
+    </select>
+
+    <input type="submit" value="Save" class="button">
+</form>
+<a href="/previous-purchases" class="button center">Cancel</a>

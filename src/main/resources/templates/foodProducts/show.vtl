@@ -1,0 +1,21 @@
+<p>Show Food Product</p>
+
+<div class="container">
+
+    <ul>
+        <li>Name: $food.getName()</li>
+        <li>Category: $food.getCategory()</li>
+        <li>Description: $food.getDescription()</li>
+        <li>Availability: $food.availability</li>
+        <li>In Stock: $food.getQuantity()</li>
+        <li>Stock Date: $food.formatDateToString($food.getStockDate())</li>
+        <li>Price: $food.getPrice()</li>
+    </ul>
+
+    <a href="/food-products/$food.getId()/edit" class="button center">Edit</a>
+    <form action="/food-products/$food.getId()/delete" method="post">
+        <input type="submit" value="Delete" class="button center">
+    </form>
+    <a href="/food-products" class="button center">Back to list</a>
+
+</div>

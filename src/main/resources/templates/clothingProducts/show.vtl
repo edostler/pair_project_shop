@@ -1,0 +1,21 @@
+<p>Show Clothing Product</p>
+
+<div class="container">
+
+    <ul>
+        <li>Name: $clothingProduct.getName()</li>
+        <li>Category: $clothingProduct.getCategory()</li>
+        <li>Description: $clothingProduct.getDescription()</li>
+        <li>Availability: $clothingProduct.availability</li>
+        <li>In Stock: $clothingProduct.getQuantity()</li>
+        <li>Stock Date: $clothingProduct.formatDateToString($clothingProduct.getStockDate())</li>
+        <li>Price: $clothingProduct.getPrice()</li>
+    </ul>
+
+    <a href="/clothing-products/$clothingProduct.getId()/edit" class="button center">Edit</a>
+    <form action="/clothing-products/$clothingProduct.getId()/delete" method="post">
+        <input type="submit" value="Delete" class="button center">
+    </form>
+    <a href="/clothing-products" class="button center">Back to list</a>
+
+</div>

@@ -1,0 +1,32 @@
+<p class="pageHeader">Contents</p>
+
+<table class="products-list">
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Quantity Price</th>
+    </tr>
+    #foreach($content in $contents)
+    <tr>
+        <td>$content.getName()</td>
+        <td>$content.getCategory()</td>
+        <td>$content.getDescription()</td>
+        <td>$content.getPrice()</td>
+        <td>$content.getQuantity()</td>
+        <td>$content.calculateQuantityPrice()</td>
+    </tr>
+    #end
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Total:</td>
+        <td>$purchase.getTotal()</td>
+    </tr>
+</table>
+
+<a href="/account/previous-purchases" class="button center">Back To List</a>
