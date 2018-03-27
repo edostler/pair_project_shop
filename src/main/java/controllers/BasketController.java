@@ -55,7 +55,7 @@ public class BasketController {
 
             if (shopQuantity < purchaseQuantity) {
                 purchaseQuantity = shopQuantity;
-//                NEED TO FLAG THE USER IF NOT ENOUGH AVAILABLE
+
             }
 
             if (product.getClass() == Food.class) {
@@ -91,6 +91,7 @@ public class BasketController {
             return null;
         }, new VelocityTemplateEngine());
 
+
         post("/basket/:id/remove", (req, res) ->{
             int productId = Integer.parseInt(req.params("id"));
             Product removedProduct = DBHelper.find(Product.class, productId);
@@ -119,6 +120,38 @@ public class BasketController {
             String url = req.headers("referer");
             res.redirect(url);
             return null;
+        }, new VelocityTemplateEngine());
+
+
+        get("/basket/invoice", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            CurrentPurchase basket = DBHelper.findBasketForCustomer(customer);
+            List<Product> contents = DBHelper.findContentsForBasket(basket);
+            model.put("user", loggedInUser);
+            model.put("basket", basket);
+            model.put("contents", contents);
+            model.put("customer", customer);
+            model.put("template", "templates/basket/invoice.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+        post("/basket/invoice", (req, res) -> {
+
+            Map<String, Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            CurrentPurchase basket = DBHelper.findBasketForCustomer(customer);
+            List<Product> contents = DBHelper.findContentsForBasket(basket);
+            model.put("user", loggedInUser);
+            model.put("basket", basket);
+            model.put("contents", contents);
+            model.put("customer", customer);
+            model.put("template", "templates/basket/invoice.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+
         }, new VelocityTemplateEngine());
 
     }
