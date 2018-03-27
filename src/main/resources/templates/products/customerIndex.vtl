@@ -8,6 +8,7 @@
 
     <table class="products-list">
         <tr>
+            <th></th>
             <th>Name</th>
             <th>Description</th>
             <th>Availability</th>
@@ -15,6 +16,7 @@
         </tr>
         #foreach($product in $products)
         <tr>
+            <td><img src="$product.getImage()" alt="n/a"></td>
             <td>$product.getName()</a></td>
             <td>$product.getDescription()</td>
             <td>$product.availability</td>

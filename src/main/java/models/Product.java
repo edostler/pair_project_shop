@@ -16,6 +16,7 @@ public abstract class Product {
     private GregorianCalendar stockDate;
     private Shop shop;
     private Purchase purchase;
+    private String image;
 
 
     public Product() {
@@ -30,6 +31,7 @@ public abstract class Product {
         this.shop = shop;
         this.purchase = null;
         this.availability = checkAvailability();
+        this.image = null;
     }
 
     @Id
@@ -122,6 +124,15 @@ public abstract class Product {
             return true;
         }
         return false;
+    }
+
+    @Column(name="image")
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String formatDateToString(GregorianCalendar date) {
