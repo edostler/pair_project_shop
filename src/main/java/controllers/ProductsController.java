@@ -38,7 +38,8 @@ public class ProductsController {
 
         get("/products", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Product> products = DBHelper.getAll(Product.class);
+            Shop stockShop = DBHelper.findShopByName("PPS Groceries");
+            List<Product> products = DBHelper.findProductsByShop(Product.class, stockShop);
             model.put("products", products);
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);

@@ -50,7 +50,8 @@ public class BasketController {
             int purchaseQuantity = Integer.parseInt(req.queryParams("quantity"));
             String description = product.getDescription();
             GregorianCalendar stockDate = product.getStockDate();
-            Shop shop = product.getShop();
+            Shop shop = new Shop("SOLD");
+            DBHelper.saveOrUpdate(shop);
 
             if (shopQuantity < purchaseQuantity) {
                 purchaseQuantity = shopQuantity;

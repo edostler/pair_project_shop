@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import sun.tools.java.ClassType;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -183,13 +184,31 @@ public class DBHelper {
         return customerPreviousPurchases;
     }
 
-    public static List<Product> getAllContentsForPurchase(Purchase purchase){
+    public static List<Product> getAllContentsForPurchase(Purchase purchase) {
         session = HibernateUtil.getSessionFactory().openSession();
         List<Product> contents = new ArrayList<>();
         Criteria cr = session.createCriteria(Product.class);
         cr.add(Restrictions.eq("purchase", purchase));
         contents = getList(cr);
         return contents;
+    }
+
+    public static <T> List<T> findProductsByShop(Class classType, Shop shop) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<T> stock = null;
+        Criteria cr = session.createCriteria(classType);
+        cr.add(Restrictions.eq("shop", shop));
+        stock = getList(cr);
+        return stock;
+    }
+
+    public static Shop findShopByName(String name) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Shop shop = null;
+        Criteria cr = session.createCriteria(Shop.class);
+        cr.add(Restrictions.eq("name", name));
+        shop = getUnique(cr);
+        return shop;
     }
 
 }
