@@ -31,7 +31,7 @@ public abstract class Product {
         this.shop = shop;
         this.purchase = null;
         this.availability = checkAvailability();
-        this.image = image;
+        this.image = null;
     }
 
     @Id

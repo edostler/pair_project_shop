@@ -16,7 +16,7 @@
         </tr>
         #foreach($clothingProduct in $clothingProducts)
         <tr>
-            <td>$clothingProduct.getImage()</td>
+            <td><img src="$clothingProduct.getImage()" alt="n/a"></td>
             <td>$clothingProduct.getName()</td>
             <td>$clothingProduct.getCategory()</td>
             <td>$clothingProduct.getDescription()</td>
