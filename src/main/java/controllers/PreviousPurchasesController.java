@@ -3,6 +3,7 @@ package controllers;
 import db.DBHelper;
 import models.Customer;
 import models.PreviousPurchase;
+import models.Product;
 import models.Shop;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -38,8 +39,24 @@ public class PreviousPurchasesController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        get("/previous-purchases/:id/contents", (req, res) -> {
+            int id = Integer.parseInt(req.params(":id"));
+            PreviousPurchase purchase = DBHelper.find(PreviousPurchase.class, id);
+            List<Product> contents = DBHelper.getAllContentsForPurchase(purchase);
+            Map<String, Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
+            model.put("contents", contents);
+            model.put("purchase", purchase);
+            model.put("template", "templates/previousPurchases/contents.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
 
-        get("/previous-purchases", (req, res) -> {
+
+
+
+
+            get("/previous-purchases", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<PreviousPurchase> previousPurchases = DBHelper.getAll(PreviousPurchase.class);
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
