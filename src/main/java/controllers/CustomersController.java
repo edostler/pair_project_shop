@@ -89,6 +89,8 @@ public class CustomersController {
         post ("/customers/:id/delete", (req, res) -> {
             int id = Integer.parseInt(req.params(":id"));
             Customer customerToDelete = DBHelper.find(Customer.class, id);
+            CurrentPurchase basket = DBHelper.findBasketForCustomer(customerToDelete);
+            DBHelper.delete(basket);
             DBHelper.delete(customerToDelete);
             res.redirect("/customers");
             return null;
