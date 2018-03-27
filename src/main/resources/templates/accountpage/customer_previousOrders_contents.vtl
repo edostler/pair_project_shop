@@ -1,0 +1,27 @@
+<p class="pageHeader">Contents</p>
+
+<table class="products-list">
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Availability</th>
+        <th>In Stock</th>
+        <th>Stock Date</th>
+        <th>Price</th>
+    </tr>
+    #foreach($content in $contents)
+    <tr>
+        <td>$content.getName()</td>
+        <td>$content.getCategory()</td>
+        <td>$content.getDescription()</td>
+        <td>$content.availability</td>
+        <td>$content.getQuantity()</td>
+        <td>$content.formatDateToString($content.getStockDate())</td>
+        <td>$content.getPrice()</td>
+
+    </tr>
+    #end
+</table>
+
+<a href="/account/previous-purchases" class="button center">Back To List</a>

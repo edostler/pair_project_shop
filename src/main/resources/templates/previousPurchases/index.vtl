@@ -12,6 +12,7 @@
             <th>Total (£)</th>
             <th>Shop</th>
             <th>View Purchase</th>
+            <th>Contents</th>
         </tr>
         #foreach($previousPurchase in $previousPurchases)
         <tr>
@@ -21,6 +22,7 @@
             <td>$previousPurchase.getTotal()</td>
             <td>$previousPurchase.getShop().getName()</td>
             <td><a href="/previous-purchases/$previousPurchase.getId()">Details</a></td>
+            <td><a href="/previous-purchases/$previousPurchase.getId()/contents">Contents</a></td>
         <tr>
         #end
     </table>
