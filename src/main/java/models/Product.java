@@ -29,7 +29,7 @@ public abstract class Product {
         this.stockDate = stockDate;
         this.shop = shop;
         this.purchase = null;
-        this.availability = getAvailability();
+        this.availability = checkAvailability();
     }
 
     @Id
@@ -62,7 +62,7 @@ public abstract class Product {
     }
 
     @Column(name="availability")
-    public boolean isAvailability() {
+    public boolean getAvailability() {
         return availability;
     }
 
@@ -117,8 +117,8 @@ public abstract class Product {
         this.purchase = purchase;
     }
 
-    public boolean getAvailability() {
-        if (quantity > 0) {
+    public boolean checkAvailability() {
+        if (this.quantity > 0) {
             return true;
         }
         return false;

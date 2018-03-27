@@ -142,7 +142,7 @@ public class DBHelper {
 
     public static void addProductToPurchase(Product product, Purchase purchase) {
         product.setPurchase(purchase);
-        purchase.addProduct(product);
+        purchase.addToBasket(product);
         saveOrUpdate(product);
         saveOrUpdate(purchase);
     }
