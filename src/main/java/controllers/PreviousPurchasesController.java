@@ -48,7 +48,16 @@ public class PreviousPurchasesController {
             model.put("user", loggedInUser);
             model.put("contents", contents);
             model.put("purchase", purchase);
-            model.put("template", "templates/previousPurchases/contents.vtl");
+
+            if (loggedInUser.equals("admin")) {
+                model.put("template", "templates/previousPurchases/contents.vtl");
+            }
+            else {
+                model.put("template", "templates/accountpage/customer_previousOrders_contents.vtl");
+            }
+
+
+
             return new ModelAndView(model, "templates/layout.vtl");
             }, new VelocityTemplateEngine());
 
