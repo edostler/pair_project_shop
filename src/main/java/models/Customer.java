@@ -113,4 +113,8 @@ public class Customer {
     public int checkPreviousPurchasesSize() {
         return this.previousPurchases.size();
     }
+
+    public double calculateBaseDelivery() {
+        return this.distance*0.25;
+    }
 }

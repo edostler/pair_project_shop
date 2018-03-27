@@ -1,6 +1,6 @@
-<div class="container">
+<p>View Basket</p>
 
-    <p> Total: £$basket.getTotal()</p>
+<div class="container">
 
     <table class="products-list">
         <tr>
@@ -17,6 +17,18 @@
             <td>$product.calculateQuantityPrice()</td>
         </tr>
         #end
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Total:</td>
+            <td>£$basket.getTotal()</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a href="/basket/invoice" class="button center">Purchase</a></td>
+        </tr>
     </table>
 
 </div>
