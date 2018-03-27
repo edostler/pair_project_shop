@@ -22,7 +22,7 @@
             <td>$clothingProduct.getPrice()</td>
 
             <form action="/basket" method="post">
-                <td>Qty:<input class="inputbox" type="number" name="quantity" required="true"></td>
+                <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
                 <td>
                     <label for="id"></label>
                     <input id="id" class="inputbox" type="number" name="id" required="true" value="$clothingProduct.getId()">
