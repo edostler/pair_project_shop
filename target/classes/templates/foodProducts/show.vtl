@@ -9,7 +9,7 @@
         <li>Availability: $food.availability</li>
         <li>In Stock: $food.getQuantity()</li>
         <li>Stock Date: $food.formatDateToString($food.getStockDate())</li>
-        <li>Price: $food.getPrice()</li>
+        <li>Price: $food.formatToDecimal($food.getPrice())</li>
     </ul>
 
     <a href="/food-products/$food.getId()/edit" class="button center">Edit</a>

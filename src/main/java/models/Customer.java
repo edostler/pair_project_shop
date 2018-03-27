@@ -117,4 +117,8 @@ public class Customer {
     public double calculateBaseDelivery() {
         return this.distance*0.25;
     }
+
+    public String formatToDecimal(double value) {
+        return String.format("%.2f", value);
+    }
 }

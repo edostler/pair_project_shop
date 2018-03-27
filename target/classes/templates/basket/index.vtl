@@ -14,8 +14,8 @@
         <tr>
             <td>$product.getName()</td>
             <td>$product.getQuantity()</td>
-            <td>$product.getPrice()</td>
-            <td>$product.calculateQuantityPrice()</td>
+            <td>$product.formatToDecimal($product.getPrice())</td>
+            <td>$product.formatToDecimal($product.calculateQuantityPrice())</td>
             <form action="/basket/$product.getId()/remove" method="post">
                 <td><input type="submit" value="Remove from basket" class="button"></td>
             </form>
@@ -25,7 +25,7 @@
             <td></td>
             <td></td>
             <td>Total:</td>
-            <td>£$basket.getTotal()</td>
+            <td>£$basket.formatToDecimal($basket.getTotal())</td>
         </tr>
         <tr>
             <td></td>

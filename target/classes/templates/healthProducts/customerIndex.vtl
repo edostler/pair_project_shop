@@ -19,7 +19,7 @@
             <td>$healthProduct.getCategory()</td>
             <td>$healthProduct.getDescription()</td>
             <td>$healthProduct.availability</td>
-            <td>$healthProduct.getPrice()</td>
+            <td>$healthProduct.formatToDecimal($healthProduct.getPrice())</td>
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
                 <td>

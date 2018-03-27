@@ -18,7 +18,7 @@
             <td>$product.getName()</a></td>
             <td>$product.getDescription()</td>
             <td>$product.availability</td>
-            <td>$product.getPrice()</td>
+            <td>$product.formatToDecimal($product.getPrice())</td>
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
                 <td>

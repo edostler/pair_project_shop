@@ -84,4 +84,8 @@ public abstract class Purchase {
         this.contents.clear();
     }
 
+    public String formatToDecimal(double value) {
+        return String.format("%.2f", value);
+    }
+
 }

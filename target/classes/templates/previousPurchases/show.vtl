@@ -1,6 +1,6 @@
 <div>
-    <p> Total: £$previousPurchase.getTotal()</p>
-    <p> Customer: $previousPurchase.getCustomer()</p>
+    <p> Total: £$previousPurchase.formatToDecimal($previousPurchase.getTotal())</p>
+    <p> Customer: $previousPurchase.getCustomer().getName()</p>
     <p> Purchase Date: $previousPurchase.formatDateToString($previousPurchase.getPurchaseDate())</p>
     <p> Delivery Date: $previousPurchase.formatDateToString($previousPurchase.getDeliveryDate())</p>
     <p> Shop: $previousPurchase.getShop().getName()</p>

@@ -19,8 +19,7 @@
             <td>$clothingProduct.getCategory()</td>
             <td>$clothingProduct.getDescription()</td>
             <td>$clothingProduct.availability</td>
-            <td>$clothingProduct.getPrice()</td>
-
+            <td>$clothingProduct.formatToDecimal($clothingProduct.getPrice())</td>
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
                 <td>
@@ -30,7 +29,6 @@
                 <td><input type="submit" value="Add to basket" class="button"></td>
                 #else <td>Sorry, out of stock</td>
                 #end
-
             </form>
         </tr>
         #end

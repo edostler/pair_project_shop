@@ -14,7 +14,7 @@
     <input type="text" name="stockDate" required="true" class="inputbox" value="$product.formatDateToStringForInput($product.getStockDate())">
 
     <label id="price" for="price">Price:</label>
-    <input step="0.01" type="number" name="price" required="true" class="inputbox" value="$product.getPrice()">
+    <input step="0.01" type="number" name="price" required="true" class="inputbox" value="$product.formatToDecimal($product.getPrice())">
 
     <label for="shop">Shop:</label>
     <select id="shop" name="shop">
