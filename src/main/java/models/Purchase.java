@@ -75,4 +75,10 @@ public abstract class Purchase {
         increaseTotal(totalPrice);
     }
 
+    public void removeFromBasket(Product product){
+        double totalPrice = product.getPrice() * product.getQuantity();
+        removeProductFromContents(product);
+        reduceTotal(totalPrice);
+    }
+
 }
