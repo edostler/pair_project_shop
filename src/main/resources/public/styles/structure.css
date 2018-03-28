@@ -106,3 +106,12 @@ li.dropdown {
     background: #EBEBD3;
 
 }
+
+img{
+vh: 10%;
+vw:10%;}
+
+.pageHeader{
+font-size: 2em;
+color: #00853F;
+margin-left:15px;}

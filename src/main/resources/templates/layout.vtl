@@ -11,37 +11,23 @@
 
 <body>
 
-<div class="header">
-    <div class="heading">
+<nav class="navtop">
         <ul>
+            <li><a href="/home">Home</a></li>
+            <li class="dropdown">
+                <a class="dropbtn" href="/products">Shop All Products</a>
+                <div class="dropdown-content">
+                    <a href="/food-products">Food Products</a>
+                    <a href="/clothing-products">Clothing Products</a>
+                    <a href="/health-products">Health Products</a>
+                </div>
+            </li>
             <li class="logo"><img height="120px" src="/images/logo_full.png" alt="PPS Groceries"></li>
-            <li class="login">Logged in as: <a href="/account">$user</a></li>
-            <li class="logout"><a href="/logout"/>Logout</a></li>
-            <li class="basket" href="/basket">Basket</li>
+            <li class="log"><a href="/logout"/>Logout</a></li>
+            <li class="log"><a href="/account">$user</a></li>
+            <li class="log"><a href="/basket">Basket</a></li>
         </ul>
-    </div>
-    </div>
-
-    <div class="nav">
-        <a class="nav_links" href="/home">Home</a>
-        <a href="/account">Account</a>
-    </div>
-
-    <!--<p>-&#45;&#45;&#45;&#45;</p>-->
-    <!--<p>Temp Nav Bar</p>-->
-    <!--<div class="nav">-->
-        <!--<ul>-->
-            <!--<li><a href="/customers">Customers</a></li>-->
-            <!--<li><a href="/previous-purchases">Previous Purchases</a></li>-->
-            <!--<li><a href="/products">Products</a></li>-->
-            <!--<li><a href="/food-products">Food Products</a></li>-->
-            <!--<li><a href="/clothing-products">Clothing Products</a></li>-->
-            <!--<li><a href="/health-products">Health Products</a></li>-->
-        <!--</ul>-->
-    <!--</div>-->
-    <!--<p>-&#45;&#45;&#45;&#45;</p>-->
-
-</div>
+    </nav>
 
 <div class="container">
     #parse( $template )
