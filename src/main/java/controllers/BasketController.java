@@ -142,8 +142,9 @@ public class BasketController {
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
             CurrentPurchase basket = DBHelper.findBasketForCustomer(customer);
             List<Product> contents = DBHelper.findContentsForBasket(basket);
+            int deliveryLimit = 40;
             double delivery = 0.00;
-            if (basket.getTotal() < 40.00) {
+            if (basket.getTotal() < deliveryLimit) {
                 delivery = customer.calculateBaseDelivery();
             }
             String total = basket.formatToDecimal((basket.getTotal() + delivery));
@@ -152,6 +153,7 @@ public class BasketController {
             model.put("contents", contents);
             model.put("customer", customer);
             model.put("total", total);
+            model.put("deliveryLimit", deliveryLimit);
             model.put("template", "templates/basket/invoice.vtl");
             if(loggedInUser.equals("admin")){
                 return new ModelAndView(model, "templates/adminLayout.vtl");

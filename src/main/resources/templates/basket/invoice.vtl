@@ -34,12 +34,19 @@
                 <td>Delivery Charge:</td>
                 <td>£$customer.formatToDecimal($customer.calculateBaseDelivery())</td>
             </tr>
-            #if ($basket.getTotal() >= 40.00)
+            #if ($basket.getTotal() >= $deliveryLimit)
             <tr>
                 <td></td>
                 <td></td>
                 <td>Delivery Discount:</td>
-                <td>-£$customer.formatToDecimal($customer.calculateBaseDelivery())</td>
+                <td>-£$customer.formatToDecimal($customer.calculateBaseDelivery())*</td>
+            </tr>
+            #else
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Delivery Discount:</td>
+                <td>Not qualified*</td>
             </tr>
             #end
             <tr>
@@ -56,5 +63,11 @@
             </tr>
         </table>
     </form>
+
+    #if ($basket.getTotal() >= $deliveryLimit)
+    <p>*You have qualified for free delivery by spending a total of at least £$deliveryLimit.</p>
+    #else
+    <p>*In order to qualify for free delivery please spend a total of at least £$deliveryLimit.</p>
+    #end
 
 </div>
