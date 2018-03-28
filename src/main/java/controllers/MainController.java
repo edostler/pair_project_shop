@@ -25,11 +25,8 @@ public class MainController {
         HomepageController homepageController = new HomepageController();
         AccountpageController accountpageController = new AccountpageController();
         BasketController basketController = new BasketController();
-        ShopsController shopsController = new ShopsController();
         CustomersController customersController = new CustomersController();
-        PurchasesController purchasesController = new PurchasesController();
         PreviousPurchasesController previousPurchasesController = new PreviousPurchasesController();
-        CurrentPurchasesController currentPurchasesController = new CurrentPurchasesController();
         ProductsController productsController = new ProductsController();
         FoodProductsController foodProductsController = new FoodProductsController();
         ClothingProductsController clothingProductsController = new ClothingProductsController();
