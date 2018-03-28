@@ -85,8 +85,7 @@ public class LoginController {
             String name = req.queryParams("name");
             String username = req.queryParams("username");
             int distance = Integer.parseInt(req.queryParams("distance"));
-            int shopId = Integer.parseInt(req.queryParams("shop"));
-            Shop shop = DBHelper.find(Shop.class, shopId);
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
             Customer customer = new Customer(name, username, distance, shop);
             DBHelper.saveOrUpdate(customer);
 
