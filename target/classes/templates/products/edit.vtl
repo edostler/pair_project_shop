@@ -1,5 +1,8 @@
 <p class="pageHeader">Edit Product</p>
 
+<div class="details">
+
+
 <form action="/products/$product.getId()" method="post">
     <label for="name">Name:</label>
     <input id="name" class="inputbox" type="text" name="name" required="true" value="$product.getName()">
@@ -21,3 +24,4 @@
 </form>
 
 <a href="/products/$product.getId()" class="button center">Cancel</a>
+</div>

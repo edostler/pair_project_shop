@@ -1,5 +1,8 @@
 <p class="pageHeader">Edit Health Product</p>
 
+<div class="details">
+
+
 <form action="/health-products/$health.getId()" method="post">
     <label for="name">Name:</label>
     <input id="name" class="inputbox" type="text" name="name" required="true" value="$health.getName()">
@@ -33,3 +36,4 @@
 </form>
 
 <a href="/health-products/$health.getId()" class="button center">Cancel</a>
+</div>
