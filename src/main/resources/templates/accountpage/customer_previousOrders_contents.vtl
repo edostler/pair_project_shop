@@ -6,7 +6,7 @@
         <th>Name</th>
         <th>Category</th>
         <th>Description</th>
-        <th>Price (£)</th>
+        <th>Price</th>
         <th>Quantity</th>
         <th>Quantity Price</th>
     </tr>
@@ -16,7 +16,7 @@
         <td>$content.getName()</td>
         <td>$content.getCategory()</td>
         <td>$content.getDescription()</td>
-        <td>$content.formatToDecimal($content.getPrice())</td>
+        <td>£$content.formatToDecimal($content.getPrice())</td>
         <td>$content.getQuantity()</td>
         <td>$content.formatToDecimal($content.calculateQuantityPrice())</td>
     </tr>
@@ -27,7 +27,7 @@
         <td></td>
         <td></td>
         <td>Total:</td>
-        <td>$purchase.formatToDecimal($purchase.getTotal())</td>
+        <td>£$purchase.formatToDecimal($purchase.getTotal())</td>
     </tr>
 </table>
 
