@@ -7,7 +7,6 @@
             <th>Purchase Date</th>
             <th>Delivery Date</th>
             <th>Total</th>
-            <th>Shop</th>
             <th>Contents</th>
         </tr>
         #foreach($customerPreviousPurchase in $customerPreviousPurchases)
@@ -16,7 +15,7 @@
             <td>$customerPreviousPurchase.formatDateToString($customerPreviousPurchase.getPurchaseDate())</td>
             <td>$customerPreviousPurchase.formatDateToString($customerPreviousPurchase.getDeliveryDate())</td>
             <td>£$customerPreviousPurchase.formatToDecimal($customerPreviousPurchase.getTotal())</td>
-            <td>$customerPreviousPurchase.getShop().getName()</td>
+            <td>$customerPreviousPurchase.formatToDecimal($customerPreviousPurchase.getTotal())</td>
             <td><a href="/previous-purchases/$customerPreviousPurchase.getId()/contents">Contents</a></td>
         <tr>
             #end

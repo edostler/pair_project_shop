@@ -6,8 +6,13 @@
             <th>Customer</th>
             <th>Purchase Date</th>
             <th>Delivery Date</th>
+<<<<<<< HEAD
             <th>Total</th>
             <th>Shop</th>
+=======
+            <th>Total (£)</th>
+            <!--<th>Shop</th>-->
+>>>>>>> feature/removeShopFromView
             <th>Contents</th>
         </tr>
         #foreach($customerPreviousPurchase in $customerPreviousPurchases)
@@ -15,8 +20,13 @@
             <td>$customer.getName()</td>
             <td>$customerPreviousPurchase.formatDateToString($customerPreviousPurchase.getPurchaseDate())</td>
             <td>$customerPreviousPurchase.formatDateToString($customerPreviousPurchase.getDeliveryDate())</td>
+<<<<<<< HEAD
             <td>£$customerPreviousPurchase.formatToDecimal($customerPreviousPurchase.getTotal())</td>
             <td>$customerPreviousPurchase.getShop().getName()</td>
+=======
+            <td>$customerPreviousPurchase.formatToDecimal($customerPreviousPurchase.getTotal())</td>
+            <!--<td>$customerPreviousPurchase.getShop().getName()</td>-->
+>>>>>>> feature/removeShopFromView
             <td><a href="/previous-purchases/$customerPreviousPurchase.getId()/contents">Contents</a></td>
         <tr>
             #end

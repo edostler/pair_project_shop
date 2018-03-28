@@ -141,8 +141,7 @@ public class PreviousPurchasesController {
             GregorianCalendar purchaseDate = DBHelper.formatStringToDate(strPurchaseDate);
             String strDeliveryDate = req.queryParams("deliveryDate");
             GregorianCalendar deliveryDate = DBHelper.formatStringToDate(strDeliveryDate);
-            int shopId = Integer.parseInt(req.queryParams("shop"));
-            Shop shop = DBHelper.find(Shop.class, shopId);
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
             previousPurchase.setTotal(total);
             previousPurchase.setCustomer(customer);
             previousPurchase.setPurchaseDate(purchaseDate);

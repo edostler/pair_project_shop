@@ -115,8 +115,7 @@ public class ClothingProductsController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Clothing clothing = DBHelper.find(Clothing.class, intId);
-            int shopId = Integer.parseInt(req.queryParams("shop"));
-            Shop shop = DBHelper.find(Shop.class, shopId);
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
             String name = req.queryParams("name");
             String category = req.queryParams("category");
             ClothingCategory clothingCategory = ClothingCategory.valueOf(category);

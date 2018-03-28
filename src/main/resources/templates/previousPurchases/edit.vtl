@@ -1,6 +1,3 @@
-    <p> Shop: $previousPurchase.getShop().getName()</p>
-
-
 <p class="pageHeader">Edit Previous Purchase</p>
 
 <form action="/previous-purchases/$previousPurchase.getId()" method="post">
@@ -24,17 +21,6 @@
 
     <label for="deliveryDate">Delivery Date:</label>
     <input id="deliveryDate" class="inputbox" type="date" name="deliveryDate" required="true" value="$previousPurchase.formatDateToStringForInput($previousPurchase.getDeliveryDate())">
-
-    <label for="shop">Shop:</label>
-    <select id="shop" name="shop">
-        #foreach( $shop in $shops )
-        <option value="$shop.getId()"
-            #if ($shop.getId() == $previousPurchase.getShop().getId())
-                selected="selected"
-            #end>
-            $shop.getName()</option>
-        #end
-    </select>
 
     <input type="submit" value="Save" class="button">
 </form>
