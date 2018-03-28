@@ -2,6 +2,7 @@
 
 <table class="products-list">
     <tr>
+        <th></th>
         <th>Name</th>
         <th>Category</th>
         <th>Description</th>
@@ -11,6 +12,7 @@
     </tr>
     #foreach($content in $contents)
     <tr>
+        <td><img src="$content.getImage()" alt="n/a"></td>
         <td>$content.getName()</td>
         <td>$content.getCategory()</td>
         <td>$content.getDescription()</td>

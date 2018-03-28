@@ -4,6 +4,7 @@
 
     <table class="products-list">
         <tr>
+            <th></th>
             <th>Name</th>
             <th>Quantity</th>
             <th>Product Price</th>
@@ -12,6 +13,7 @@
         </tr>
         #foreach($product in $contents)
         <tr>
+            <td><img src="$product.getImage()" alt="n/a"></td>
             <td>$product.getName()</td>
             <td>$product.getQuantity()</td>
             <td>$product.formatToDecimal($product.getPrice())</td>
