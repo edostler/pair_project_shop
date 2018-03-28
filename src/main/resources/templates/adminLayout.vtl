@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="styles/buttons.css">
+    <link rel="stylesheet" href="styles/forms.css">
+    <link rel="stylesheet" href="/styles/media.css">
+    <link rel="stylesheet" href="styles/structure.css">
+    <link rel="stylesheet" href="styles/tables.css">
     <title>PPS Groceries</title>
 </head>
 
 <body>
 
-<div class="header">
-    <h1 class="title">PPS Groceries</h1>
-    <p class="login">Logged in as: <a href="/account">$user</a></p>
-    <p class="logout"><a href="/logout"/>Logout</a></p>
-
-    <!--<div class="nav">-->
-        <!--<a class="nav_links" href="/home">Home</a>-->
-        <!--<a href="/account">Account</a>-->
-    <!--</div>-->
-
-    <!--<p>-&#45;&#45;&#45;&#45;</p>-->
-    <!--<p>Temp Nav Bar</p>-->
-    <div class="nav">
+    <nav class="navtop">
         <ul>
             <li><a href="/customers">Customers</a></li>
             <li><a href="/previous-purchases">Previous Purchases</a></li>
-            <li><a href="/products">Products</a></li>
-            <li><a href="/food-products">Food Products</a></li>
-            <li><a href="/clothing-products">Clothing Products</a></li>
-            <li><a href="/health-products">Health Products</a></li>
-        </ul>
-    </div>
-    <!--<p>-&#45;&#45;&#45;&#45;</p>-->
 
-</div>
+            <li class="dropdown">
+                <a class="dropbtn" href="/products">All Products</a>
+                <div class="dropdown-content">
+                <a href="/food-products">Food Products</a>
+            <a href="/clothing-products">Clothing Products</a>
+            <a href="/health-products">Health Products</a>
+                </div>
+            </li>
+            <li class="logo"><img height="120px" src="/images/logo_full.png" alt="PPS Groceries"></li>
+            <li class="log"><a href="/logout"/>Logout</a></li>
+            <li class="log"><a href="/account">$user</a></li>
+        </ul>
+    </nav>
+
 
 <div class="container">
     #parse( $template )
