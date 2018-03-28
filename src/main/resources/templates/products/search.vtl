@@ -1,8 +1,8 @@
-<p class="pageHeader">All Products</p>
+<p>Search Results</p>
 
-<!--<p><a href="/food-products">Food Products</a></p>-->
-<!--<p><a href="/clothing-products">Clothing Products</a></p>-->
-<!--<p><a href="/health-products">Health Products</a></p>-->
+<p><a href="/food-products">Food Products</a></p>
+<p><a href="/clothing-products">Clothing Products</a></p>
+<p><a href="/health-products">Health Products</a></p>
 
 <div class="container">
 
@@ -11,6 +11,9 @@
             <th></th>
             <th>Name</th>
             <th>Description</th>
+            <th>Availability</th>
+            <th>In Stock</th>
+            <th>Stock Date</th>
             <th>Price</th>
             <th></th>
             <th></th>
@@ -18,21 +21,19 @@
         #foreach($product in $products)
         <tr>
             <td><img src="$product.getImage()" alt="n/a"></td>
-            <td>$product.getName()</a></td>
+            <td><a href="/products/$product.getId()">$product.getName()</a></td>
             <td>$product.getDescription()</td>
+            <td>$product.availability</td>
+            <td>$product.getQuantity()</td>
+            <td>$product.formatDateToString($product.getStockDate())</td>
             <td>£$product.formatToDecimal($product.getPrice())</td>
-            #if ($product.availability)
-            <form action="/basket" method="post">
+            <form action="/products" method="post">
                 <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
-                <td>
+                    <td><label for="id"></label>
                     <input id="id" class="inputbox" type="number" name="id" required="true" value="$product.getId()" hidden>
-                </td>
-                <td><input type="submit" value="Add to basket" class="button"></td>
+                    </td>
+                <td><input type="submit" value="Add to stock" class="button"></td>
             </form>
-            #else
-            <td>Sorry, out of stock</td>
-            <td></td>
-            #end
         </tr>
         #end
     </table>

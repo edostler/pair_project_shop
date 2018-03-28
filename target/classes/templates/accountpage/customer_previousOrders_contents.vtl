@@ -4,7 +4,6 @@
     <tr>
         <th></th>
         <th>Name</th>
-        <th>Category</th>
         <th>Description</th>
         <th>Price</th>
         <th>Quantity</th>
@@ -14,7 +13,6 @@
     <tr>
         <td><img src="$content.getImage()" alt="Image of Product"></td>
         <td>$content.getName()</td>
-        <td>$content.getCategory()</td>
         <td>$content.getDescription()</td>
         <td>£$content.formatToDecimal($content.getPrice())</td>
         <td>$content.getQuantity()</td>
@@ -22,7 +20,6 @@
     </tr>
     #end
     <tr>
-        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -35,12 +32,10 @@
         <td></td>
         <td></td>
         <td></td>
-        <td></td>
         <td>Delivery Charge:</td>
         <td>£$purchase.formatToDecimal($delivery)</td>
     </tr>
     <tr>
-        <td></td>
         <td></td>
         <td></td>
         <td></td>

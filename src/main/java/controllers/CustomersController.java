@@ -92,8 +92,7 @@ public class CustomersController {
         }, new VelocityTemplateEngine());
 
         post ("/customers", (req, res) -> {
-            int shopId = Integer.parseInt(req.queryParams("shop"));
-            Shop shop = DBHelper.find(Shop.class, shopId);
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
             String name = req.queryParams("name");
             String username = req.queryParams("username");
             int distance = Integer.parseInt(req.queryParams("distance"));
@@ -119,8 +118,7 @@ public class CustomersController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Customer customer = DBHelper.find(Customer.class, intId);
-            int shopId = Integer.parseInt(req.queryParams("shop"));
-            Shop shop = DBHelper.find(Shop.class, shopId);
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
             String name = req.queryParams("name");
             String username = req.queryParams("username");
             int distance = Integer.parseInt(req.queryParams("distance"));

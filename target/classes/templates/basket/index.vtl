@@ -6,6 +6,7 @@
         <tr>
             <th></th>
             <th>Name</th>
+            <th>Description</th>
             <th>Quantity</th>
             <th>Product Price</th>
             <th>Quantity Price</th>
@@ -15,6 +16,7 @@
         <tr>
             <td><img src="$product.getImage()" alt="n/a"></td>
             <td>$product.getName()</td>
+            <td>$product.getDescription()</td>
             <td>$product.getQuantity()$product.getFulfilled()</td>
             <td>£$product.formatToDecimal($product.getPrice())</td>
             <td>£$product.formatToDecimal($product.calculateQuantityPrice())</td>
@@ -28,10 +30,12 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <td>Total:</td>
             <td>£$basket.formatToDecimal($basket.getTotal())</td>
         </tr>
         <tr>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
