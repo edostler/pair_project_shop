@@ -9,6 +9,7 @@
 
     <table class="products-list">
         <tr>
+            <th></th>
             <th>Name</th>
             <th>Category</th>
             <th>Description</th>
@@ -19,6 +20,7 @@
         </tr>
         #foreach($healthProduct in $healthProducts)
         <tr>
+            <td><img src="$healthProduct.getImage()" alt="n/a"></td>
             <td><a href="/health-products/$healthProduct.getId()">$healthProduct.getName()</a></td>
             <td>$healthProduct.getCategory()</td>
             <td>$healthProduct.getDescription()</td>
