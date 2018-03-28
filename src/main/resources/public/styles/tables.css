@@ -1,5 +1,4 @@
 table {
-  /*border: 1px solid rgb(65, 65, 66);*/
   border-collapse: collapse;
   margin: 0;
   padding: 0;
@@ -12,8 +11,7 @@ table caption {
   margin: 8px 0 12px;
 }
 table tr {
-  /*background: rgb(173, 222, 228);*/
-  /*border: 1px solid rgb(65, 65, 66);*/
+  background: white;
   padding: 5px;
 }
 table th,
@@ -26,3 +24,9 @@ table th {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+
