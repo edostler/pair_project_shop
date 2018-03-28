@@ -21,7 +21,12 @@ public class HomepageController {
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
             model.put("template", "templates/homepage/homepage.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 

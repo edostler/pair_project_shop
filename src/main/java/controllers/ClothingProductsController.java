@@ -34,7 +34,13 @@ public class ClothingProductsController {
             model.put("template", "templates/clothingProducts/edit.vtl");
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
-            return new ModelAndView(model, "templates/layout.vtl");
+
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 
@@ -54,7 +60,14 @@ public class ClothingProductsController {
             else {
                 model.put("template", "templates/clothingProducts/customerIndex.vtl");
             }
-            return new ModelAndView(model, "templates/layout.vtl");
+
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
+
         }, new VelocityTemplateEngine());
 
 
@@ -67,7 +80,12 @@ public class ClothingProductsController {
             model.put("template", "templates/clothingProducts/create.vtl");
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 
@@ -80,7 +98,12 @@ public class ClothingProductsController {
             model.put("template", "templates/clothingProducts/show.vtl");
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 

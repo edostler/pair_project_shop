@@ -38,7 +38,12 @@ public class MainController {
             model.put("user", loggedInUser);
             model.put("template","templates/main.vtl");
 
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 

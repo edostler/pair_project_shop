@@ -30,7 +30,12 @@ public class BasketController {
             model.put("basket", basket);
             model.put("contents", contents);
             model.put("template", "templates/basket/index.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 
@@ -143,7 +148,12 @@ public class BasketController {
             model.put("customer", customer);
             model.put("total", total);
             model.put("template", "templates/basket/invoice.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 

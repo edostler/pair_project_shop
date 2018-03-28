@@ -37,7 +37,12 @@ public class AccountpageController {
             else {
                 model.put("template","templates/accountpage/customer_edit.vtl");
             }
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 
@@ -61,7 +66,12 @@ public class AccountpageController {
             else {
                 model.put("template","templates/accountpage/customer_previousOrders.vtl");
             }
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 
@@ -80,7 +90,12 @@ public class AccountpageController {
             else {
                 model.put("template","templates/accountpage/customer_account.vtl");
             }
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
 
         }, new VelocityTemplateEngine());
 

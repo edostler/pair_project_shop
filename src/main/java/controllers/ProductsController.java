@@ -29,7 +29,12 @@ public class ProductsController {
             model.put("template", "templates/products/edit.vtl");
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 
@@ -46,7 +51,12 @@ public class ProductsController {
             else {
                 model.put("template", "templates/products/customerIndex.vtl");
             }
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 
@@ -59,7 +69,12 @@ public class ProductsController {
             model.put("template", "templates/products/show.vtl");
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             model.put("user", loggedInUser);
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 

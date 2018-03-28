@@ -36,7 +36,12 @@ public class PreviousPurchasesController {
             model.put("customers", customers);
             model.put("template", "templates/previousPurchases/edit.vtl");
             model.put("previousPurchase", previousPurchase);
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
         get("/previous-purchases/:id/contents", (req, res) -> {
@@ -60,7 +65,12 @@ public class PreviousPurchasesController {
 
 
 
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
             }, new VelocityTemplateEngine());
 
 
@@ -74,7 +84,12 @@ public class PreviousPurchasesController {
             model.put("user", loggedInUser);
             model.put("template", "templates/previousPurchases/index.vtl");
             model.put("previousPurchases", previousPurchases);
-            return new ModelAndView(model, "templates/layout.vtl");
+                if(loggedInUser.equals("admin")){
+                    return new ModelAndView(model, "templates/adminLayout.vtl");
+                }
+                else{
+                    return new ModelAndView(model, "templates/layout.vtl");
+                }
         }, new VelocityTemplateEngine());
 
 
@@ -87,7 +102,12 @@ public class PreviousPurchasesController {
             model.put("customers", customers);
             model.put("shops", shops);
             model.put("template", "templates/previousPurchases/create.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 
@@ -99,7 +119,12 @@ public class PreviousPurchasesController {
             model.put("user", loggedInUser);
             model.put("previousPurchase", previousPurchase);
             model.put("template", "templates/previousPurchases/show.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
         }, new VelocityTemplateEngine());
 
 
