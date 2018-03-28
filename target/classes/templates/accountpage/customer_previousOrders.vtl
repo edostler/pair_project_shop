@@ -6,7 +6,7 @@
             <th>Customer</th>
             <th>Purchase Date</th>
             <th>Delivery Date</th>
-            <th>Total (£)</th>
+            <th>Total</th>
             <th>Shop</th>
             <th>Contents</th>
         </tr>
@@ -15,7 +15,7 @@
             <td>$customer.getName()</td>
             <td>$customerPreviousPurchase.formatDateToString($customerPreviousPurchase.getPurchaseDate())</td>
             <td>$customerPreviousPurchase.formatDateToString($customerPreviousPurchase.getDeliveryDate())</td>
-            <td>$customerPreviousPurchase.formatToDecimal($customerPreviousPurchase.getTotal())</td>
+            <td>£$customerPreviousPurchase.formatToDecimal($customerPreviousPurchase.getTotal())</td>
             <td>$customerPreviousPurchase.getShop().getName()</td>
             <td><a href="/previous-purchases/$customerPreviousPurchase.getId()/contents">Contents</a></td>
         <tr>

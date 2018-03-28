@@ -16,8 +16,8 @@
             <td><img src="$product.getImage()" alt="n/a"></td>
             <td>$product.getName()</td>
             <td>$product.getQuantity()</td>
-            <td>$product.formatToDecimal($product.getPrice())</td>
-            <td>$product.formatToDecimal($product.calculateQuantityPrice())</td>
+            <td>£$product.formatToDecimal($product.getPrice())</td>
+            <td>£$product.formatToDecimal($product.calculateQuantityPrice())</td>
             <form action="/basket/$product.getId()/remove" method="post">
                 <td><input type="submit" value="Remove from basket" class="button"></td>
             </form>
