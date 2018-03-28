@@ -9,14 +9,14 @@
             <th>Name</th>
             <th>Username</th>
             <th>Distance</th>
-            <th>Shop</th>
+            <!--<th>Shop</th>-->
         </tr>
         #foreach($customer in $customers)
         <tr>
             <td>$customer.getName()</td>
             <td>$customer.getUsername()</td>
             <td>$customer.getDistance()</td>
-            <td>$customer.getShop().getName()</td>
+            <!--<td>$customer.getShop().getName()</td>-->
             <td><a href="/customers/$customer.getId()" class="button center">Details</a></td>
         <tr>
             #end

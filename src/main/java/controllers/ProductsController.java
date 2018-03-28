@@ -76,8 +76,7 @@ public class ProductsController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Product product = DBHelper.find(Product.class, intId);
-            int shopId = Integer.parseInt(req.queryParams("shop"));
-            Shop shop = DBHelper.find(Shop.class, shopId);
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
             String name = req.queryParams("name");
             String description = req.queryParams("description");
             int quantity = Integer.parseInt(req.queryParams("quantity"));

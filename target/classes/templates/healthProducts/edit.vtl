@@ -28,16 +28,16 @@
     <label id="price" for="price">Price:</label>
     <input step="0.01" type="number" name="price" required="true" class="inputbox" value="$health.formatToDecimal($health.getPrice())">
 
-    <label for="shop">Shop:</label>
-    <select id="shop" name="shop">
-        #foreach( $shop in $shops )
-        <option value="$shop.getId()"
-            #if ($shop.getId() == $health.getShop().getId())
-                selected="selected"
-            #end>$shop.getName()
-        </option>
-        #end
-    </select>
+    <!--<label for="shop">Shop:</label>-->
+    <!--<select id="shop" name="shop">-->
+        <!--#foreach( $shop in $shops )-->
+        <!--<option value="$shop.getId()"-->
+            <!--#if ($shop.getId() == $health.getShop().getId())-->
+                <!--selected="selected"-->
+            <!--#end>$shop.getName()-->
+        <!--</option>-->
+        <!--#end-->
+    <!--</select>-->
 
     <input type="submit" value="Save" class="button">
 

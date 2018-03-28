@@ -114,8 +114,7 @@ public class HealthProductsController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Health health = DBHelper.find(Health.class, intId);
-            int shopId = Integer.parseInt(req.queryParams("shop"));
-            Shop shop = DBHelper.find(Shop.class, shopId);
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
             String name = req.queryParams("name");
             String category = req.queryParams("category");
             HealthCategory healthCategory = HealthCategory.valueOf(category);

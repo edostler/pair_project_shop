@@ -117,8 +117,7 @@ public class FoodProductsController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Food food = DBHelper.find(Food.class, intId);
-            int shopId = Integer.parseInt(req.queryParams("shop"));
-            Shop shop = DBHelper.find(Shop.class, shopId);
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
             String name = req.queryParams("name");
             String category = req.queryParams("category");
             FoodCategory foodCategory = FoodCategory.valueOf(category);
