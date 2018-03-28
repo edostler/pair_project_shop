@@ -20,7 +20,7 @@
         </tr>
         #foreach($clothingProduct in $clothingProducts)
         <tr>
-            <td><img src="$clothingProduct.getImage()" alt="n/a"></td>
+            <td><img src="$clothingProduct.getImage()" alt="Image of Product"></td>
             <td><a href="/clothing-products/$clothingProduct.getId()">$clothingProduct.getName()</a></td>
             <td>$clothingProduct.getCategory()</td>
             <td>$clothingProduct.getDescription()</td>
