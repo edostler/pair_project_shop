@@ -15,7 +15,7 @@
         <tr>
             <td><img src="$product.getImage()" alt="n/a"></td>
             <td>$product.getName()</td>
-            <td>$product.getQuantity()</td>
+            <td>$product.getQuantity()$product.getFulfilled()</td>
             <td>£$product.formatToDecimal($product.getPrice())</td>
             <td>£$product.formatToDecimal($product.calculateQuantityPrice())</td>
             <form action="/basket/$product.getId()/remove" method="post">
@@ -26,6 +26,8 @@
         <tr>
             <td></td>
             <td></td>
+            <td></td>
+            <td></td>
             <td>Total:</td>
             <td>£$basket.formatToDecimal($basket.getTotal())</td>
         </tr>
@@ -33,8 +35,12 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
+            <td></td>
             <td><a href="/basket/invoice" class="button center">Purchase</a></td>
         </tr>
     </table>
+
+    <p>* - Denotes that unfortunately we were unable to fulfill the desired order for this product, many apologies.</p>
 
 </div>
