@@ -50,17 +50,6 @@ public class ProductsController {
         }, new VelocityTemplateEngine());
 
 
-//        get ("/products/new", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            List<Shop> shops = DBHelper.getAll(Shop.class);
-//            model.put("shops", shops);
-//            model.put("template", "templates/products/create.vtl");
-//            String loggedInUser = LoginController.getLoggedInUsername(req, res);
-//            model.put("user", loggedInUser);
-//            return new ModelAndView(model, "templates/layout.vtl");
-//        }, new VelocityTemplateEngine());
-
-
         get("/products/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
@@ -72,25 +61,6 @@ public class ProductsController {
             model.put("user", loggedInUser);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
-
-//        post ("/products", (req, res) -> {
-//            int shopId = Integer.parseInt(req.queryParams("shop"));
-//            Shop shop = DBHelper.find(Shop.class, shopId);
-//            String name = req.queryParams("name");
-//            String description = req.queryParams("description");
-//            int quantity = Integer.parseInt(req.queryParams("quantity"));
-//            double price = Double.parseDouble(req.queryParams("price"));
-//            String strStockDate = req.queryParams("stockDate");
-//            GregorianCalendar stockDate = DBHelper.formatStringToDate(strStockDate);
-//            String category = req.queryParams("category");
-////            WOULD NEED IF STATEMENT FOR CATEGORIES:
-//            FoodCategory foodCategory = FoodCategory.valueOf(category);
-//            Food food = new Food(name, foodCategory, price, quantity, description, stockDate, shop);
-//            DBHelper.saveOrUpdate(food);
-//            res.redirect("/products");
-//            return null;
-//        }, new VelocityTemplateEngine());
 
 
         post ("/products/:id/delete", (req, res) -> {
