@@ -1,7 +1,9 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 
 @Entity
@@ -97,6 +99,14 @@ public class PreviousPurchase extends Purchase {
 
         String result = year + "-" + month + "-" + day;
         return result;
+    }
+
+    public double totalContentsOnly(List<Product> contents){
+        double contentsTotal = 0.00;
+        for (Product content : contents) {
+            contentsTotal += (content.getPrice() * content.getQuantity());
+        }
+        return contentsTotal;
     }
 
 }

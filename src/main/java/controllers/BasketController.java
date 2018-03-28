@@ -171,7 +171,13 @@ public class BasketController {
             List<Product> contents = DBHelper.findContentsForBasket(basket);
             basket.setContents(contents);
 
-            double total = 0.00;
+            int deliveryLimit = 40;
+            double delivery = 0.00;
+            if (basket.getTotal() < deliveryLimit) {
+                delivery = customer.calculateBaseDelivery();
+            }
+
+            double total = delivery;
             Shop shop = DBHelper.findShopByName("PPS Groceries");
             int day = LocalDate.now().getDayOfMonth();
             int month = LocalDate.now().getMonthValue();

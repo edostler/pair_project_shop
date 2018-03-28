@@ -65,7 +65,7 @@
     </form>
 
     #if ($basket.getTotal() >= $deliveryLimit)
-    <p>*You have qualified for free delivery by spending more than a total of £$deliveryLimit.</p>
+    <p>*You have qualified for free delivery by spending a total of at least £$deliveryLimit.</p>
     #else
     <p>*In order to qualify for free delivery please spend a total of at least £$deliveryLimit.</p>
     #end
