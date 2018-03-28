@@ -23,21 +23,10 @@
     <input type="number" name="quantity" required="true" class="inputbox" value="$food.getQuantity()">
 
     <label id="stockDate" for="stockDate">StockDate:</label>
-    <input type="text" name="stockDate" required="true" class="inputbox" value="$food.formatDateToStringForInput($food.getStockDate())">
+    <input type="date" name="stockDate" required="true" class="inputbox" value="$food.formatDateToStringForInput($food.getStockDate())">
 
     <label id="price" for="price">Price(£):</label>
     <input step="0.01" type="number" name="price" required="true" class="inputbox" value="$food.formatToDecimal($food.getPrice())">
-
-    <!--<label for="shop">Shop:</label>-->
-    <!--<select id="shop" name="shop">-->
-        <!--#foreach( $shop in $shops )-->
-        <!--<option value="$shop.getId()"-->
-            <!--#if ($shop.getId() == $food.getShop().getId())-->
-                <!--selected="selected"-->
-            <!--#end>$shop.getName()-->
-        <!--</option>-->
-        <!--#end-->
-    <!--</select>-->
 
     <input type="submit" value="Save" class="button">
 

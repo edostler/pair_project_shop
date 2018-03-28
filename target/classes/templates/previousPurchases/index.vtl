@@ -9,13 +9,7 @@
             <th>Customer</th>
             <th>Purchase Date</th>
             <th>Delivery Date</th>
-<<<<<<< HEAD
             <th>Total</th>
-            <th>Shop</th>
-=======
-            <th>Total (£)</th>
-            <!--<th>Shop</th>-->
->>>>>>> feature/removeShopFromView
             <th>View Purchase</th>
             <th>Contents</th>
         </tr>
@@ -24,13 +18,7 @@
             <td>$previousPurchase.getCustomer().getName()</td>
             <td>$previousPurchase.formatDateToString($previousPurchase.getPurchaseDate())</td>
             <td>$previousPurchase.formatDateToString($previousPurchase.getDeliveryDate())</td>
-<<<<<<< HEAD
             <td>£$previousPurchase.formatToDecimal($previousPurchase.getTotal())</td>
-            <td>$previousPurchase.getShop().getName()</td>
-=======
-            <td>$previousPurchase.formatToDecimal($previousPurchase.getTotal())</td>
-            <!--<td>$previousPurchase.getShop().getName()</td>-->
->>>>>>> feature/removeShopFromView
             <td><a href="/previous-purchases/$previousPurchase.getId()">Details</a></td>
             <td><a href="/previous-purchases/$previousPurchase.getId()/contents">Contents</a></td>
         <tr>
