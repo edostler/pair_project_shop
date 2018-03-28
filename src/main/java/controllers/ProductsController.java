@@ -18,6 +18,29 @@ public class ProductsController {
 
     private void setupEndPoints() {
 
+        post("/search", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String search = req.queryParams("search");
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
+            List<Product> products = DBHelper.findStockBySearch(shop, search);
+            model.put("products", products);
+            String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            model.put("user", loggedInUser);
+            if (loggedInUser.equals("admin")) {
+                model.put("template", "templates/products/search.vtl");
+            }
+            else {
+                model.put("template", "templates/products/customerSearch.vtl");
+            }
+            if(loggedInUser.equals("admin")){
+                return new ModelAndView(model, "templates/adminLayout.vtl");
+            }
+            else{
+                return new ModelAndView(model, "templates/layout.vtl");
+            }
+        }, new VelocityTemplateEngine());
+
+
         get("/products/:id/edit", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
@@ -122,5 +145,6 @@ public class ProductsController {
             res.redirect(url);
             return null;
         }, new VelocityTemplateEngine());
+
     }
 }

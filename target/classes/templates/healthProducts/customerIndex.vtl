@@ -9,9 +9,7 @@
         <tr>
             <th></th>
             <th>Name</th>
-            <th>Category</th>
             <th>Description</th>
-            <th>Availability</th>
             <th>Price</th>
             <th></th>
             <th></th>
@@ -20,9 +18,7 @@
         <tr>
             <td><img src="$healthProduct.getImage()" alt="n/a"></td>
             <td>$healthProduct.getName()</td>
-            <td>$healthProduct.getCategory()</td>
             <td>$healthProduct.getDescription()</td>
-            <td>$healthProduct.availability</td>
             <td>£$healthProduct.formatToDecimal($healthProduct.getPrice())</td>
             #if ($healthProduct.availability)
             <form action="/basket" method="post">

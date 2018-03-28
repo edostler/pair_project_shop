@@ -1,5 +1,6 @@
-<p>All Food Products</p>
+<p>Search Results</p>
 
+<p><a href="/food-products">Food Products</a></p>
 <p><a href="/clothing-products">Clothing Products</a></p>
 <p><a href="/health-products">Health Products</a></p>
 
@@ -14,17 +15,17 @@
             <th></th>
             <th></th>
         </tr>
-        #foreach($food in $foods)
+        #foreach($product in $products)
         <tr>
-            <td><img src="$food.getImage()" alt="n/a"></td>
-            <td>$food.getName()</td>
-            <td>$food.getDescription()</td>
-            <td>£$food.formatToDecimal($food.getPrice())</td>
-            #if ($food.availability)
+            <td><img src="$product.getImage()" alt="n/a"></td>
+            <td>$product.getName()</a></td>
+            <td>$product.getDescription()</td>
+            <td>£$product.formatToDecimal($product.getPrice())</td>
+            #if ($product.availability)
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
                 <td>
-                    <input id="id" class="inputbox" type="number" name="id" required="true" value="$food.getId()" hidden>
+                    <input id="id" class="inputbox" type="number" name="id" required="true" value="$product.getId()" hidden>
                 </td>
                 <td><input type="submit" value="Add to basket" class="button"></td>
             </form>
@@ -36,6 +37,5 @@
         #end
     </table>
 
-    <a href="/products" class="button center">Back To All Products</a>
-
 </div>
+

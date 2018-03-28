@@ -2,6 +2,8 @@ package db;
 
 import models.*;
 import org.hibernate.*;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.mapping.Collection;
@@ -209,6 +211,20 @@ public class DBHelper {
         cr.add(Restrictions.eq("name", name));
         shop = getUnique(cr);
         return shop;
+    }
+
+    public static <T> List<T> findStockBySearch(Shop shop, String searchQuery) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<T> stock = null;
+        Criteria cr = session.createCriteria(Product.class);
+        cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        cr.add(Restrictions.eq("shop", shop));
+        Criterion nameSearch = Restrictions.ilike("name", searchQuery, MatchMode.ANYWHERE);
+        Criterion descriptionSearch = Restrictions.ilike("description", searchQuery, MatchMode.ANYWHERE);
+        cr.add(Restrictions.disjunction().add(nameSearch).add(descriptionSearch));
+        cr.addOrder(Order.desc("availability")).addOrder(Order.asc("name"));
+        stock = getList(cr);
+        return stock;
     }
 
 }
