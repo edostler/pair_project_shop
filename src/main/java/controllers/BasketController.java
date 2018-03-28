@@ -154,7 +154,7 @@ public class BasketController {
             List<Product> contents = DBHelper.findContentsForBasket(basket);
             basket.setContents(contents);
 
-            double total = basket.getTotal();
+            double total = 0.00;
             Shop shop = DBHelper.findShopByName("PPS Groceries");
             int day = LocalDate.now().getDayOfMonth();
             int month = LocalDate.now().getMonthValue();
