@@ -49,6 +49,8 @@ public class PreviousPurchasesController {
             model.put("contents", contents);
             model.put("purchase", purchase);
 
+
+
             if (loggedInUser.equals("admin")) {
                 model.put("template", "templates/previousPurchases/contents.vtl");
             }

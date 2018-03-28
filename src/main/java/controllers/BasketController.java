@@ -47,6 +47,7 @@ public class BasketController {
             int shopQuantity = product.getQuantity();
 
             String name = product.getName();
+            String image = product.getImage();
             double price = product.getPrice();
             int purchaseQuantity = Integer.parseInt(req.queryParams("quantity"));
             String description = product.getDescription();
@@ -61,6 +62,7 @@ public class BasketController {
                 Food stockFood = (Food) product;
                 FoodCategory foodCategory = stockFood.getCategory();
                 Food food = new Food(name, foodCategory, price, purchaseQuantity, description, stockDate, shop);
+                food.setImage(image);
                 DBHelper.saveOrUpdate(food);
                 DBHelper.addProductToPurchase(food, basket);
             }
@@ -68,6 +70,7 @@ public class BasketController {
                 Clothing stockClothing = (Clothing) product;
                 ClothingCategory clothingCategory = stockClothing.getCategory();
                 Clothing clothing = new Clothing(name, clothingCategory, price, purchaseQuantity, description, stockDate, shop);
+                clothing.setImage(image);
                 DBHelper.saveOrUpdate(clothing);
                 DBHelper.addProductToPurchase(clothing, basket);
             }
@@ -75,6 +78,7 @@ public class BasketController {
                 Health stockHealth = (Health) product;
                 HealthCategory healthCategory = stockHealth.getCategory();
                 Health health = new Health(name, healthCategory, price, purchaseQuantity, description, stockDate, shop);
+                health.setImage(image);
                 DBHelper.saveOrUpdate(health);
                 DBHelper.addProductToPurchase(health, basket);
                 }
@@ -166,6 +170,7 @@ public class BasketController {
             for (Product basketProduct : contents) {
 
                 String name = basketProduct.getName();
+                String image = basketProduct.getImage();
                 double price = basketProduct.getPrice();
                 int quantity = basketProduct.getQuantity();
                 String description = basketProduct.getDescription();
@@ -176,6 +181,7 @@ public class BasketController {
                     Food stockFood = (Food) basketProduct;
                     FoodCategory foodCategory = stockFood.getCategory();
                     Food food = new Food(name, foodCategory, price, quantity, description, stockDate, soldShop);
+                    food.setImage(image);
                     DBHelper.saveOrUpdate(food);
                     DBHelper.addProductToPurchase(food, newPreviousPurchase);
                 }
@@ -183,6 +189,7 @@ public class BasketController {
                     Clothing stockClothing = (Clothing) basketProduct;
                     ClothingCategory clothingCategory = stockClothing.getCategory();
                     Clothing clothing = new Clothing(name, clothingCategory, price, quantity, description, stockDate, soldShop);
+                    clothing.setImage(image);
                     DBHelper.saveOrUpdate(clothing);
                     DBHelper.addProductToPurchase(clothing, newPreviousPurchase);
                 }
@@ -190,6 +197,7 @@ public class BasketController {
                     Health stockHealth = (Health) basketProduct;
                     HealthCategory healthCategory = stockHealth.getCategory();
                     Health health = new Health(name, healthCategory, price, quantity, description, stockDate, soldShop);
+                    health.setImage(image);
                     DBHelper.saveOrUpdate(health);
                     DBHelper.addProductToPurchase(health, newPreviousPurchase);
                 }
