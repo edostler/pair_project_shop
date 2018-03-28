@@ -44,27 +44,24 @@ public class PreviousPurchasesController {
             }
         }, new VelocityTemplateEngine());
 
+
         get("/previous-purchases/:id/contents", (req, res) -> {
             int id = Integer.parseInt(req.params(":id"));
             PreviousPurchase purchase = DBHelper.find(PreviousPurchase.class, id);
             List<Product> contents = DBHelper.getAllContentsForPurchase(purchase);
             Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
+            double delivery = purchase.getTotal() - purchase.totalContentsOnly(contents);
             model.put("user", loggedInUser);
+            model.put("delivery", delivery);
             model.put("contents", contents);
             model.put("purchase", purchase);
-
-
-
             if (loggedInUser.equals("admin")) {
                 model.put("template", "templates/previousPurchases/contents.vtl");
             }
             else {
                 model.put("template", "templates/accountpage/customer_previousOrders_contents.vtl");
             }
-
-
-
             if(loggedInUser.equals("admin")){
                 return new ModelAndView(model, "templates/adminLayout.vtl");
             }
@@ -72,9 +69,6 @@ public class PreviousPurchasesController {
                 return new ModelAndView(model, "templates/layout.vtl");
             }
             }, new VelocityTemplateEngine());
-
-
-
 
 
             get("/previous-purchases", (req, res) -> {

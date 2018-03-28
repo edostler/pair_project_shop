@@ -6,10 +6,9 @@
         <th>Name</th>
         <th>Category</th>
         <th>Description</th>
-        <th>Availability</th>
-        <th>In Stock</th>
-        <th>Stock Date</th>
         <th>Price</th>
+        <th>Quantity</th>
+        <th>Quantity Price</th>
     </tr>
     #foreach($content in $contents)
     <tr>
@@ -17,12 +16,38 @@
         <td>$content.getName()</td>
         <td>$content.getCategory()</td>
         <td>$content.getDescription()</td>
-        <td>$content.availability</td>
-        <td>$content.getQuantity()</td>
-        <td>$content.formatDateToString($content.getStockDate())</td>
         <td>£$content.formatToDecimal($content.getPrice())</td>
+        <td>$content.getQuantity()</td>
+        <td>£$content.formatToDecimal($content.calculateQuantityPrice())</td>
     </tr>
     #end
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Sub Total:</td>
+        <td>£$purchase.formatToDecimal($purchase.totalContentsOnly($contents))</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Delivery Charge:</td>
+        <td>£$purchase.formatToDecimal($delivery)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Total:</td>
+        <td>£$purchase.formatToDecimal($purchase.getTotal())</td>
+    </tr>
 </table>
 
 <a href="/previous-purchases" class="button center">Back To List</a>
