@@ -17,6 +17,7 @@ public abstract class Product {
     private Shop shop;
     private Purchase purchase;
     private String image;
+    private String fulfilled;
 
 
     public Product() {
@@ -32,6 +33,7 @@ public abstract class Product {
         this.purchase = null;
         this.availability = checkAvailability();
         this.image = null;
+        this.fulfilled = "";
     }
 
     @Id
@@ -119,11 +121,13 @@ public abstract class Product {
         this.purchase = purchase;
     }
 
-    public boolean checkAvailability() {
-        if (this.quantity > 0) {
-            return true;
-        }
-        return false;
+    @Column(name="fulfilled")
+    public String getFulfilled() {
+        return fulfilled;
+    }
+
+    public void setFulfilled(String fulfilled) {
+        this.fulfilled = fulfilled;
     }
 
     @Column(name="image")
@@ -133,6 +137,15 @@ public abstract class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+
+
+    public boolean checkAvailability() {
+        if (this.quantity > 0) {
+            return true;
+        }
+        return false;
     }
 
     public String formatDateToString(GregorianCalendar date) {
