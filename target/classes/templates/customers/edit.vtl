@@ -1,5 +1,8 @@
 <p class="pageHeader">Edit Customer</p>
 
+<div class="details">
+
+
 <form action="/customers/$customer.getId()" method="post">
     <label for="name">Name:</label>
     <input id="name" class="inputbox" type="text" name="name" required="true" value="$customer.getName()">
@@ -21,3 +24,4 @@
 
     <a href="/customers/$customer.getId()" class="button center">Cancel</a>
 </form>
+</div>

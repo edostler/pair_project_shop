@@ -13,9 +13,10 @@ a:hover.reset, a:active.reset {
   background-color: rgb(65, 65, 66);
 }
 
-.button-center{
-color: #EBEBD3;
+.button center{
+color: rgb(255, 166, 62);
 background-color: rgb(0, 133,63);
-
-
+border-radius: 3px;
+color:white;
+text-decoration:none;
 }
