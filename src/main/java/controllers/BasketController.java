@@ -59,8 +59,10 @@ public class BasketController {
             GregorianCalendar stockDate = product.getStockDate();
             Shop shop = DBHelper.findShopByName("SOLD");
 
+            String fulfilled = "";
             if (shopQuantity < purchaseQuantity) {
                 purchaseQuantity = shopQuantity;
+                fulfilled = "*";
             }
 
             if (product.getClass() == Food.class) {
@@ -68,6 +70,7 @@ public class BasketController {
                 FoodCategory foodCategory = stockFood.getCategory();
                 Food food = new Food(name, foodCategory, price, purchaseQuantity, description, stockDate, shop);
                 food.setImage(image);
+                food.setFulfilled(fulfilled);
                 DBHelper.saveOrUpdate(food);
                 DBHelper.addProductToPurchase(food, basket);
             }
@@ -76,6 +79,7 @@ public class BasketController {
                 ClothingCategory clothingCategory = stockClothing.getCategory();
                 Clothing clothing = new Clothing(name, clothingCategory, price, purchaseQuantity, description, stockDate, shop);
                 clothing.setImage(image);
+                clothing.setFulfilled(fulfilled);
                 DBHelper.saveOrUpdate(clothing);
                 DBHelper.addProductToPurchase(clothing, basket);
             }
@@ -84,6 +88,7 @@ public class BasketController {
                 HealthCategory healthCategory = stockHealth.getCategory();
                 Health health = new Health(name, healthCategory, price, purchaseQuantity, description, stockDate, shop);
                 health.setImage(image);
+                health.setFulfilled(fulfilled);
                 DBHelper.saveOrUpdate(health);
                 DBHelper.addProductToPurchase(health, basket);
                 }
