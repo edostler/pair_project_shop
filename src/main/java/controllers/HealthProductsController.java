@@ -21,6 +21,20 @@ public class HealthProductsController {
 
     private void setupEndPoints() {
 
+        post("/health-products/stock", (req, res) -> {
+            int productId = Integer.parseInt(req.queryParams("id"));
+            Product product = DBHelper.find(Product.class, productId);
+            int shopQuantity = product.getQuantity();
+            int addedQuantity = Integer.parseInt(req.queryParams("quantity"));
+            int newShopQuantity = shopQuantity + addedQuantity;
+            product.setQuantity(newShopQuantity);
+            DBHelper.saveOrUpdate(product);
+            String url = req.headers("referer");
+            res.redirect(url);
+            return null;
+        }, new VelocityTemplateEngine());
+
+
         get("/health-products/:id/edit", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
@@ -104,8 +118,7 @@ public class HealthProductsController {
 
 
         post ("/health-products", (req, res) -> {
-            int shopId = Integer.parseInt(req.queryParams("shop"));
-            Shop shop = DBHelper.find(Shop.class, shopId);
+            Shop shop = DBHelper.findShopByName("PPS Groceries");
             String name = req.queryParams("name");
             String description = req.queryParams("description");
             int quantity = Integer.parseInt(req.queryParams("quantity"));
@@ -154,5 +167,6 @@ public class HealthProductsController {
             res.redirect("/health-products");
             return null;
         }, new VelocityTemplateEngine());
+
     }
 }

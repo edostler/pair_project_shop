@@ -15,6 +15,8 @@
             <th>In Stock</th>
             <th>Stock Date</th>
             <th>Price</th>
+            <th></th>
+            <th></th>
         </tr>
         #foreach($product in $products)
         <tr>
@@ -25,14 +27,13 @@
             <td>$product.getQuantity()</td>
             <td>$product.formatDateToString($product.getStockDate())</td>
             <td>£$product.formatToDecimal($product.getPrice())</td>
-            <!--WILL NEED THE BELOW STRUCTURE (NOT CONTENT, NEEDS EDITING) TO CREATE ADMIN INCREASE STOCK FUNCTION - SEE TRELLO-->
-            <!--<form action="/basket" method="post">-->
-                <!--<td>Qty:<input class="inputbox" type="number" name="quantity" required="true"></td>-->
-                <!--<td><label for="id"></label>-->
-                    <!--<input id="id" class="inputbox" type="number" name="id" required="true" value="$product.getId()">-->
-                <!--</td>-->
-                <!--<td><input type="submit" value="Add to basket" class="button"></td>-->
-            <!--</form>-->
+            <form action="/products" method="post">
+                <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
+                    <td><label for="id"></label>
+                    <input id="id" class="inputbox" type="number" name="id" required="true" value="$product.getId()" hidden>
+                    </td>
+                <td><input type="submit" value="Add to stock" class="button"></td>
+            </form>
         </tr>
         #end
     </table>

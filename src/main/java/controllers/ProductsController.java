@@ -108,5 +108,19 @@ public class ProductsController {
             res.redirect("/products");
             return null;
         }, new VelocityTemplateEngine());
+
+
+        post("/products", (req, res) -> {
+            int productId = Integer.parseInt(req.queryParams("id"));
+            Product product = DBHelper.find(Product.class, productId);
+            int shopQuantity = product.getQuantity();
+            int addedQuantity = Integer.parseInt(req.queryParams("quantity"));
+            int newShopQuantity = shopQuantity + addedQuantity;
+            product.setQuantity(newShopQuantity);
+            DBHelper.saveOrUpdate(product);
+            String url = req.headers("referer");
+            res.redirect(url);
+            return null;
+        }, new VelocityTemplateEngine());
     }
 }

@@ -13,6 +13,8 @@
             <th>Description</th>
             <th>Availability</th>
             <th>Price</th>
+            <th></th>
+            <th></th>
         </tr>
         #foreach($product in $products)
         <tr>
@@ -21,16 +23,18 @@
             <td>$product.getDescription()</td>
             <td>$product.availability</td>
             <td>£$product.formatToDecimal($product.getPrice())</td>
+            #if ($product.availability)
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
                 <td>
                     <input id="id" class="inputbox" type="number" name="id" required="true" value="$product.getId()" hidden>
                 </td>
-                #if ($product.availability)
                 <td><input type="submit" value="Add to basket" class="button"></td>
-                #else <td>Sorry, out of stock</td>
-                #end
             </form>
+            #else
+            <td>Sorry, out of stock</td>
+            <td></td>
+            #end
         </tr>
         #end
     </table>
