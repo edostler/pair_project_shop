@@ -6,7 +6,7 @@
 
     <label for="total">Total(£):</label>
     <input step="0.01" id="total" type="number" name="total" required="true" class="inputbox" value="$previousPurchase.formatToDecimal($previousPurchase.getTotal())">
-
+    <br>
     <label for="customer">Customer:</label>
     <select id="customer" name="customer">
         #foreach( $customer in $customers )
@@ -17,13 +17,13 @@
             $customer.getName()</option>
         #end
     </select>
-
+    <br>
     <label for="purchaseDate">Purchase Date:</label>
     <input id="purchaseDate" class="inputbox" type="date" name="purchaseDate" required="true" value="$previousPurchase.formatDateToStringForInput($previousPurchase.getPurchaseDate())">
-
+    <br>
     <label for="deliveryDate">Delivery Date:</label>
     <input id="deliveryDate" class="inputbox" type="date" name="deliveryDate" required="true" value="$previousPurchase.formatDateToStringForInput($previousPurchase.getDeliveryDate())">
-
+    <br>
     <input type="submit" value="Save" class="button">
 </form>
 <a href="/previous-purchases/$previousPurchase.getId()" class="button center">Cancel</a>

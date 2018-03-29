@@ -6,19 +6,19 @@
 <form action="/products/$product.getId()" method="post">
     <label for="name">Name:</label>
     <input id="name" class="inputbox" type="text" name="name" required="true" value="$product.getName()">
-
+    <br>
     <label for="description">Description:</label>
     <input id="description" class="inputbox" type="text" name="description" required="true" value="$product.getDescription()">
-
+    <br>
     <label id="quantity" for="quantity">Quantity:</label>
     <input type="number" name="quantity" required="true" class="inputbox" value="$product.getQuantity()">
-
+    <br>
     <label id="stockDate" for="stockDate">StockDate:</label>
     <input type="date" name="stockDate" required="true" class="inputbox" value="$product.formatDateToStringForInput($product.getStockDate())">
-
+    <br>
     <label id="price" for="price">Price:</label>
     <input step="0.01" type="number" name="price" required="true" class="inputbox" value="$product.formatToDecimal($product.getPrice())">
-
+    <br>
     <input type="submit" value="Save" class="button">
 
 </form>

@@ -6,13 +6,13 @@
 <form action="/customers/$customer.getId()" method="post">
     <label for="name">Name:</label>
     <input id="name" class="inputbox" type="text" name="name" required="true" value="$customer.getName()">
-
+    <br>
     <label for="newUsername">Username:</label>
     <input id="newUsername" class="inputbox" type="text" name="username" required="true" value="$customer.getUsername()">
-
+    <br>
     <label for="distance">Distance(Km):</label>
     <input id="distance" type="number" name="distance" required="true" class="inputbox" value="$customer.getDistance()">
-
+    <br>
     <input type="submit" value="Save" class="button">
 
     <a href="/customers/$customer.getId()" class="button center">Cancel</a>

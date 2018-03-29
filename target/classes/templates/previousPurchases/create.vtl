@@ -6,27 +6,27 @@
 
     <label for="total">Total(£):</label>
     <input step="0.01" id="total" type="number" name="total" required="true" class="inputbox">
-
+    <br>
     <label for="customer">Customer:</label>
     <select id="customer" name="customer">
         #foreach( $customer in $customers )
         <option value="$customer.getId()">$customer.getName()</option>
         #end
     </select>
-
+    <br>
     <label for="purchaseDate">Purchase Date:</label>
     <input id="purchaseDate" class="inputbox" type="date" name="purchaseDate" required="true">
-
+    <br>
     <label for="deliveryDate">Delivery Date:</label>
     <input id="deliveryDate" class="inputbox" type="date" name="deliveryDate" required="true">
-
+    <br>
     <label for="shop">Shop:</label>
     <select id="shop" name="shop">
         #foreach( $shop in $shops )
         <option value="$shop.getId()">$shop.getName()</option>
         #end
     </select>
-
+    <br>
     <input type="submit" value="Save" class="button">
 </form>
 <a href="/previous-purchases" class="button center">Cancel</a>
