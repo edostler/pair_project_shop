@@ -213,18 +213,23 @@ public class DBHelper {
         return shop;
     }
 
-    public static <T> List<T> findStockBySearch(Shop shop, String searchQuery) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        List<T> stock = null;
-        Criteria cr = session.createCriteria(Product.class);
-        cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        cr.add(Restrictions.eq("shop", shop));
-        Criterion nameSearch = Restrictions.ilike("name", searchQuery, MatchMode.ANYWHERE);
-        Criterion descriptionSearch = Restrictions.ilike("description", searchQuery, MatchMode.ANYWHERE);
-        cr.add(Restrictions.disjunction().add(nameSearch).add(descriptionSearch));
-        cr.addOrder(Order.desc("availability")).addOrder(Order.asc("name"));
-        stock = getList(cr);
-        return stock;
-    }
+public static <T> List<T> findStockBySearch(Shop shop, String searchQuery) {
+    session = HibernateUtil.getSessionFactory().openSession();
+    List<T> stock = null;
+    Criteria cr = session.createCriteria(Product.class);
+    cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
+    cr.add(Restrictions.eq("shop", shop));
+
+    Criterion nameSearch = Restrictions.ilike("name", searchQuery, MatchMode.ANYWHERE);
+    Criterion descriptionSearch = Restrictions.ilike("description", searchQuery, MatchMode.ANYWHERE);
+
+    cr.add(Restrictions.disjunction().add(nameSearch).add(descriptionSearch));
+
+    cr.addOrder(Order.desc("availability")).addOrder(Order.asc("name"));
+
+    stock = getList(cr);
+    return stock;
+}
 
 }

@@ -66,7 +66,7 @@ public class PurchaseTest {
     public void testAddToBasket(){
         assertEquals(0, currentPurchase.getTotal(), 0.01);
         currentPurchase.addToBasket(foodProduct);
-        assertEquals(foodProduct.getPrice(), currentPurchase.getTotal(), 0.01);
+        assertEquals(39.90, currentPurchase.getTotal(), 0.01);
 
 
 

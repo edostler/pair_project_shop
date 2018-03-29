@@ -142,7 +142,12 @@ public class ProductsController {
             product.setQuantity(newShopQuantity);
             DBHelper.saveOrUpdate(product);
             String url = req.headers("referer");
-            res.redirect(url);
+            if (url.equals("http://localhost:4567/search")) {
+                res.redirect("/products");
+            }
+            else {
+                res.redirect(url);
+            }
             return null;
         }, new VelocityTemplateEngine());
 

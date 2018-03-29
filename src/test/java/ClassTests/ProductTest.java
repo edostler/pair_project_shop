@@ -67,7 +67,7 @@ public class ProductTest {
     public void testSetQuantity() {
         product2.setQuantity(5);
         assertEquals(5,product2.getQuantity());
-        assertTrue(product2.getAvailability());
+        assertTrue(product2.checkAvailability());
 
 
     }
