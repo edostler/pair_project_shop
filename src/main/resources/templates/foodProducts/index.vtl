@@ -21,7 +21,7 @@
         </tr>
         #foreach($food in $foods)
         <tr>
-            <td><img src="$food.getImage()" alt="Image of Product"></td>
+            <td><img class="sml" style="display: block;" width="100%"  src="$food.getImage()" alt="Image of Product"></td>
             <td><a href="/food-products/$food.getId()">$food.getName()</a></td>
             <td>$food.getCategory()</td>
             <td>$food.getDescription()</td>
@@ -31,10 +31,10 @@
             <td>£$food.formatToDecimal($food.getPrice())</td>
             <form action="/food-products/stock" method="post">
                 <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
+                <td><input type="submit" value="Add to stock" class="button"></td>
                 <td><label for="id"></label>
                     <input id="id" class="inputbox" type="number" name="id" required="true" value="$food.getId()" hidden>
                 </td>
-                <td><input type="submit" value="Add to stock" class="button"></td>
             </form>
         </tr>
         #end

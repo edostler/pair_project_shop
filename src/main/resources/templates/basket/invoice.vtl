@@ -23,42 +23,42 @@
             </tr>
             #end
             <tr>
-                <td></td>
-                <td></td>
+                <td class="trhide"></td>
+                <td class="trhide"></td>
                 <td>Sub Total:</td>
                 <td>£$customer.formatToDecimal($basket.getTotal())</td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td class="trhide"></td>
+                <td class="trhide"></td>
                 <td>Delivery Charge:</td>
                 <td>£$customer.formatToDecimal($customer.calculateBaseDelivery())</td>
             </tr>
             #if ($basket.getTotal() >= $deliveryLimit)
             <tr>
-                <td></td>
-                <td></td>
+                <td class="trhide"></td>
+                <td class="trhide"></td>
                 <td>Delivery Discount:</td>
                 <td>-£$customer.formatToDecimal($customer.calculateBaseDelivery())*</td>
             </tr>
             #else
             <tr>
-                <td></td>
-                <td></td>
+                <td class="trhide"></td>
+                <td class="trhide"></td>
                 <td>Delivery Discount:</td>
                 <td>Not qualified*</td>
             </tr>
             #end
             <tr>
-                <td></td>
-                <td></td>
+                <td class="trhide"></td>
+                <td class="trhide"></td>
                 <td>Total:</td>
                 <td>£$total</td>
             </tr>
             <tr>
                 <td><a href="/basket" class="button center">Cancel</a></td>
-                <td></td>
-                <td></td>
+                <td class="trhide"></td>
+                <td class="trhide"></td>
                 <td><input type="submit" value="Confirm" class="button"></td>
             </tr>
         </table>

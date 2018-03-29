@@ -11,7 +11,7 @@
     </tr>
     #foreach($content in $contents)
     <tr>
-        <td><img src="$content.getImage()" alt="Image of Product"></td>
+        <td><img class="sml" style="display: block;" width="100%"  src="$content.getImage()" alt="Image of Product"></td>
         <td>$content.getName()</td>
         <td>$content.getDescription()</td>
         <td>£$content.formatToDecimal($content.getPrice())</td>
@@ -20,26 +20,26 @@
     </tr>
     #end
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="trhide"></td>
+        <td class="trhide"></td>
+        <td class="trhide"></td>
+        <td class="trhide"></td>
         <td>Sub Total:</td>
         <td>£$purchase.formatToDecimal($purchase.totalContentsOnly($contents))</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="trhide"></td>
+        <td class="trhide"></td>
+        <td class="trhide"></td>
+        <td class="trhide"></td>
         <td>Delivery Charge:</td>
         <td>£$purchase.formatToDecimal($delivery)</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="trhide"></td>
+        <td class="trhide"></td>
+        <td class="trhide"></td>
+        <td class="trhide"></td>
         <td>Total:</td>
         <td>£$purchase.formatToDecimal($purchase.getTotal())</td>
     </tr>

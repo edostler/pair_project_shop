@@ -18,22 +18,22 @@
         </tr>
         #foreach($product in $products)
         <tr>
-            <td><img src="$product.getImage()" alt="n/a"></td>
+            <td><img class="sml" style="display: block;" width="100%" src="$product.getImage()" alt="n/a"></td>
             <td>$product.getName()</a></td>
             <td>$product.getDescription()</td>
             <td>£$product.formatToDecimal($product.getPrice())</td>
             #if ($product.availability)
             <form action="/basket" method="post">
                 <td>Qty:<input class="inputbox" type="number" min="1" name="quantity" required="true"></td>
+                <td><input type="submit" value="Add to basket" class="button"></td>
                 <td>
                     <input id="id" class="inputbox" type="number" name="id" required="true" value="$product.getId()" hidden>
                 </td>
-                <td><input type="submit" value="Add to basket" class="button"></td>
             </form>
             #else
-            <td></td>
+            <td class="trhide"></td>
             <td>Sorry, out of stock</td>
-            <td></td>
+            <td class="trhide"></td>
             #end
         </tr>
         #end

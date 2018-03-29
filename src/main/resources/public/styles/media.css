@@ -39,17 +39,35 @@
   .logo2 {
   display:none!important;width:0px!important;height: 0px!important;overflow:hidden!important;line-height: 0px!important;font-size:0px!important;
      }
+
+
+
 }
 
 
 
 @media all and (max-width: 733px) {
+
+.sml{
+width:50%;
+margin-left: auto;
+margin-right: auto;
+}
+
   table {
     border: 0;
   }
 
+.trhide{
+display:none!important;width:0px!important;height: 0px!important;overflow:hidden!important;line-height: 0px!important;font-size:0px!important;
+}
 
-th, td {
+th {
+    border-bottom: 1px solid #ddd;
+    display:none!important;width:0px!important;height: 0px!important;overflow:hidden!important;line-height: 0px!important;font-size:0px!important;
+}
+
+td {
     border-bottom: 1px solid #ddd;
 }
   table thead {

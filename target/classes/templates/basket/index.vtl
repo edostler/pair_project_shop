@@ -11,10 +11,11 @@
             <th>Product Price</th>
             <th>Quantity Price</th>
             <th></th>
+            <th></th>
         </tr>
         #foreach($product in $contents)
         <tr>
-            <td><img src="$product.getImage()" alt="n/a"></td>
+            <td><img class="sml" style="display: block;" width="100%"  src="$product.getImage()" alt="n/a"></td>
             <td>$product.getName()</td>
             <td>$product.getDescription()</td>
             <td>$product.getQuantity()$product.getFulfilled()</td>
@@ -23,25 +24,28 @@
             <form action="/basket/$product.getId()/remove" method="post">
                 <td><input type="submit" value="Remove from basket" class="button"></td>
             </form>
+            <td class="trhide"></td>
         </tr>
         #end
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="trhide"></td>
+            <td class="trhide"></td>
+            <td class="trhide"></td>
+            <td class="trhide"></td>
+            <td class="trhide"></td>
             <td>Total:</td>
             <td>£$basket.formatToDecimal($basket.getTotal())</td>
+            <td class="trhide"></td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="trhide"></td>
+            <td class="trhide"></td>
+            <td class="trhide"></td>
+            <td class="trhide"></td>
+            <td class="trhide"></td>
+            <td class="trhide"></td>
             <td><a href="/basket/invoice" class="button center">Purchase</a></td>
+            <td class="trhide"></td>
         </tr>
     </table>
 
