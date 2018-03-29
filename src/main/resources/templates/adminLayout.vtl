@@ -14,25 +14,39 @@
     <nav class="navtop">
         <ul>
             <li><a href="/customers">Customers</a></li>
-            <li><a href="/previous-purchases">Previous Purchases</a></li>
-
-            <li class="dropdown">
+            <li><a href="/previous-purchases">Purchases</a></li>
+            <li class="dropdown1">
                 <a class="dropbtn" href="/products">All Products</a>
                 <div class="dropdown-content">
-                <a href="/food-products">Food Products</a>
-            <a href="/clothing-products">Clothing Products</a>
-            <a href="/health-products">Health Products</a>
+                    <a href="/food-products">Food Products</a>
+                    <a href="/clothing-products">Clothing Products</a>
+                    <a href="/health-products">Health Products</a>
                 </div>
             </li>
-            <li class="logo"><img height="120px" src="/images/logo_full.png" alt="PPS Groceries"></li>
+            <li class="dropdown2">
+                <a class="dropbtn" href="/products">Products</a>
+                <div class="dropdown-content">
+                    <a href="/food-products">Food</a>
+                    <a href="/clothing-products">Clothing</a>
+                    <a href="/health-products">Health</a>
+                </div>
+            </li>
+            <li class="logo2"><img height="120px" src="/images/logo_full.png" alt="PPS Groceries"></li>
             <li class="log"><a href="/logout"/>Logout</a></li>
             <li class="log"><a href="/account">$user</a></li>
+            <li class="dropdown3">
+                <a class="dropbtn" href="/account">Account</a>
+                <div class="dropdown-content">
+                    <a href="/account">$user</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </li>
         </ul>
     </nav>
 
     <form action="/search" method="post">
 
-        <label for="search">Name:</label>
+        <label for="search"></label>
         <input id="search" class="inputbox" type="text" name="search" required="true" placeholder="Search...">
 
         <input type="submit" value="Search" class="button">

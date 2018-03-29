@@ -71,13 +71,28 @@ li a:active {
   height: 120px;
   margin: 5px;
 }
+.logo2 {
+  float: right;
+  height: 120px;
+  margin: 5px;
+}
 
 .log{
 float: right;}
 
-li.dropdown {
-    display: inline-block;
+.dropdown3 {
+float: right;}
 
+li.dropdown1 {
+    display: inline-block;
+}
+
+li.dropdown2 {
+    display: inline-block;
+}
+
+li.dropdown3 {
+    display: inline-block;
 }
 
 .dropdown-content {
@@ -101,10 +116,19 @@ li.dropdown {
 
 .dropdown-content a:hover {background-color: #f1f1f1}
 
-.dropdown:hover .dropdown-content {
+.dropdown1:hover .dropdown-content {
     display: block;
     background: #EBEBD3;
+}
 
+.dropdown2:hover .dropdown-content {
+    display: block;
+    background: #EBEBD3;
+}
+
+.dropdown3:hover .dropdown-content {
+    display: block;
+    background: #EBEBD3;
 }
 
 img{
