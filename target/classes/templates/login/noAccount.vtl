@@ -11,6 +11,12 @@
 
 <body>
 
+<nav class="navtop">
+    <ul>
+        <li class="logo"><img height="120px" src="/images/logo_full.png" alt="PPS Groceries"></li>
+    </ul>
+</nav>
+
 <p class="pageHeader">Create Account</p>
 
 <p>No account held by that username, please register your details below:</p>
@@ -24,13 +30,6 @@
 
     <label for="distance">Distance(Km):</label>
     <input id="distance" type="number" name="distance" required="true" class="inputbox">
-
-    <label for="shop">Shop:</label>
-    <select id="shop" name="shop">
-        #foreach( $shop in $shops )
-        <option value="$shop.getId()">$shop.getName()</option>
-        #end
-    </select>
 
     <input type="submit" value="Save" class="button">
 </form>
