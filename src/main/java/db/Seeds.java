@@ -58,8 +58,8 @@ public class Seeds {
         Food food21 = new Food("Mango", FoodCategory.FRUIT_AND_VEG, 1.00, 10, "Organic, Fruit & Veg", new GregorianCalendar(2018, 3, 23), shop);
         Food food22 = new Food("Oranges", FoodCategory.FRUIT_AND_VEG, 1.00, 10, "Organic, Fruit & Veg", new GregorianCalendar(2018, 3, 23), shop);
         Food food23 = new Food("Butter", FoodCategory.DAIRY, 1.00, 10, "Spreadable, Dairy", new GregorianCalendar(2018, 3, 23), shop);
-        Food food25 = new Food("Milk", FoodCategory.DAIRY, 1.00, 10, "2L green, Dairy", new GregorianCalendar(2018, 3, 23), shop);
-        Food food26 = new Food("Milk", FoodCategory.DAIRY, 1.00, 10, "2L blue, Dairy", new GregorianCalendar(2018, 3, 23), shop);
+        Food food25 = new Food("Milk", FoodCategory.DAIRY, 1.00, 10, "2L blue, Dairy", new GregorianCalendar(2018, 3, 23), shop);
+        Food food26 = new Food("Milk", FoodCategory.DAIRY, 1.00, 10, "2L green, Dairy", new GregorianCalendar(2018, 3, 23), shop);
         Food food27 = new Food("Chips", FoodCategory.FROZEN, 2.99, 10, "McCains, Frozen", new GregorianCalendar(2018, 3, 23), shop);
         Food food28 = new Food("Peas", FoodCategory.FROZEN, 2.99, 10, "green, Frozen", new GregorianCalendar(2018, 3, 23), shop);
         Food food29 = new Food("Pizza", FoodCategory.FROZEN, 2.99, 10, "pepperoni, Frozen", new GregorianCalendar(2018, 3, 23), shop);
