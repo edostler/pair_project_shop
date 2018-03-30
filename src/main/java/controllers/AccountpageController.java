@@ -22,6 +22,7 @@ public class AccountpageController {
 //
         get("/account/edit", (req, res) -> {
 //            TEST
+//            TEST
             Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
