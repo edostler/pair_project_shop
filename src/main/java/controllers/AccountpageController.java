@@ -21,6 +21,7 @@ public class AccountpageController {
     private void setupEndPoints() {
 //
         get("/account/edit", (req, res) -> {
+//            TEST
             Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUsername(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
